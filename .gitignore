@@ -70,6 +70,7 @@ local.properties
 ### Java ###
 # Compiled class file
 *.class
+credentials-config.json
 
 # Log file
 *.log
