@@ -15,7 +15,7 @@ INSERT INTO t4_write (user_id, subject, content) VALUES
 (1, '제목입니다2', '내용입니다2'),
 (3, '제목입니다3', '내용입니다3'),
 (3, '제목입니다4', '내용입니다4')
-;
+;//ddd
 
 -- 샘플 댓글
 INSERT INTO t4_comment(user_id, write_id, content) VALUES
