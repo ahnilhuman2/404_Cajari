@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/qna/*")
+@WebServlet("/review/*")
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,14 +43,14 @@ public class ReviewController extends HttpServlet {
 		String viewPage = null;
 		
 		switch(command) {
-		case "/qna/qna_list":
-			viewPage = "qna_list.jsp";
+		case "/review/review_list":
+			viewPage = "review_list.jsp";
 			break;
 		} // end switch
 		
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/WEB-INF/views/qna/" + viewPage);
+					request.getRequestDispatcher("/WEB-INF/views/review/" + viewPage);
 			
 			dispatcher.forward(request, response);
 		} 
