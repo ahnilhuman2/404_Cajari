@@ -91,6 +91,13 @@
       </nav>
     </div>
   </header>
+  	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
   <main class="px-3">
     <h1>Cajari</h1>
@@ -99,6 +106,22 @@
       <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Login</a>
       <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Sign in</a>
     </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </main>
 
   <footer class="mt-auto text-white-50">
