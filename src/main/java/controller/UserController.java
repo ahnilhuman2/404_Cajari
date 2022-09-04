@@ -53,7 +53,7 @@ public class UserController extends HttpServlet {
 					request.getRequestDispatcher("/WEB-INF/views/user/" + viewPage);
 			
 			dispatcher.forward(request, response);
-		}
+		} 
 		
 	} // end action
 
