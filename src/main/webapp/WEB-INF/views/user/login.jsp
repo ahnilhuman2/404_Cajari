@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Signin Template · Bootstrap v5.2</title>
+    <title>Cover Template · Bootstrap v5.2</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     
 
     
@@ -73,19 +74,24 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="./css/signin.css" rel="stylesheet">
+    <link href="../css/cover.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-bg-dark">
+    
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Cajari</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        
+      </nav>
+    </div>
+  </header>
+  
+      <!-- Custom styles for this template -->
+    <link href="../css/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 <main class="form-signin w-100 m-auto">
   <form>
     
@@ -106,11 +112,16 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <button class="w-100 btn btn-lg btn-light" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
 </main>
 
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> -->
 
     
   </body>
