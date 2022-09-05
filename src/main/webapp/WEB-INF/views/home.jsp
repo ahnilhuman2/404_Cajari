@@ -106,6 +106,7 @@
       <button type="button" class="btn btn-warning">검색으로 찾기</button>
       <button type="button" class="btn btn-warning">지도로 찾기</button>
     </p>
+    
     <br>
     <br>
     <br>
