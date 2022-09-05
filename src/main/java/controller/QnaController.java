@@ -130,7 +130,7 @@ public class QnaController extends HttpServlet {
 		// 위에서 결정된 뷰 페이지 (viewPage) 로 forward 해줌
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/WEB-INF/views/review/" + viewPage);
+					request.getRequestDispatcher("/WEB-INF/views/qna/" + viewPage);
 			
 			dispatcher.forward(request, response);
 		}
