@@ -39,7 +39,7 @@ SELECT * FROM t404_review_write ORDER BY id DESC;
 SELECT * FROM t404_review_comment ORDER BY id ASC;
 
 -- 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
-	u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
+SELECT  u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
 FROM t404_review_write r, t404_user u
 WHERE r.user_id  = u.id
 ORDER BY r.id DESC
