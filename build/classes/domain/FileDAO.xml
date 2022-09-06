@@ -2,20 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.FileDAO">
 
-<insert id="insert" flushCache="true"
-	parameterType="arraylist">
-	INSERT INTO t4_file (source, file, write_id)
-	VALUES
-		<foreach collection="param1" item="e" separator=",">		
-			(#{e.source}, #{e.file}, #{param2})
-		</foreach>
-</insert>
-
 <!-- 반복해서 사용될 쿼리문은 sql 태그로 정의하고 include 로 가져다 쓸수 있다 -->
 <sql id="SELECTFILE">
-    SELECT id, source, file, write_id
-    FROM t4_file
+    SELECT id, file, review_write_id
+    FROM t404_file
 </sql>
+
+<insert id="insertImage" flushCache="true"
+	parameterType="arraylist">
+	<include refid="SELECTFILE"/>
+	WHERE id IN
+		<foreach collection="array" item="e" separator=","
+			open="(" close=")">
+			#{e}
+		</foreach>
+</insert>
 
 <select id="selectFilesByWrite" resultType="domain.FileDTO">
 	<include refid="SELECTFILE"/>
