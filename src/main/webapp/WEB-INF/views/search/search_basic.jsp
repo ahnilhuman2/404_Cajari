@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Cover Template · Bootstrap v5.2</title>
+    <title>Basic_search</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -74,7 +74,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/cover.css" rel="stylesheet">
+    <link href="../css/search_basic.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     
@@ -83,59 +83,46 @@
     <div>
       <h3 class="float-md-start mb-0">Cajari</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/search/search_main">Service</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/aboutus/aboutus">About us</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
       </nav>
     </div>
   </header>
-  
-      <!-- Custom styles for this template -->
-    <link href="../css/signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-<main class="form-signin w-100 m-auto">
-  <form>
+  	<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <main class="px-3">
+    <h1>Cajari</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <button type="button" class="btn btn-warning">검색으로 찾기</button>
+    </p>
     
-    <h1 class="h3 mb-3 fw-normal" style="font-size:50px">Cajari</h1>
-    <h1 class="h3 mb-3 fw-normal">SignUp</h1>
-
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingId" placeholder="id" required="required">
-      <label for="floatingPassword">* 아이디를 입력하세요</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingName" placeholder="userName" required="required">
-      <label for="floatingPassword">* 이름</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="password" required="required">
-      <label for="floatingPassword">* 비밀번호</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="password" required="required">
-      <label for="floatingPassword">* 비밀번호확인</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="phoneNum" required="required">
-      <label for="floatingPassword">* 핸드폰</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="carName">
-      <label for="floatingPassword">차종</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingPassword" placeholder="carNum">
-      <label for="floatingPassword">차량번호</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-light" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-  </form>
-</main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </main>
 
   <footer class="mt-auto text-white-50">
     <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>

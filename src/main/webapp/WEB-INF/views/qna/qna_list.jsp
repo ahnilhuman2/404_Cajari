@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Cover Template · Bootstrap v5.2</title>
+    <title>Q&A_list</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -17,7 +17,7 @@
 
     
 
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -74,7 +74,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/cover.css" rel="stylesheet">
+    <link href="./css/cover.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     
@@ -83,11 +83,11 @@
     <div>
       <h3 class="float-md-start mb-0">Cajari</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
         <a class="nav-link fw-bold py-1 px-0" href="#">Service</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">About us</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Review</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Q & A</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/aboutus/aboutus">About us</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
       </nav>
     </div>
   </header>
@@ -103,8 +103,8 @@
     <h1>Cajari</h1>
     <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
     <p class="lead">
-      <button type="button" class="btn btn-warning" >검색으로 찾기</button>
-      <button type="button" class="btn btn-warning" >지도로 찾기</button>
+      <button type="button" class="btn btn-warning">검색으로 찾기</button>
+      <button type="button" class="btn btn-warning">지도로 찾기</button>
     </p>
     <br>
     <br>

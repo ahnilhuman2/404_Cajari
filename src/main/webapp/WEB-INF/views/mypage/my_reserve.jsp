@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My_reserve</title>
 </head>
 <body>
 	<h1>예약내역</h1>

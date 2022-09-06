@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/list.js"></script>
 
-    <title>목록</title>
+    <title>Review_list</title>
 </head>
 
 <body>

@@ -20,14 +20,14 @@ body {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.form-signin input[type="text"] {
+  margin-bottom: 10px!important;
+  border-bottom-right-radius: 5px!important;
+  border-bottom-left-radius: 5px!important;
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-left-radius: 5px!important;
+  border-top-right-radius: 5px!important;
 }

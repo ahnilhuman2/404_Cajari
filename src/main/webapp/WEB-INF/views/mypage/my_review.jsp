@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My_review</title>
 </head>
 <body>
 	<h1>후기내역</h1>
