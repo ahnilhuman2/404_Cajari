@@ -20,7 +20,6 @@ CREATE TABLE t404_file
 (
 	id int NOT NULL AUTO_INCREMENT,
 	review_write_id int NOT NULL,
-	source varchar(100) NOT NULL,
 	file varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -62,6 +61,7 @@ CREATE TABLE t404_qna_comment
 (
 	id int NOT NULL,
 	qna_id int NOT NULL,
+	user_id int NOT NULL,
 	content text NOT NULL,
 	regdate datetime DEFAULT now(),
 	PRIMARY KEY (id)
@@ -73,7 +73,8 @@ CREATE TABLE t404_reserve
 	id int NOT NULL AUTO_INCREMENT,
 	parking_id int NOT NULL,
 	user_id int NOT NULL,
-	regdate datetime DEFAULT now(),
+	regdate datetime NOT NULL DEFAULT now(),
+	checkin_time varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -82,6 +83,7 @@ CREATE TABLE t404_review_comment
 (
 	id int NOT NULL AUTO_INCREMENT,
 	review_write_id int NOT NULL,
+	user_id int NOT NULL,
 	content text NOT NULL,
 	regdate datetime DEFAULT now(),
 	PRIMARY KEY (id)
@@ -168,7 +170,23 @@ ALTER TABLE t404_qna
 ;
 
 
+ALTER TABLE t404_qna_comment
+	ADD FOREIGN KEY (user_id)
+	REFERENCES t404_user (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
 ALTER TABLE t404_reserve
+	ADD FOREIGN KEY (user_id)
+	REFERENCES t404_user (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE t404_review_comment
 	ADD FOREIGN KEY (user_id)
 	REFERENCES t404_user (id)
 	ON UPDATE RESTRICT

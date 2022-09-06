@@ -1,8 +1,8 @@
 SELECT id "id", username "username", password "password", phone_number "phone_number",
 	name "name", authorities "authorities", regdate "regdate" from t404_user order by id desc;
 
-ALTER TABLE t4_user AUTO_INCREMENT = 1;
-
+ALTER TABLE t404_user AUTO_INCREMENT = 1;
+ALTER TABLE t404_review_write AUTO_INCREMENT = 1;
 
 -- 샘플 사용자
 INSERT INTO t404_user (username, password, name, authorities, phone_number) VALUES
@@ -27,40 +27,37 @@ INSERT INTO t404_parkinglot(id, addr, parking_name) VALUES
 ;
 
 -- 샘플 댓글
-INSERT INTO t404_review_comment(user_id, review_write_id, content, phone_number) VALUES
-(1, 1, '1. user1이 1번글에 댓글 작성.'),
-(1, 1, '2. user1이 1번글에 댓글 작성.'),
-(1, 2, '3. user1이 2번글에 댓글 작성.'),
-(1, 2, '4. user1이 2번글에 댓글 작성.')
+INSERT INTO t404_review_comment(review_write_id, user_id, content) VALUES
+(5, 1, '1. user1이 1번글에 댓글 작성.'),
+(5, 2, '2. user1이 1번글에 댓글 작성.'),
+(7, 3, '3. user1이 2번글에 댓글 작성.'),
+(8, 1, '4. user1이 2번글에 댓글 작성.')
 ;
 
+SELECT * FROM t404_user ORDER BY id DESC;
+SELECT * FROM t404_review_write ORDER BY id DESC;
+SELECT * FROM t404_review_comment ORDER BY id ASC;
 
-
-
-SELECT * FROM t4_user ORDER BY uid DESC;
-SELECT * FROM t4_write ORDER BY uid DESC;
-
--- 글 조회 (작성자 포함 JOIN)
-SELECT w.id, w.subject, w.content, w.viewcnt, w.regdate,
-	u.id , u.username, u.password , u.name , u.authorities , u.regdate 
-FROM t4_write w, t4_user u
-WHERE w.user_id  = u.id
-ORDER BY w.id DESC
+-- 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
+	u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
+FROM t404_review_write r, t404_user u
+WHERE r.user_id  = u.id
+ORDER BY r.id DESC
 ;
 
 # 페이징
 -- 다량의 데이터
-INSERT INTO t4_write (user_id, subject, content)
-SELECT user_id, subject, content FROM t4_write;
+INSERT INTO t404_review_write (user_id, parking_id, subject, content)
+SELECT user_id, parking_id, subject, content FROM t404_review_write;
 
-SELECT count(*) FROM t4_write;
+SELECT count(*) FROM t404_review_write;
 
-SELECT * FROM t4_write ORDER BY id DESC LIMIT 5;
-SELECT * FROM t4_write ORDER BY id DESC LIMIT 5, 5;
+SELECT * FROM t404_review_write ORDER BY id DESC LIMIT 5;
+SELECT * FROM t404_review_write ORDER BY id DESC LIMIT 5, 5;
 
 -- 한 페이지 10개씩?
-SELECT * FROM  t4_write ORDER BY id DESC LIMIT 0, 10; -- 1page
-SELECT * FROM  t4_write ORDER BY id DESC LIMIT 10, 10; -- 2page
+SELECT * FROM  t404_review_write ORDER BY id DESC LIMIT 0, 10; -- 1page
+SELECT * FROM  t404_review_write ORDER BY id DESC LIMIT 10, 10; -- 2page
 
 -- --------------------------------------------
 -- 파일첨부
