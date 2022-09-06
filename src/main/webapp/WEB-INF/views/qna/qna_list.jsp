@@ -17,7 +17,7 @@
 
     
 
-<link href="./css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -74,7 +74,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="./css/cover.css" rel="stylesheet">
+    <link href="../css/cover.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-bg-dark">
     

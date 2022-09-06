@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.UserDAO">
+
+<select id="selectByUsername" parameterType="domain.UserDTO"
+	resultType="domain.UserDTO">
+    SELECT id, username, password, name, regdate, authorities
+    FROM t4_user
+    WHERE username = #{username}
+</select>
+
+<select id="selectById" parameterType="domain.UserDTO"
+	resultType="domain.UserDTO">
+    SELECT id, username, password, name, regdate, authorities
+    FROM t4_user
+    WHERE id = #{id}
+</select>
+
+<insert id="register" flushCache="true" parameterType="domain.UserDTO"
+	keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+    INSERT INTO t4_user(username, password, name)
+    VALUES(#{username}, #{password}, #{name})
+</insert>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

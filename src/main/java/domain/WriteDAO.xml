@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.WriteDAO">
+
+	<!-- 반복해서 사용될 쿼리문은 sql 태그로 정의 include 태그로 가져다 쓸수 있다 -->
+	<sql id="SELECTWRITE">
+		SELECT
+	        w.id "w_id",
+	        w.subject "w_subject",
+	        w.content "w_content",
+	        w.viewcnt "w_viewcnt",
+	        w.regdate "w_regdate",
+	        u.id "u_id",
+	        u.username "u_username",
+	        u.name "u_name",
+	        u.authorities "u_authorities",
+	        u.regdate "u_regdate"
+        FROM 
+        	t4_write w, t4_user u
+        WHERE 
+        	w.user_id = u.id
+	</sql>
+
+	<resultMap type="domain.UserDTO" id="mapUser">
+		<result column="u_id" property="id"/>
+		<result column="u_username" property="username"/>
+		<result column="u_password" property="password"/>
+		<result column="u_name" property="name"/>
+		<result column="u_authorities" property="authorities"/>
+		<result column="u_regdate" property="regDate"/>
+	</resultMap>
+
+	<resultMap type="domain.WriteDTO" id="mapWrite">
+		<result column="w_id" property="id"/>
+		<result column="w_subject" property="subject"/>
+		<result column="w_content" property="content"/>
+		<result column="w_viewcnt" property="viewCnt"/>
+		<result column="w_regdate" property="regDate"/>
+		<collection property="user" resultMap="mapUser"/>
+	</resultMap>
+
+	<select id="select" resultMap="mapWrite">
+		<include refid="SELECTWRITE"/>
+        ORDER BY 
+        	w.id DESC
+	</select>
+
+
+	<insert id="insert" flushCache="true"
+		parameterType="domain.WriteDTO"
+		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO t4_write
+			(subject, content, user_id)
+		VALUES
+			(#{subject}, #{content}, #{user.id})
+	</insert>
+	
+	<!-- 글 조회 -->
+	<select id="selectById" resultMap="mapWrite">
+		<include refid="SELECTWRITE"/>
+			 AND w.id = #{id}
+        ORDER BY 
+        	w.id DESC
+	</select>
+	
+		
+	<!-- 조회수 증가 -->
+	<update id="incViewCnt" flushCache="true">
+		UPDATE t4_write
+		SET viewcnt = viewcnt + 1
+		WHERE id = #{param1}
+	</update>
+
+	<!-- 글수정 -->
+	<update id="update" flushCache="true"
+		parameterType="domain.WriteDTO">
+		UPDATE t4_write
+		SET subject = #{subject}, content = #{content}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 글삭제 -->
+	<delete id="deleteById" flushCache="true">
+		DELETE FROM t4_write WHERE id = #{id}
+	</delete>
+	
+	<!-- 페이징 용 쿼리 -->
+	<select id="selectFromRow" resultMap="mapWrite">
+		<include refid="SELECTWRITE"/>
+		ORDER BY w.id DESC
+		LIMIT #{param1}, #{param2}
+	</select>
+	
+	<select id="countAll" resultType="int">
+		SELECT count(*) FROM t4_write
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
