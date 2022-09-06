@@ -58,7 +58,7 @@
 		INSERT INTO t404_qna_write
 			(subject, content, user_id)
 		VALUES
-			(#{subject}, #{content}, #{user.id})
+			(#{subject}, #{content}, #{user_id.id})
 	</insert>
 	
 	<!-- 글 조회 -->

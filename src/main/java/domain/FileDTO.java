@@ -1,5 +1,7 @@
 package domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FileDTO {
 	private int id;   // id
-	private String source;  // source 원본이름
-	private String file;    // file 저장된 이름
+	private String file;    // 원본파일
 	private boolean isImage;  // 이미지 여부
 
 } // end DTO
