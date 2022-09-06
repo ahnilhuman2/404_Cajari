@@ -35,6 +35,9 @@ public class UserDTO {
 //	@JsonProperty("regdate")
     @JsonIgnore
     private LocalDateTime regDate;
+    private String car_name;
+    private String car_number;
+    private String phone_number;
    
     @JsonIgnore
     // String 으로 리턴하는 getter

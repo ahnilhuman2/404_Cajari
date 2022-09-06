@@ -4,22 +4,22 @@
 
 <select id="selectByUsername" parameterType="domain.UserDTO"
 	resultType="domain.UserDTO">
-    SELECT id, username, password, name, regdate, authorities
-    FROM t4_user
+    SELECT id, username, password, name, regdate, authorities, car_name, car_number, phone_number
+    FROM t404_user
     WHERE username = #{username}
 </select>
 
 <select id="selectById" parameterType="domain.UserDTO"
 	resultType="domain.UserDTO">
-    SELECT id, username, password, name, regdate, authorities
-    FROM t4_user
+    SELECT id, username, password, name, regdate, authorities, car_name, car_number, phone_number
+    FROM t404_user
     WHERE id = #{id}
 </select>
 
 <insert id="register" flushCache="true" parameterType="domain.UserDTO"
 	keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-    INSERT INTO t4_user(username, password, name)
-    VALUES(#{username}, #{password}, #{name})
+    INSERT INTO t404_user(username, password, name, phone_number)
+    VALUES(#{username}, #{password}, #{name}, #{phone_number})
 </insert>
 
 
