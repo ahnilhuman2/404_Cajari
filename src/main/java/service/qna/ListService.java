@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.C;
 import domain.WriteDAO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -46,7 +46,7 @@ public class ListService implements Service {
 		SqlSession sqlSession = null;
 		WriteDAO dao = null;		
 		
-		List<WriteDTO> list = null;
+		List<Review_WriteDTO> list = null;
 		
 		int startPage = 1;
 		int endPage = 10;

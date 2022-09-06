@@ -12,12 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-public class WriteDTO {
+public class Review_WriteDTO {
 	private int id;    //  id
+	private UserDTO user_id; // user_id (외래키)
+	private ParkingDTO parking_id; // parking_id(외래키)
 	private String subject;  // subject
 	private String content;  // content
-	private UserDTO user;    // user_id (FK)
-	private int viewCnt;  // viewcnt
+	private int viewcnt;  // viewcnt
 	private LocalDateTime regDate;  // regdate
 
 	public String getRegDateTime() {

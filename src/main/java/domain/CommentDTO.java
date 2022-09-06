@@ -31,7 +31,7 @@ public class CommentDTO {
 	private UserDTO user;      // user_id (작성자)
 	
 	@JsonIgnore
-	private WriteDTO write;    // write_id (글)
+	private Review_WriteDTO write;    // write_id (글)
 }
 
 

@@ -21,7 +21,7 @@ import common.C;
 import domain.FileDAO;
 import domain.FileDTO;
 import domain.WriteDAO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -108,7 +108,7 @@ public class UpdateService implements Service {
 //		dto.setContent(content);
 		
 		// Builder 사용한 생성
-		WriteDTO dto = WriteDTO.builder()
+		Review_WriteDTO dto = Review_WriteDTO.builder()
 			.id(id)
 			.subject(subject)
 			.content(content)

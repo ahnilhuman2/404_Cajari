@@ -14,7 +14,7 @@ import domain.FileDAO;
 import domain.FileDTO;
 import domain.UserDTO;
 import domain.WriteDAO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -42,7 +42,7 @@ public class DeleteService implements Service {
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			List<WriteDTO> list = dao.selectById(id);
+			List<Review_WriteDTO> list = dao.selectById(id);
 			UserDTO writeUser = list.get(0).getUser();
 			if(loggedUser.getId() != writeUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");

@@ -15,7 +15,7 @@ import domain.FileDAO;
 import domain.FileDTO;
 import domain.UserDTO;
 import domain.WriteDAO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -36,7 +36,7 @@ public class SelectService implements Service {
 		WriteDAO dao = null;	
 		FileDAO fileDao = null;
 		
-		List<WriteDTO> list = null;
+		List<Review_WriteDTO> list = null;
 		List<FileDTO> fileList = null;
 		
 		try {

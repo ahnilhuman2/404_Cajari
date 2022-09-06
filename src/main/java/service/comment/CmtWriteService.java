@@ -14,7 +14,7 @@ import domain.CommentDAO;
 import domain.CommentDTO;
 import domain.QryResult;
 import domain.UserDTO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -27,7 +27,7 @@ public class CmtWriteService implements Service {
 	    int userId = Integer.parseInt(request.getParameter("user_id"));  // 누가 작성한 댓글인지
 	    String content = request.getParameter("content");  // 댓글 내용
 	    
-	    WriteDTO write = new WriteDTO();
+	    Review_WriteDTO write = new Review_WriteDTO();
 	    write.setId(writeId);
 	    UserDTO user = new UserDTO();
 	    user.setId(userId);

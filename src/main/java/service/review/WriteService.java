@@ -21,7 +21,7 @@ import common.C;
 import domain.FileDAO;
 import domain.UserDTO;
 import domain.WriteDAO;
-import domain.WriteDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -87,7 +87,7 @@ public class WriteService implements Service {
 		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 		
 		// 위 값들을 DTO에 담기
-		WriteDTO dto = new WriteDTO();
+		Review_WriteDTO dto = new Review_WriteDTO();
 		dto.setUser(user);
 		dto.setSubject(subject);
 		dto.setContent(content);
