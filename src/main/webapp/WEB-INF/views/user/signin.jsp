@@ -127,12 +127,11 @@
       <label for="floatingPassword">차량번호</label>
     </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-light" type="submit">Sign in</button>
+    
+    <button class="w-50 btn btn-lg btn-light" type="submit">Sign in</button>
+    <p style="font-size:15px">이미 Cajari 계정이 있으신가요?
+    <a href="${pageContext.request.contextPath }/user/login">로그인하기</a>
+    </p>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
 </main>
