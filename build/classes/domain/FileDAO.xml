@@ -8,12 +8,11 @@
     FROM t404_file
 </sql>
 
-<insert id="insertImage" flushCache="true"
-	parameterType="arraylist">
-	<include refid="SELECTFILE"/>
-	WHERE id IN
-		<foreach collection="array" item="e" separator=","
-			open="(" close=")">
+<insert id = "insertImage" flushCache="true"
+	parameterType="java.util.ArrayList">
+	insert into t404_file
+	values
+		<foreach collection="review_write_id" item="e" separator=",">
 			#{e}
 		</foreach>
 </insert>

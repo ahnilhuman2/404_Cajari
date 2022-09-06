@@ -7,7 +7,7 @@ import java.util.Map;
 public interface FileDAO {
 	
 	// 특정 review_write에 대한 이미지 업로드
-	public List<FileDTO> insertImage(int review_write_id) throws SQLException;
+	public List<FileDTO> insertImage(int[] review_write_id) throws SQLException;
 
 	// 특정 글 (writeId) 의 첨부파일(들) SELECT
 	public List<FileDTO> selectFilesByWrite(int review_write_id) throws SQLException;
