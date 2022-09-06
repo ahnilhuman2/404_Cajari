@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CommentDTO {
+public class R_CommentDTO {
 	private int id;
 	private String content;
 	
@@ -28,10 +28,10 @@ public class CommentDTO {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@JsonProperty("regdate")
 	private LocalDateTime regDate;
-	private UserDTO user;      // user_id (작성자)
+	private UserDTO user_id;      // user_id (작성자)
 	
 	@JsonIgnore
-	private Review_WriteDTO write;    // write_id (글)
+	private Review_WriteDTO review_write_id;    // review_write_id (리뷰글)
 }
 
 

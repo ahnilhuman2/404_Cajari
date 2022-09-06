@@ -11,8 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.CommentDAO;
-import domain.CommentDTO;
+import domain.R_CommentDAO;
+import domain.R_CommentDTO;
 import domain.QryCommentList;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -29,13 +29,13 @@ public class CmtListService implements Service {
 	    ObjectMapper mapper = new ObjectMapper();   // JSON 으로 매핑할 Mapper 객체 
 	    
 	    SqlSession sqlSession = null;
-	    CommentDAO dao = null;      
+	    R_CommentDAO dao = null;      
 	   
 	    try {
 	        sqlSession = SqlSessionManager.getInstance().openSession();
-	        dao = sqlSession.getMapper(CommentDAO.class);
+	        dao = sqlSession.getMapper(R_CommentDAO.class);
 	       
-	        List<CommentDTO> list = dao.selectByWrite(id);
+	        List<R_CommentDTO> list = dao.selectByWrite(id);
 	        obj.setList(list);
 	        obj.setCount(list.size());
 	        obj.setStatus("OK");

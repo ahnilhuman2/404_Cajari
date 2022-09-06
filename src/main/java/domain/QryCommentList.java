@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class QryCommentList extends QryResult {
 	
 	@JsonProperty("data")   // JSON 으로 매핑될 property name 
-	List<CommentDTO> list;   // 목록데이터
+	List<R_CommentDTO> list;   // 목록데이터
 	
 }
 

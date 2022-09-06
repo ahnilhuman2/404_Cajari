@@ -76,9 +76,11 @@
 		parameterType="domain.Review_WriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_review_write
-			(subject, content, user_id, parking_id)
+			<!-- parking_id = ParkingDTO (Review_WriteDTO 참조)-->
+			<!-- parking_id.parkin_name = parkingDTO.getParking_name(); -->
+			(subject, content, user_id, parking_id) 
 		VALUES
-			(#{subject}, #{content}, #{user.id}, #{parking_id.parking_name})
+			(#{subject}, #{content}, #{user_id.id}, #{parking_id.parking_name})
 	</insert>
 	
 	<!-- 글 조회 -->

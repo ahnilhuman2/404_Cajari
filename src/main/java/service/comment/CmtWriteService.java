@@ -10,8 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.CommentDAO;
-import domain.CommentDTO;
+import domain.R_CommentDAO;
+import domain.R_CommentDTO;
 import domain.QryResult;
 import domain.UserDTO;
 import domain.Review_WriteDTO;
@@ -32,7 +32,7 @@ public class CmtWriteService implements Service {
 	    UserDTO user = new UserDTO();
 	    user.setId(userId);
 	   
-	    CommentDTO dto = CommentDTO.builder()
+	    R_CommentDTO dto = R_CommentDTO.builder()
 	            .write(write)
 	            .user(user)
 	            .content(content)
@@ -42,12 +42,12 @@ public class CmtWriteService implements Service {
 	    ObjectMapper mapper = new ObjectMapper();  // Json 매핑할 Mapper객체
 	    
 	    SqlSession sqlSession = null;
-	    CommentDAO dao = null;
+	    R_CommentDAO dao = null;
 	    int cnt = 0;
 	   
 	    try {
 	        sqlSession = SqlSessionManager.getInstance().openSession();
-	        dao = sqlSession.getMapper(CommentDAO.class);          
+	        dao = sqlSession.getMapper(R_CommentDAO.class);          
 	       
 	        cnt = dao.insert(dto);  
 	        obj.setCount(cnt);

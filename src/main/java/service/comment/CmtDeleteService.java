@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.CommentDAO;
+import domain.R_CommentDAO;
 import domain.QryResult;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -25,12 +25,12 @@ public class CmtDeleteService implements Service {
 	    ObjectMapper mapper = new ObjectMapper();  // Json 매핑할 Mapper객체
 	   
 	    SqlSession sqlSession = null;
-	    CommentDAO dao = null;      
+	    R_CommentDAO dao = null;      
 	    int cnt = 0;
 	   
 	    try {
 	        sqlSession = SqlSessionManager.getInstance().openSession();
-	        dao = sqlSession.getMapper(CommentDAO.class);          
+	        dao = sqlSession.getMapper(R_CommentDAO.class);          
 	       
 	        cnt = dao.deleteById(id);
 	       
