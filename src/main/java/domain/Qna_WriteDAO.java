@@ -13,27 +13,27 @@ public interface Qna_WriteDAO {
 	// 새글 작성 <-- DTO
 	public abstract int insert(Qna_WriteDTO dto) throws SQLException;
 	
-	// 특정 id 글 읽어오기 (SELECT)
-	public abstract List<Qna_WriteDTO> selectById(int id) throws SQLException;
-	
-	// 특정 id 글 조회수 증가 (UPDATE)
-	public abstract int incViewCnt(int id) throws SQLException;
-	
-	// 전체 SELECT
-	public abstract List<Qna_WriteDTO> select() throws SQLException;
-	
-	// 특정 id 글 수정 (제목, 내용)
-	public abstract int update(Qna_WriteDTO dto) throws SQLException;
-	
-	// 특정 id 글 삭제
-	public abstract int deleteById(int id) throws SQLException;
-	
-	// 페이징 
-	// 몇번째(from) 부터 몇개(rows) 를 SELECT
-	public List<Qna_WriteDTO> selectFromRow(int from, int rows) throws SQLException;
-	
-	// 전체 글의 개수
-	public int countAll() throws SQLException;	
+//	// 특정 id 글 읽어오기 (SELECT)
+//	public abstract List<Qna_WriteDTO> selectById(int id) throws SQLException;
+//	
+//	// 특정 id 글 조회수 증가 (UPDATE)
+//	public abstract int incViewCnt(int id) throws SQLException;
+//	
+//	// 전체 SELECT
+//	public abstract List<Qna_WriteDTO> select() throws SQLException;
+//	
+//	// 특정 id 글 수정 (제목, 내용)
+//	public abstract int update(Qna_WriteDTO dto) throws SQLException;
+//	
+//	// 특정 id 글 삭제
+//	public abstract int deleteById(int id) throws SQLException;
+//	
+//	// 페이징 
+//	// 몇번째(from) 부터 몇개(rows) 를 SELECT
+//	public List<Qna_WriteDTO> selectFromRow(int from, int rows) throws SQLException;
+//	
+//	// 전체 글의 개수
+//	public int countAll() throws SQLException;	
 	
 } // end DAO
 

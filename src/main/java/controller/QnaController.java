@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.qna.Qna_WriteService;
 import service.review.Re_DeleteService;
 import service.review.Re_DetailService;
 import service.review.Re_DownloadService;
@@ -54,77 +55,32 @@ public class QnaController extends HttpServlet {
 		
 		switch(command) {
 		case "/qna/qna_write":
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "GET":
-					viewPage = "qna_write.jsp";
-					break;
-				case "POST":
-					service = new service.review.Re_WriteService();
-					service.execute(request, response);
-					viewPage = "qna_writeOk.jsp";
-					break;
-				}
+			switch(method) {
+			case "GET":
+				viewPage = "qna_write.jsp";
+				break;
+				
+			case "POST":
+				service = new Qna_WriteService();
+				viewPage = "qna_write.jsp";
+				break;
 			}
-			break;
 			
 		case "/qna/qna_list":
-			service = new Re_ListService();
-			service.execute(request, response);
 			viewPage = "qna_list.jsp";
 			break;
 			
-		case "/qna/qna_detail":  // 로그인한 사람만 접근 가능
-			if(C.securityCheck(request, response, null)) {				
-				service = new Re_DetailService();
-				service.execute(request, response);
-				viewPage = "qna_detail.jsp";
-			}
+		case "/qna/qna_detail":
+			viewPage = "qna_detail.jsp";
 			break;
 			
-		case "/qna/qna_update":  // ROLE_MEMBER + 작성자 만 접근 가능
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "GET":
-					service = new Re_SelectService();  // Service 안에서 작성자 여부 판단. 작성자 아니면 redirect 발생
-					service.execute(request, response);
-					
-					if(!response.isCommitted()) { // 위에서 redirect 되면 forward 진행 안함.				
-						viewPage = "qna_update.jsp";
-					}
-					break;
-				case "POST":
-					service = new Re_UpdateService();
-					service.execute(request, response);
-					viewPage = "qna_updateOk.jsp";
-					break;
-				}
-			}
+		case "/qna/qna_update":				
+			viewPage = "qna_update.jsp";
 			break;
 			
 		case "/review/review_delete":
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "POST":
-					service = new Re_DeleteService();   // 작성자가 아닌경우 Service 안에서 redirect 발생
-					service.execute(request, response);
-					if(!response.isCommitted()) {						
-						viewPage = "qna_deleteOk.jsp";
-					}
-					break;
-				}
-			}
+
 			break;
-			
-		// 페이징
-		// pageRows 변경시 동작
-		case "/board/pageRows":
-		    int page = Integer.parseInt(request.getParameter("page"));
-		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
-		    request.getSession().setAttribute("pageRows", pageRows);
-			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
-			break;
-		
 		} // end switch
 		
 		// 위에서 결정된 뷰 페이지 (viewPage) 로 forward 해줌
