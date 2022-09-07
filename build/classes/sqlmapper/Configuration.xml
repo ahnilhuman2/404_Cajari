@@ -27,10 +27,13 @@
   
   <mappers>
     <!-- 설정할 Mapper 파일들  -->
-    <mapper resource="domain/WriteDAO.xml"/>
+    <mapper resource="domain/Review_WriteDAO.xml"/>
+    <mapper resource="domain/Qna_WriteDAO.xml"/>
     <mapper resource="domain/UserDAO.xml"/>
     <mapper resource="domain/FileDAO.xml"/>
-    <mapper resource="domain/CommentDAO.xml"/>
+    <mapper resource="domain/R_CommentDAO.xml"/>
+    <mapper resource="domain/Q_CommentDAO.xml"/>
+    <mapper resource="domain/ParkingDAO.xml"/>
   </mappers>
 
 </configuration>
