@@ -25,7 +25,7 @@
         	r.user_id = u.id and p.id = r.parking_id
 	</sql>
 
-	<resultMap type="domain.UserDTO" id="mapUser">
+	<resultMap type="domain.UserDTO" id="mapUser_id">
 		<result column="u_id" property="id"/>
 		<result column="u_username" property="username"/>
 		<result column="u_password" property="password"/>
@@ -37,7 +37,7 @@
 		<result column="u_phone_number" property="phone_number"/>
 	</resultMap>
 	
-	<resultMap type="domain.ParkingDTO" id="mapParking">
+	<resultMap type="domain.ParkingDTO" id="mapParking_id">
 		<result column="p_id" property="id"/>
 		<result column="p_addr" property="addr"/>
 		<result column="p_weekend_begin_time" property="weekend_begin_time"/>
@@ -55,17 +55,17 @@
 		
 	</resultMap>
 
-	<resultMap type="domain.Review_WriteDTO" id="mapWrite">
+	<resultMap type="domain.Review_WriteDTO" id="mapReview_Write">
 		<result column="r_id" property="id"/>
 		<result column="r_subject" property="subject"/>
 		<result column="r_content" property="content"/>
 		<result column="r_viewcnt" property="viewcnt"/>
 		<result column="r_regdate" property="regDate"/>
-		<collection property="user_id" resultMap="mapUser"/>
-		<collection property="parking_id" resultMap="mapParking"/>
+		<collection property="user_id" resultMap="mapUser_id"/>
+		<collection property="parking_id" resultMap="mapParking_id"/>
 	</resultMap>
 
-	<select id="select" resultMap="mapWrite">
+	<select id="select" resultMap="mapReview_Write">
 		<include refid="SELECTWRITE"/>
         ORDER BY 
         	w.id DESC
@@ -84,7 +84,7 @@
 	</insert>
 	
 	<!-- 글 조회 -->
-	<select id="selectById" resultMap="mapWrite">
+	<select id="selectById" resultMap="mapReview_Write">
 		<include refid="SELECTWRITE"/>
 			 AND r.id = #{id}
         ORDER BY 
@@ -113,7 +113,7 @@
 	</delete>
 	
 	<!-- 페이징 용 쿼리 -->
-	<select id="selectFromRow" resultMap="mapWrite">
+	<select id="selectFromRow" resultMap="mapReview_Write">
 		<include refid="SELECTWRITE"/>
 		ORDER BY r.id DESC
 		LIMIT #{param1}, #{param2}

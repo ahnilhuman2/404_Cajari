@@ -1,3 +1,5 @@
 /domain/
 /service/
 /controller/
+/common/
+/sqlmapper/

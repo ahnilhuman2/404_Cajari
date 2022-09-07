@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-{"resources":{"ERD/t404_cajari.sql":{"sql-editor-data-source-id":"mysql8-18302f46863-651855012736e9db","default-datasource":"mysql8-18302f46863-651855012736e9db","default-catalog":"mydb404"},"ERD/test.sql":{"sql-editor-data-source-id":"mysql8-18302f46863-651855012736e9db","default-datasource":"mysql8-18302f46863-651855012736e9db","default-catalog":"mydb404"}}}
-=======
-{"resources":{"ERD/test.sql":{"sql-editor-data-source-id":"mysql8-18302f46863-651855012736e9db","default-datasource":"mysql8-18302f46863-651855012736e9db","default-catalog":"mydb404"},"ERD/test_write.sql":{"sql-editor-data-source-id":"mysql8-18302f46863-651855012736e9db","default-datasource":"mysql8-18302f46863-651855012736e9db","default-catalog":"mydb404"}}}
->>>>>>> Stashed changes
+{"resources":{"ERD/test.sql":{"sql-editor-data-source-id":"mysql8-18302f46863-651855012736e9db","default-datasource":"mysql8-18302f46863-651855012736e9db","default-catalog":"mydb404"}}}
