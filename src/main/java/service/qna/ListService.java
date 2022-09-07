@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.C;
 import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -46,7 +47,7 @@ public class ListService implements Service {
 		SqlSession sqlSession = null;
 		Qna_WriteDAO dao = null;		
 		
-		List<Review_WriteDTO> list = null;
+		List<Qna_WriteDTO> list = null;
 		
 		int startPage = 1;
 		int endPage = 10;

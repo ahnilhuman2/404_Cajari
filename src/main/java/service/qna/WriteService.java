@@ -19,8 +19,9 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 import common.C;
 import domain.FileDAO;
+import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import domain.UserDTO;
-import domain.WriteDAO;
 import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -87,20 +88,20 @@ public class WriteService implements Service {
 		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 		
 		// 위 값들을 DTO에 담기
-		Review_WriteDTO dto = new Review_WriteDTO();
-		dto.setUser(user);
+		Qna_WriteDTO dto = new Qna_WriteDTO();
+		dto.setUser_id(user);
 		dto.setSubject(subject);
 		dto.setContent(content);
 		
 		int cnt = 0;
 		
 		SqlSession sqlSession = null;  // 트랜잭션을 위한 객체
-		WriteDAO dao = null;
+		Qna_WriteDAO dao = null;
 		FileDAO fileDao = null;   // 파일정보 동작
 				
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(WriteDAO.class); // MyBatis 가 생성한 DAO
+			dao = sqlSession.getMapper(Qna_WriteDAO.class); // MyBatis 가 생성한 DAO
 			fileDao = sqlSession.getMapper(FileDAO.class);
 			
 			cnt = dao.insert(dto);  // 글 작성하고 auto-generated된 id값을 dto 에 받아옴

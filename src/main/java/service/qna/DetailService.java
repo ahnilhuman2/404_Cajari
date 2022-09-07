@@ -15,8 +15,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import domain.FileDAO;
 import domain.FileDTO;
-import domain.WriteDAO;
-import domain.Review_WriteDTO;
+import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -35,14 +35,14 @@ public class DetailService implements Service {
 		
 		
 		SqlSession sqlSession = null;
-		WriteDAO dao = null;	
+		Qna_WriteDAO dao = null;	
 		FileDAO fileDao = null;
 		
-		List<Review_WriteDTO> list = null;
+		List<Qna_WriteDTO> list = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(WriteDAO.class);
+			dao = sqlSession.getMapper(Qna_WriteDAO.class);
 			fileDao = sqlSession.getMapper(FileDAO.class);
 			
 			// 조회수 증가 + 글 읽기
