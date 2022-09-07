@@ -2,26 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.UserDAO">
 
-<select id="selectByUsername" parameterType="domain.UserDTO"
+<select id="selectByUser" parameterType="domain.UserDTO"
 	resultType="domain.UserDTO">
-    SELECT id, username, password, name, regdate, authorities, car_name, car_number, phone_number
-    FROM t404_user
-    WHERE username = #{username}
+	SELECT id, username, password, name, authorities, regdate, car_name, car_number, phone_number
+	FROM t404_user
+	WHERE username = #{username}
 </select>
 
 <select id="selectById" parameterType="domain.UserDTO"
 	resultType="domain.UserDTO">
-    SELECT id, username, password, name, regdate, authorities, car_name, car_number, phone_number
-    FROM t404_user
-    WHERE id = #{id}
+	SELECT id, username, password, name, authorities, regdate, car_name, car_number, phone_number
+	FROM t404_user
+	WHERE id = #{id}
 </select>
 
-<insert id="register" flushCache="true" parameterType="domain.UserDTO"
+<insert id="regUser" flushCache="true" parameterType="domain.UserDTO"
 	keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-    INSERT INTO t404_user(username, password, name, phone_number)
-    VALUES(#{username}, #{password}, #{name}, #{phone_number})
+	INSERT INTO t404_user(username, password, name, phone_number)
+	VALUES(#{username}, #{password}, #{name}, #{phone_number})
 </insert>
-
 
 </mapper>
 

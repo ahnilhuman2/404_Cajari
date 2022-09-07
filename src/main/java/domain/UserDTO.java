@@ -28,11 +28,7 @@ public class UserDTO {
     private String name;
     @JsonIgnore
     private String authorities;
-    
-//	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
-//	@JsonSerialize(using = LocalDateTimeSerializer.class)
-//	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-//	@JsonProperty("regdate")
+
     @JsonIgnore
     private LocalDateTime regDate;
     private String car_name;

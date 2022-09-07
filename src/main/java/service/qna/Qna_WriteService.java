@@ -19,13 +19,11 @@ public class Qna_WriteService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// 입력한 값을 받아오기
-		String name = request.getParameter("name");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
 		Qna_WriteDTO dto = new Qna_WriteDTO();
-		dto.set
 		
 		
 	} // end execute()
