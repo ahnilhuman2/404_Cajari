@@ -115,7 +115,6 @@ public class Re_UpdateService implements Service {
 			.build()
 			;
 		
-		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(Review_WriteDAO.class);

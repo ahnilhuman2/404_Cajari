@@ -50,8 +50,8 @@ public class Re_SelectService implements Service {
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			UserDTO writeUser = list.get(0).getUser_id();
-			if(loggedUser.getId() != writeUser.getId()) {
+			UserDTO re_writeUser = list.get(0).getUser_id();
+			if(loggedUser.getId() != re_writeUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
 			}			

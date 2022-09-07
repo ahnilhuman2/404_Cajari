@@ -35,30 +35,25 @@ public class Qna_SelectService implements Service {
 		
 		SqlSession sqlSession = null;
 		Qna_WriteDAO dao = null;	
-		FileDAO fileDao = null;
 		
 		List<Qna_WriteDTO> list = null;
-		List<FileDTO> fileList = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(Qna_WriteDAO.class);
-			fileDao = sqlSession.getMapper(FileDAO.class);
 			
 			// 읽기 only
 			list = dao.selectById(id);
-			fileList = fileDao.selectFilesByWrite(id);
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			UserDTO writeUser = list.get(0).getUser_id();
-			if(loggedUser.getId() != writeUser.getId()) {
+			UserDTO qna_writeUser = list.get(0).getUser_id();
+			if(loggedUser.getId() != qna_writeUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
 			}			
 			
 			request.setAttribute("list", list);
-			request.setAttribute("fileList", fileList);
 			
 			sqlSession.commit();
 		} catch (SQLException e) {  
