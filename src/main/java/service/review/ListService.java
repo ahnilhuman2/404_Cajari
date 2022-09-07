@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
-import domain.WriteDAO;
+import domain.Review_WriteDAO;
 import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
@@ -44,7 +44,7 @@ public class ListService implements Service {
 	    int totalPage = 0;  // 총 몇 '페이지' 분량인가?
 		
 		SqlSession sqlSession = null;
-		WriteDAO dao = null;		
+		Review_WriteDAO dao = null;		
 		
 		List<Review_WriteDTO> list = null;
 		
@@ -53,7 +53,7 @@ public class ListService implements Service {
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(WriteDAO.class);
+			dao = sqlSession.getMapper(Review_WriteDAO.class);
 			
 			cnt = dao.countAll();  // 글 목록 전체 개수
 			totalPage = (int)Math.ceil(cnt / (double)pageRows);   // 총 몇 페이지 분량?

@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class FileDTO {
-	private int id;   // id
-	private String file;    // 원본파일
-	private boolean isImage;  // 이미지 여부
+	private int id; // id
+	private String source; // source 원본 이름 
+	private String file; // 다운로드 이미지
+	private boolean isImage; // 이미지 여부
 
 } // end DTO

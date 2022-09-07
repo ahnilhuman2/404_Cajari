@@ -20,8 +20,8 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 import common.C;
 import domain.FileDAO;
 import domain.FileDTO;
-import domain.WriteDAO;
-import domain.Review_WriteDTO;
+import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -96,7 +96,7 @@ public class UpdateService implements Service {
 		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
 		SqlSession sqlSession = null;
-		WriteDAO dao = null;		
+		Qna_WriteDAO dao = null;		
 		FileDAO fileDao = null;
 		
 		int cnt = 0;
@@ -108,7 +108,7 @@ public class UpdateService implements Service {
 //		dto.setContent(content);
 		
 		// Builder 사용한 생성
-		Review_WriteDTO dto = Review_WriteDTO.builder()
+		Qna_WriteDTO dto = Qna_WriteDTO.builder()
 			.id(id)
 			.subject(subject)
 			.content(content)
@@ -118,7 +118,7 @@ public class UpdateService implements Service {
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(WriteDAO.class);
+			dao = sqlSession.getMapper(Qna_WriteDAO.class);
 			fileDao = sqlSession.getMapper(FileDAO.class);
 			
             // 4. 삭제 선택한 첨부파일 삭제

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- MyBatis config 옵션 참조
+	https://mybatis.org/mybatis-3/ko/configuration.html -->
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />	
+	</settings>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+		<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb404" />
+		<property name="username" value="myuser404" />
+		<property name="password" value="1234" />        
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <mappers>
+    <!-- 설정할 Mapper 파일들  -->
+    <mapper resource="domain/Review_WriteDAO.xml"/>
+    <mapper resource="domain/Qna_WriteDAO.xml"/>
+    <mapper resource="domain/UserDAO.xml"/>
+    <mapper resource="domain/FileDAO.xml"/>
+    <mapper resource="domain/R_CommentDAO.xml"/>
+    <mapper resource="domain/Q_CommentDAO.xml"/>
+    <mapper resource="domain/ParkingDAO.xml"/>
+  </mappers>
+
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
