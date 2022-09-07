@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS t404_review_comment;
 DROP TABLE IF EXISTS t404_review_write;
 DROP TABLE IF EXISTS t404_parkinglot;
 DROP TABLE IF EXISTS t404_qna_comment;
-DROP TABLE IF EXISTS t404_qna;
+DROP TABLE IF EXISTS t404_qna_write;
 DROP TABLE IF EXISTS t404_user;
 
 
@@ -21,6 +21,7 @@ CREATE TABLE t404_file
 	id int NOT NULL AUTO_INCREMENT,
 	review_write_id int NOT NULL,
 	file varchar(100) NOT NULL,
+	source varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
 
@@ -45,24 +46,24 @@ CREATE TABLE t404_parkinglot
 );
 
 
-CREATE TABLE t404_qna
+CREATE TABLE t404_qna_comment
+(
+	id int NOT NULL AUTO_INCREMENT,
+	qna_id int NOT NULL,
+	user_id int NOT NULL,
+	content text NOT NULL,
+	regdate datetime DEFAULT now(),
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE t404_qna_write
 (
 	id int NOT NULL AUTO_INCREMENT,
 	user_id int NOT NULL,
 	subject varchar(200) NOT NULL,
 	content longtext NOT NULL,
 	viewcnt int,
-	regdate datetime DEFAULT now(),
-	PRIMARY KEY (id)
-);
-
-
-CREATE TABLE t404_qna_comment
-(
-	id int NOT NULL,
-	qna_id int NOT NULL,
-	user_id int NOT NULL,
-	content text NOT NULL,
 	regdate datetime DEFAULT now(),
 	PRIMARY KEY (id)
 );
@@ -140,7 +141,7 @@ ALTER TABLE t404_review_write
 
 ALTER TABLE t404_qna_comment
 	ADD FOREIGN KEY (qna_id)
-	REFERENCES t404_qna (id)
+	REFERENCES t404_qna_write (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
@@ -162,7 +163,7 @@ ALTER TABLE t404_review_comment
 ;
 
 
-ALTER TABLE t404_qna
+ALTER TABLE t404_qna_comment
 	ADD FOREIGN KEY (user_id)
 	REFERENCES t404_user (id)
 	ON UPDATE RESTRICT
@@ -170,7 +171,7 @@ ALTER TABLE t404_qna
 ;
 
 
-ALTER TABLE t404_qna_comment
+ALTER TABLE t404_qna_write
 	ADD FOREIGN KEY (user_id)
 	REFERENCES t404_user (id)
 	ON UPDATE RESTRICT

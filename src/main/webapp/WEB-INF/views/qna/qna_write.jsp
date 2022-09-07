@@ -32,7 +32,7 @@ $(document).ready(function(){
     <div class="container mt-3">
         <h2>작성</h2>
         <hr>
-        <form name="frm" action="write" method="post"
+        <form name="frm" action="qna_write" method="post"
         	enctype="Multipart/form-data">
             <div class="mb-3">
                 <label for="name">작성자:</label>

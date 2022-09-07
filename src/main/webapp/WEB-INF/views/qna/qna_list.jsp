@@ -101,11 +101,7 @@
 
   <main class="px-3">
     <h1>Cajari</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <button type="button" class="btn btn-warning">검색으로 찾기</button>
-      <button type="button" class="btn btn-warning">지도로 찾기</button>
-    </p>
+
     <br>
     <br>
     <br>

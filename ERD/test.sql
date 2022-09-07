@@ -3,15 +3,24 @@ SELECT id "id", username "username", password "password", phone_number "phone_nu
 
 ALTER TABLE t404_user AUTO_INCREMENT = 1;
 ALTER TABLE t404_review_write AUTO_INCREMENT = 1;
+ALTER TABLE t404_qna_write AUTO_INCREMENT = 1;
+ALTER TABLE t404_qna_comment AUTO_INCREMENT = 1;
 
--- 샘플 사용자
+-- user
 INSERT INTO t404_user (username, password, name, authorities, phone_number) VALUES
 ('USER1', '1234', '회원1', 'PREMIUM', '01011112222'),
 ('USER2', '1234', '회원2', null, '01033334444'),
 ('ADMIN1', '1234', '관리자1', 'PREMIUM', '01055556666')
 ;
 
--- 샘플 글
+-- parking
+INSERT INTO t404_parkinglot(id, addr, parking_name) VALUES
+(1, '서울시 강남구', '강남주차장'),
+(2, '서울시 강동구', '강동주차장'),
+(3, '서울시 강서구', '강서주차장')
+;
+
+-- review_write sample
 INSERT INTO t404_review_write(user_id, parking_id , subject, content) VALUES
 (1, 1, '제목입니다1', '네용입니다1'),
 (1, 1, '제목입니다2', '내용입니다2'),
@@ -19,14 +28,15 @@ INSERT INTO t404_review_write(user_id, parking_id , subject, content) VALUES
 (2, 3, '제목입니다4', '내용입니다4')
 ;
 
--- 샘플 주차장
-INSERT INTO t404_parkinglot(id, addr, parking_name) VALUES
-(1, '서울시 강남구', '강남주차장'),
-(2, '서울시 강동구', '강동주차장'),
-(3, '서울시 강서구', '강서주차장')
+-- qna_write sample
+INSERT INTO t404_qna_write(user_id, subject, content) VALUES
+(1, '제목입니다1', '네용입니다1'),
+(1, '제목입니다2', '내용입니다2'),
+(3, '제목입니다3', '내용입니다3'),
+(2, '제목입니다4', '내용입니다4')
 ;
 
--- 샘플 댓글
+-- sample review_comment
 INSERT INTO t404_review_comment(review_write_id, user_id, content) VALUES
 (5, 1, '1. user1이 1번글에 댓글 작성.'),
 (5, 2, '2. user1이 1번글에 댓글 작성.'),
@@ -34,9 +44,19 @@ INSERT INTO t404_review_comment(review_write_id, user_id, content) VALUES
 (8, 1, '4. user1이 2번글에 댓글 작성.')
 ;
 
+-- sample qna_comment
+INSERT INTO t404_qna_comment(qna_id, user_id, content) VALUES
+(1, 1, '1. user1이 1번글에 댓글 작성.'),
+(2, 1, '2. user1이 1번글에 댓글 작성.'),
+(5, 2, '3. user1이 2번글에 댓글 작성.'),
+(8, 3, '4. user1이 2번글에 댓글 작성.')
+;
+
 SELECT * FROM t404_user ORDER BY id DESC;
 SELECT * FROM t404_review_write ORDER BY id DESC;
-SELECT * FROM t404_review_comment ORDER BY id ASC;
+SELECT * FROM t404_qna_write ORDER BY id DESC;
+SELECT * FROM t404_review_comment ORDER BY id DESC;
+SELECT * FROM t404_qna_comment ORDER BY id DESC;
 
 -- 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
 SELECT  u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number

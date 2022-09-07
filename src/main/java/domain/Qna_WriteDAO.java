@@ -22,7 +22,6 @@ public interface Qna_WriteDAO {
 	// 전체 SELECT
 	public abstract List<Qna_WriteDTO> select() throws SQLException;
 	
-	
 	// 특정 id 글 수정 (제목, 내용)
 	public abstract int update(Qna_WriteDTO dto) throws SQLException;
 	
