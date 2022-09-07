@@ -12,6 +12,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 
     
 
@@ -106,22 +107,58 @@
       <button type="button" class="btn btn-warning">검색으로 찾기</button>
     </p>
     
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h1>검색으로 찾기</h1>
+      <p class="lead"></p>
+      <p class="lead">
+        
+        <div class="input-group mb-3">
+          <input type="text" id="inputaddress" class="form-control" placeholder="지역을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-primary" type="button" id="button-addon2" onclick="test1()">찾기</button>
+        </div>
+      
+        <table id="table" class="table">
+          <thead>
+            <tr>
+                <th>분류</th>
+                <th>주소</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+              
+          </tbody>
+        </table>
+      </p>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+      
+    </footer>
+  </div>
+
+  <script>
+    function test1() {
+      let address = $("#inputaddress").val()
+      
+      $.ajax({
+        url: "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/" + address + "/",
+        type: "get",
+        crossDomain: true,
+        success: function (json, status) {
+          tbody = $("#tbody")
+          tbody.empty();
+          json.SearchPublicToiletPOIService.row.forEach(function (r) {
+            console.log(r)
+            markup = "<tr>";
+            markup += "<td>" + r.PARKING_NAME + "</td>";
+            markup += "<td>" + r.ADDR + "</td>";
+            markup += "</tr>";
+            tbody.append(markup)
+
+          })
+        }
+      });
+    }
+  </script>
   </main>
 
   <footer class="mt-auto text-white-50">
