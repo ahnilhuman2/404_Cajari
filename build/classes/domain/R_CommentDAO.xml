@@ -29,7 +29,6 @@
 		<result column="p_saturday_pay_nm" property="saturday_pay_nm"/>
 		<result column="p_tel" property="tel"/>
 		<result column="p_parking_name" property="parking_name"/>
-		
 	</resultMap>
 	
 	<resultMap type="domain.Review_WriteDTO" id="mapWrite">
@@ -71,12 +70,12 @@
 	
 	<insert id="insert" flushCache="true" parameterType="domain.R_CommentDTO"
     keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-    INSERT INTO t4_review_comment(user_id, review_write_id, content)
+    INSERT INTO t404_review_comment(user_id, review_write_id, content)
     VALUES(#{user_id.id}, #{review_write_id.id}, #{content})
 	</insert>
 	
 	<delete id="deleteById" flushCache="true">
-    DELETE FROM t4_comment WHERE id = #{id}
+    DELETE FROM t404_review_comment WHERE id = #{id}
 	</delete>
 	
 
