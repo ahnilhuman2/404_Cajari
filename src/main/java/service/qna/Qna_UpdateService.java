@@ -25,7 +25,7 @@ import domain.Qna_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class UpdateService implements Service {
+public class Qna_UpdateService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {

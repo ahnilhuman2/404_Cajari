@@ -1,4 +1,4 @@
-package service.qna;
+package service.review;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,13 +12,13 @@ import org.apache.ibatis.session.SqlSession;
 import common.C;
 import domain.FileDAO;
 import domain.FileDTO;
-import domain.Qna_WriteDAO;
-import domain.Qna_WriteDTO;
+import domain.Review_WriteDAO;
 import domain.UserDTO;
+import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class DeleteService implements Service {
+public class Re_DeleteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -26,14 +26,14 @@ public class DeleteService implements Service {
 		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
 		SqlSession sqlSession = null;
-		Qna_WriteDAO dao = null;
+		Review_WriteDAO dao = null;
 		FileDAO fileDao = null;
 		
 		int cnt = 0;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(Qna_WriteDAO.class);
+			dao = sqlSession.getMapper(Review_WriteDAO.class);
 			fileDao = sqlSession.getMapper(FileDAO.class);
 			
 			// 첨부파일 먼저 삭제
@@ -42,7 +42,7 @@ public class DeleteService implements Service {
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			List<Qna_WriteDTO> list = dao.selectById(id);
+			List<Review_WriteDTO> list = dao.selectById(id);
 			UserDTO writeUser = list.get(0).getUser_id();
 			if(loggedUser.getId() != writeUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");

@@ -1,4 +1,4 @@
-package service.qna;
+package service.review;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,7 @@ import sqlmapper.SqlSessionManager;
  * 5. 파일 읽기 -> 전송
  * 6. 자원 해제 (close)
  */
-public class DownloadService implements Service {
+public class Re_DownloadService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {

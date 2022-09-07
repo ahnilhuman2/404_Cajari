@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -18,47 +19,52 @@ import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class DeleteService implements Service {
+public class Re_SelectService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
+	    // 페이징 관련
+	    HttpSession session = request.getSession();
+	    Integer page = (Integer)session.getAttribute("page");
+	    if(page == null) page = 1;
+	    request.setAttribute("page", page);
+		
 		SqlSession sqlSession = null;
-		Review_WriteDAO dao = null;
+		Review_WriteDAO dao = null;	
 		FileDAO fileDao = null;
 		
-		int cnt = 0;
+		List<Review_WriteDTO> list = null;
+		List<FileDTO> fileList = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(Review_WriteDAO.class);
 			fileDao = sqlSession.getMapper(FileDAO.class);
 			
-			// 첨부파일 먼저 삭제
-			List<FileDTO> fileList = fileDao.selectFilesByWrite(id);
-			C.deleteFiles(fileList, request);
+			// 읽기 only
+			list = dao.selectById(id);
+			fileList = fileDao.selectFilesByWrite(id);
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			List<Review_WriteDTO> list = dao.selectById(id);
 			UserDTO writeUser = list.get(0).getUser_id();
 			if(loggedUser.getId() != writeUser.getId()) {
 				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 				return;
-			}	
+			}			
 			
-			cnt = dao.deleteById(id);
+			request.setAttribute("list", list);
+			request.setAttribute("fileList", fileList);
 			
 			sqlSession.commit();
 		} catch (SQLException e) {  
 			e.printStackTrace();
 		} finally {
 			if(sqlSession!= null) sqlSession.close();
-		}
-		
-		request.setAttribute("result", cnt);
+		}	
 
 	}
 

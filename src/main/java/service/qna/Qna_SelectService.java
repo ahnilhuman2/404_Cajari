@@ -20,7 +20,7 @@ import domain.Review_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class SelectService implements Service {
+public class Qna_SelectService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {

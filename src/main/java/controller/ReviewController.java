@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
-import service.review.DeleteService;
-import service.review.DetailService;
-import service.review.DownloadService;
-import service.review.ListService;
-import service.review.SelectService;
-import service.review.UpdateService;
-import service.review.WriteService;
+import service.review.Re_DeleteService;
+import service.review.Re_DetailService;
+import service.review.Re_DownloadService;
+import service.review.Re_ListService;
+import service.review.Re_SelectService;
+import service.review.Re_UpdateService;
+import service.review.Re_WriteService;
 
 @WebServlet("/review/*")
 public class ReviewController extends HttpServlet {
@@ -68,7 +68,7 @@ public class ReviewController extends HttpServlet {
 					viewPage = "review_write.jsp";
 					break;
 				case "POST":
-					service = new service.review.WriteService();
+					service = new service.review.Re_WriteService();
 					service.execute(request, response);
 					viewPage = "review_writeOk.jsp";
 					break;
@@ -76,14 +76,14 @@ public class ReviewController extends HttpServlet {
 			}
 			break;
 		case "/review/review_list":
-			service = new ListService();
+			service = new Re_ListService();
 			service.execute(request, response);
 			viewPage = "review_list.jsp";
 			break;
 			
 		case "/review/review_detail":  // 로그인한 사람만 접근 가능
 			if(C.securityCheck(request, response, null)) {				
-				service = new DetailService();
+				service = new Re_DetailService();
 				service.execute(request, response);
 				viewPage = "review_detail.jsp";
 			}
@@ -93,7 +93,7 @@ public class ReviewController extends HttpServlet {
 			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
 				switch(method) {
 				case "GET":
-					service = new SelectService();  // Service 안에서 작성자 여부 판단. 작성자 아니면 redirect 발생
+					service = new Re_SelectService();  // Service 안에서 작성자 여부 판단. 작성자 아니면 redirect 발생
 					service.execute(request, response);
 					
 					if(!response.isCommitted()) { // 위에서 redirect 되면 forward 진행 안함.				
@@ -101,7 +101,7 @@ public class ReviewController extends HttpServlet {
 					}
 					break;
 				case "POST":
-					service = new UpdateService();
+					service = new Re_UpdateService();
 					service.execute(request, response);
 					viewPage = "review_updateOk.jsp";
 					break;
@@ -113,7 +113,7 @@ public class ReviewController extends HttpServlet {
 			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
 				switch(method) {
 				case "POST":
-					service = new DeleteService();   // 작성자가 아닌경우 Service 안에서 redirect 발생
+					service = new Re_DeleteService();   // 작성자가 아닌경우 Service 안에서 redirect 발생
 					service.execute(request, response);
 					if(!response.isCommitted()) {						
 						viewPage = "review_deleteOk.jsp";

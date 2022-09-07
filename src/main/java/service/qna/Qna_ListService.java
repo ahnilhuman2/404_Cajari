@@ -1,4 +1,4 @@
-package service.review;
+package service.qna;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -10,12 +10,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
-import domain.Review_WriteDAO;
-import domain.Review_WriteDTO;
+import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class ListService implements Service {
+public class Qna_ListService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -44,16 +44,16 @@ public class ListService implements Service {
 	    int totalPage = 0;  // 총 몇 '페이지' 분량인가?
 		
 		SqlSession sqlSession = null;
-		Review_WriteDAO dao = null;		
+		Qna_WriteDAO dao = null;		
 		
-		List<Review_WriteDTO> list = null;
+		List<Qna_WriteDTO> list = null;
 		
 		int startPage = 1;
 		int endPage = 10;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(Review_WriteDAO.class);
+			dao = sqlSession.getMapper(Qna_WriteDAO.class);
 			
 			cnt = dao.countAll();  // 글 목록 전체 개수
 			totalPage = (int)Math.ceil(cnt / (double)pageRows);   // 총 몇 페이지 분량?
