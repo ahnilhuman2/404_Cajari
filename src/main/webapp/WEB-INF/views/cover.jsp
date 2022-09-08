@@ -85,9 +85,8 @@
                 <h1>Cajari</h1>
                 <br>
                 <br>
-                <p class="lead">
-                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
-                </p>
+               	<a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Login</a>
+                <a href="${pageContext.request.contextPath }/user/signin" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Sign in</a>
             </div>
         </div>
         <div class="col-lg-12">
