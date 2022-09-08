@@ -2,19 +2,102 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.Qna_WriteDAO">
 
-<insert id="insert" flushCache="true"
-	parameterType="domain.Qna_WriteDTO">
-	INSERT INTO t404_qna_write
-		(subject, content, name)
-	VALUES
-		(#{subject}, #{content}, #{name})
-</insert>
-
-<select id="select" resultType="domain.Qna_WriteDTO">
-	SELECT
+	<resultMap type="domain.UserDTO" id="mapUser">
+		<result column="u_id" property="id"/>
+		<result column="u_username" property="username"/>
+		<result column="u_password" property="password"/>
+		<result column="u_name" property="name"/>
+		<result column="u_authorities" property="authorities"/>
+		<result column="u_car_name" property="car_name"/>
+		<result column="u_car_number" property="car_number"/>
+		<result column="u_phone_number" property="phone_number"/>
+	</resultMap>
 	
-	FROM t404_qna_write q
-</select>
+	<resultMap type="domain.Qna_WriteDTO" id="mapQWrite">
+		<result column="q_id" property="id"/>
+		<result column="q_subject" property="subject"/>
+		<result column="q_content" property="content"/>
+		<result column="q_viewcnt" property="viewcnt"/>
+		<result column="q_regdate" property="regDate"/>
+		<collection property="user_id" resultMap="mapUser"/>
+	</resultMap>
+	
+	<select id="select" resultMap="mapQWrite">
+		SELECT
+			q.id "q_id",
+			q.subject "q_subject",
+			q.content "q_content",
+			q.viewcnt "q_viewcnt",
+			q.regdate "q_regdate",
+			u.id "u_id"
+			u.username "u_username"
+			u.password "u_password"
+			u.name "u_name"
+			u.authorities "u_authorities"
+			u.car_name "u_car_name"
+			u.car_number "u_car_number"
+			u.phone_number "u_phone_number"
+		FROM 
+			t404_qna_write q, t404_user u
+		WHERE 
+			q.user_id = u.id
+		ORDER BY 
+			q.id DESC
+	</select>
+
+	<insert id="insert" flushCache="true"
+		parameterType="domain.Qna_WriteDTO"
+		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO t404_qna_write
+			(subject, content, name)
+		VALUES
+			(#{subject}, #{content}, #{name})
+	</insert>
+
+	<!-- 글 조회 -->
+	<select id="selectById" resultMap="mapQWrite">
+		SELECT
+			q.id "q_id",
+			q.subject "q_subject",
+			q.content "q_content",
+			q.viewcnt "q_viewcnt",
+			q.regdate "q_regdate",
+			u.id "u_id"
+			u.username "u_username"
+			u.password "u_password"
+			u.name "u_name"
+			u.authorities "u_authorities"
+			u.car_name "u_car_name"
+			u.car_number "u_car_number"
+			u.phone_number "u_phone_number"
+		FROM 
+			t404_qna_write q, t404_user u
+		WHERE 
+			q.user_id = u.id AND q.id = #{id}
+		ORDER BY 
+			q.id DESC
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="incViewCnt" flushCache="true">
+		UPDATE t404_qna_write
+		SET viewcnt = viewcnt + 1
+		WHERE id = #{param1}
+	</update>
+	
+	<!-- 글 수정 -->
+	<update id="update" flushCache="true"
+		parameterType="domain.Qna_WriteDTO">
+		UPDATE t404_qna_write
+		SET subject = #{subject}, content = #{content}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 글 삭제 -->
+	<delete id="deleteById" flushCache="true">
+		DELETE FROM t404_qna_write WHERE id = #{id}
+	</delete>
+
 	
 </mapper>
 

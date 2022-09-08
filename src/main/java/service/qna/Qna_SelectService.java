@@ -27,11 +27,11 @@ public class Qna_SelectService implements Service {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
-	    // 페이징 관련
-	    HttpSession session = request.getSession();
-	    Integer page = (Integer)session.getAttribute("page");
-	    if(page == null) page = 1;
-	    request.setAttribute("page", page);
+//	    // 페이징 관련
+//	    HttpSession session = request.getSession();
+//	    Integer page = (Integer)session.getAttribute("page");
+//	    if(page == null) page = 1;
+//	    request.setAttribute("page", page);
 		
 		SqlSession sqlSession = null;
 		Qna_WriteDAO dao = null;	

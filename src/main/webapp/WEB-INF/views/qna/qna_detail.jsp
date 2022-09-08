@@ -59,7 +59,7 @@ function chkDelete(){
         	</form>
             <div class="mb-3">
                 <label for="name">작성자:</label>
-                <span class="form-control" >${dto.user.username } (${dto.user.name })</span>
+                <span class="form-control" >${dto.user_id.username } (${dto.user_id.name })</span>
             </div>    
             <div class="mb-3 mt-3">
                 <label for="subject">제목:</label>
