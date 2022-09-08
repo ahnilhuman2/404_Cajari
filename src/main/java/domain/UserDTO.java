@@ -23,19 +23,14 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
     private int id;
     private String username;
-    @JsonIgnore
     private String password;
     private String name;
-    @JsonIgnore
     private String authorities;
-
-    @JsonIgnore
     private LocalDateTime regDate;
     private String car_name;
     private String car_number;
     private String phone_number;
    
-    @JsonIgnore
     // String 으로 리턴하는 getter
     public String getRegDateTime() {
         if(this.regDate == null) return "";
