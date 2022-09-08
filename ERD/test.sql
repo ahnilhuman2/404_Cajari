@@ -58,11 +58,19 @@ SELECT * FROM t404_qna_write ORDER BY id DESC;
 SELECT * FROM t404_review_comment ORDER BY id DESC;
 SELECT * FROM t404_qna_comment ORDER BY id DESC;
 
--- 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
-SELECT  u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
+-- reivew 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
+SELECT u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
 FROM t404_review_write r, t404_user u
 WHERE r.user_id  = u.id
 ORDER BY r.id DESC
+;
+
+-- qna 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
+SELECT q.id, q.subject, q.content, q.viewcnt, q.regdate,
+	u.id, u.username, u.password, u.name, u.authorities, u.regdate, u.car_name, u.car_number, u.phone_number
+FROM t404_qna_write q, t404_user u
+WHERE q.user_id  = u.id
+ORDER BY q.id DESC
 ;
 
 # 페이징

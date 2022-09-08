@@ -9,16 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.C;
 import service.Service;
+import service.qna.Qna_DeleteService;
+import service.qna.Qna_DetailService;
+import service.qna.Qna_ListService;
+import service.qna.Qna_SelectService;
+import service.qna.Qna_UpdateService;
 import service.qna.Qna_WriteService;
-import service.review.Re_DeleteService;
-import service.review.Re_DetailService;
-import service.review.Re_DownloadService;
-import service.review.Re_ListService;
-import service.review.Re_SelectService;
-import service.review.Re_UpdateService;
-import service.review.Re_WriteService;
 
 @WebServlet("/qna/*")
 public class QnaController extends HttpServlet {
@@ -59,27 +56,49 @@ public class QnaController extends HttpServlet {
 			case "GET":
 				viewPage = "qna_write.jsp";
 				break;
-				
 			case "POST":
 				service = new Qna_WriteService();
-				viewPage = "qna_write.jsp";
+				service.execute(request, response);
+				viewPage = "qna_writeOk.jsp";
 				break;
 			}
-			
+			break;
+		
 		case "/qna/qna_list":
+			service = new Qna_ListService();
+			service.execute(request, response);
 			viewPage = "qna_list.jsp";
 			break;
-			
+		
 		case "/qna/qna_detail":
+			service = new Qna_DetailService();
+			service.execute(request, response);
 			viewPage = "qna_detail.jsp";
 			break;
-			
-		case "/qna/qna_update":				
-			viewPage = "qna_update.jsp";
+		
+		case "/qna/qna_update":
+			switch(method) {
+			case "GET":
+				service = new Qna_SelectService();
+				service.execute(request, response);
+				viewPage = "qna_update.jsp";
+				break;
+			case "POST":
+				service = new Qna_UpdateService();
+				service.execute(request, response);
+				viewPage = "qna_updateOk.jsp";
+				break;
+			}
 			break;
-			
-		case "/review/review_delete":
-
+		
+		case "/qna/qna_delete":
+			switch(method) {
+			case "POST":
+				service = new Qna_DeleteService();
+				service.execute(request, response);
+				viewPage = "qna_deleteOk.jsp";
+				break;
+			}
 			break;
 		} // end switch
 		

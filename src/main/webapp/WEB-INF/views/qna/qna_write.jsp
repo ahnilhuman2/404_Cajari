@@ -68,7 +68,7 @@
     </style>
     
     <!-- Custom styles for this template -->
-    <link href="../css/cover.css" rel="stylesheet">
+    <link href="../css/qna.css" rel="stylesheet">
     
 </head>
 
@@ -118,10 +118,11 @@ $(document).ready(function(){
 		            </div>
 		
 		            <button type="submit" class="btn btn-outline-light">작성완료</button>
-		            <a class="btn btn-outline-light" href="qna_list">목록</a>
+		            <a class="btn btn-outline-light" href="${pageContext.request.contextPath }/qna/qna_list">목록</a>
 		        </form>
 		    </div>
   	</main>
+  	
 
 	  <footer class="mt-auto text-white-50">
 	    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
