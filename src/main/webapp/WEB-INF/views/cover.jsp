@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Cover</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -74,18 +74,6 @@
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <h2 class="fw-normal">Cajari</h2>
             
-                  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                      <li><a href="#" class="nav-link px-2 link-dark">Home</a></li>
-                      <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Review</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
-                  </ul>
-            
-                  <div class="col-md-3 text-end">
-                        <button type="button" class="btn btn-outline-primary me-2 ">mypage</button>
-                        <button type="button" class="btn btn-outline-primary me-2 ">logout</button>
-                    </div>
                 </header>
               </div>
         </div>
@@ -94,12 +82,11 @@
             <div style="text-align:center">
                 <br>
                 <br>
-                <h2>Cajari</h2>
+                <h1>Cajari</h1>
                 <br>
                 <br>
                 <p class="lead">
-                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Login</a>
-                  <a href="${pageContext.request.contextPath }/user/signin" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Sign in</a>
+                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
                 </p>
             </div>
         </div>
