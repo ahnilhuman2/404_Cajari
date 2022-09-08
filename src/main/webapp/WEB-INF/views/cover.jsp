@@ -74,6 +74,12 @@
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <h2 class="fw-normal">Cajari</h2>
             
+       
+            
+                  <div class="col-md-3 text-end">
+                        <button type="button" class="btn btn-outline-primary me-2 ">mypage</button>
+                        <button type="button" class="btn btn-outline-primary me-2 ">logout</button>
+                    </div>
                 </header>
               </div>
         </div>
@@ -86,7 +92,8 @@
                 <br>
                 <br>
                 <p class="lead">
-                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
+                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Login</a>
+                  <a href="${pageContext.request.contextPath }/user/signin" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Sign in</a>
                 </p>
             </div>
         </div>
