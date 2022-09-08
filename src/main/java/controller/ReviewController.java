@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
+import service.review.ReviewDeleteService;
 import service.review.ReviewDetailService;
 import service.review.ReviewListService;
 import service.review.ReviewSelectService;
@@ -90,7 +91,13 @@ public class ReviewController extends HttpServlet {
 			}
 			
 		case "/review/review_delete":
-			
+			switch(method) {
+			case "POST":
+				service = new ReviewDeleteService();
+				service.execute(request, response);
+				viewPage = "review_deleteOk.jsp";
+				break;
+			}
 			break;
 	
 		} // end switch

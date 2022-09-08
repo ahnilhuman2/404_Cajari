@@ -14,38 +14,22 @@ import domain.ReviewWriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class ReviewUpdateService implements Service {
+public class ReviewDeleteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
 		int id = Integer.parseInt(request.getParameter("id"));
-		String subject = request.getParameter("subject");
-//		String parkingName = request.getParameter("parkingName");
-		String content = request.getParameter("content");
-
 		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
 		
 		int cnt = 0;
 		
-		ReviewWriteDTO dto = ReviewWriteDTO.builder()
-			.id(id)
-			.subject(subject)
-			.content(content)
-			.build()
-			;
-		
-		List<ReviewWriteDTO> list = null;
-		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReviewWriteDAO.class);
 			
-			cnt = dao.update(dto);
-			
-			request.setAttribute("list", list);
+			cnt = dao.deleteById(id);
 			
 			sqlSession.commit();
 		} catch (SQLException e) {
@@ -55,7 +39,6 @@ public class ReviewUpdateService implements Service {
 		}
 		
 		request.setAttribute("result", cnt);
-		request.setAttribute("dto", dto);
 		
 	}
 

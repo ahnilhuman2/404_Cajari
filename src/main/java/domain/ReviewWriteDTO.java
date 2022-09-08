@@ -3,11 +3,15 @@ package domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class ReviewWriteDTO {
 	private int id; // t404_review_write id
 //	private UserDTO user; // t404_user id

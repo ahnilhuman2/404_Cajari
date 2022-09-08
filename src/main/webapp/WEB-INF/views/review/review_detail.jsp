@@ -77,6 +77,17 @@
 
     </style>
 </head>
+
+<script>
+function chkDelete() {
+	let answer = confirm("삭제하시겠습니까?");
+	if(answer) {
+		document.forms['frmDelete'].submit();
+	}
+}
+</script>
+
+
 <body>
     <div class="row">
         <div class="col-lg-12">
@@ -122,7 +133,7 @@
                 </div>
         
                 <section>
-                  <form name="frmDelete" action="delete" method="POST">
+                  <form name="frmDelete" action="review_delete" method="POST">
                     <input type="hidden" name="id" value="${dto.id }">
                   </form>
                     <div class="mb-3">
@@ -145,7 +156,7 @@
                     <!-- 하단 링크 -->
                     <a class="btn btn-outline-dark" href="review_update?id=${dto.id }">수정</a>
                     <a class="btn btn-outline-dark" href="review_list">목록</a>
-                    <button type="button" class="btn btn-outline-dark" onclick>삭제</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
                     <a class="btn btn-outline-dark" href="review_write">작성</a>
                     <!-- 하단 링크 -->        
         

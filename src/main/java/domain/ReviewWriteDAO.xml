@@ -49,6 +49,10 @@
 			id = #{id}
 	</update>
 	
+	<delete id="deleteById" flushCache="true">
+		DELETE FROM t404_review_write WHERE id = #{id]
+	</delete>
+	
 	
 
 </mapper>

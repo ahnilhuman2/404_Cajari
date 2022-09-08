@@ -18,4 +18,7 @@ public interface ReviewWriteDAO {
 	
 	// 특정 id 글 수정
 	public abstract int update(ReviewWriteDTO dto) throws SQLException;
+	
+	// 특정 id 글 삭제
+	public abstract int deleteById(int id) throws SQLException;
 }
