@@ -86,7 +86,7 @@
 		</header>
 
 		<main class="form-signin w-100 m-auto">
-	  		<form action="${pageContext.request.contextPath }/home" method="POST">
+	  		<form action="${pageContext.request.contextPath }/user/login" method="POST">
 		    	<h1 class="h3 mb-3 fw-normal" style="font-size:50px">Cajari</h1>
 		    	<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 		    	

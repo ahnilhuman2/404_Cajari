@@ -77,7 +77,9 @@ public class UserController extends HttpServlet {
 				if(!response.isCommitted()) {
 					// 로그인 성공후 home 으로 redirect 하는 방법
 					String redirectUrl = request.getContextPath() + "/home";
+
 					response.sendRedirect(redirectUrl);
+					return;
 				}
 				
 				break;
