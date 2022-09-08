@@ -129,7 +129,7 @@
                 </table>
                 <div class="row">
                     <div class="col-12">
-                        <a class="btn btn-outline-dark" href="write">작성</a>
+                        <a class="btn btn-outline-dark" href="/review_write">작성</a>
                     </div>
                 </div>
             </div>

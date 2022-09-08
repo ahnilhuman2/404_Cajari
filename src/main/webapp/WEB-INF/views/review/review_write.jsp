@@ -115,7 +115,7 @@
                   </div>
                   <div class="mb-3 mt-3">
                       <label for="subject">주차장:</label>
-                      <input type="text" class="form-control" id="parkinglot" placeholder="주차장을 입력하세요" name="parkinglot" required>
+                      <input type="text" class="form-control" id="parkingName" placeholder="주차장을 입력하세요" name="parkingName" required>
                   </div>
                   <div class="mb-3 mt-3">
                       <label for="content">내용:</label>

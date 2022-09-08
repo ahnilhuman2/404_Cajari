@@ -15,7 +15,6 @@ public interface UserDAO {
 	// 회원(user) 등록 INSERT <-- DTO
 	int regUser(UserDTO dto) throws SQLException;
 	
-	//ㅎㅇㅌ
 } // end DAO
 
 

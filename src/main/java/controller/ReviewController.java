@@ -10,26 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
+import service.review.ReviewWriteService;
 
-@WebServlet("/mypage/*")
-public class MyPageController extends HttpServlet {
+@WebServlet("/review/*")
+public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public MyPageController() {
+       
+    public ReviewController() {
         super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		action(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
+		request.setCharacterEncoding("UTF-8"); // POST 방식은 한글인코딩 필수
 		action(request, response);
 	}
 
 	protected void action(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("\n>> " + getClass().getName() + ".action() 호출");
+		System.out.println(getClass().getName() + " action");
 		
 		String uri = request.getRequestURI();   
 		String conPath = request.getContextPath(); 
@@ -40,31 +41,46 @@ public class MyPageController extends HttpServlet {
 		System.out.println("request: " + uri + " (" + method + ")");  
 		System.out.println("conPath: " + conPath);  
 		System.out.println("command: " + command);
-			
+		
 		Service service = null;  
 		String viewPage = null;
 		
 		switch(command) {
-		case "/mypage/my_review":
-			viewPage = "my_review.jsp";
-			break;
+		case "/review/review_write":
+			switch(method) {
+			case "GET":
+				viewPage = "review_write.jsp";
+				break;
+				
+			case "POST":
+				service = new ReviewWriteService();
+				service.execute(request, response);
+				//viewPage = "review_writeOK.jsp";
+				break;
+			}
 		
-		case "/mypage/my_reserve":
-			viewPage = "my_reserve.jsp";
+		case "/review/review_list":
+			viewPage = "review_list.jsp";
 			break;
 			
-		case "/mypage/my_information":
-			viewPage = "my_information.jsp";
+		case "/review/review_detail":
+			viewPage = "review_detail.jsp";
+			break;
+			
+		case "/review/review_update":
+			viewPage = "review_update.jsp";
+			break;
+			
+		case "/review/review_delete":
+			
 			break;
 		} // end switch
 		
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/WEB-INF/views/mypage/" + viewPage);
+					request.getRequestDispatcher("/WEB-INF/views/review/" + viewPage);
 			
 			dispatcher.forward(request, response);
 		}
-		
-	} // end action()
-
-} // end controller
+	}
+}
