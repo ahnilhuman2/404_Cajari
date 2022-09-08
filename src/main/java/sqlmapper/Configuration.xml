@@ -28,6 +28,7 @@
   <mappers>
     <!-- 설정할 Mapper 파일들  -->
     <mapper resource="domain/UserDAO.xml"/>
+    <mapper resource="domain/ReviewWriteDAO.xml"/>
   </mappers>
 
 </configuration>

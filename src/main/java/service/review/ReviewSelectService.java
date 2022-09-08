@@ -2,6 +2,7 @@ package service.review;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,30 +14,25 @@ import domain.ReviewWriteDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
-public class ReviewWriteService implements Service {
+public class ReviewSelectService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String name = request.getParameter("name");
-		String subject = request.getParameter("subject");
-//		String parkingName = request.getParameter("parkingName");
-		String content = request.getParameter("content");
-
-		ReviewWriteDTO dto = new ReviewWriteDTO();
-		dto.setSubject(subject);
-		dto.setContent(content);
-		
-		int cnt = 0;
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
+		
+		List<ReviewWriteDTO> list = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReviewWriteDAO.class);
 			
-			cnt = dao.insert(dto);
-			System.out.println("글작성 성공 " + cnt + " : " + dto.getId());
+			// 글읽기
+			list = dao.selectById(id);
+			
+			request.setAttribute("list", list);
 			
 			sqlSession.commit();
 		} catch (SQLException e) {
@@ -44,11 +40,7 @@ public class ReviewWriteService implements Service {
 		} finally {
 			if(sqlSession != null) sqlSession.close();
 		}
-		
-		request.setAttribute("result", cnt);
-		request.setAttribute("dto", dto);
-		
-		
+
 	}
 
 }

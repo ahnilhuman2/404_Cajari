@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.ReviewWriteDAO">
+
+	<insert id="insert" flushCache="true"
+		parameterType="domain.ReviewWriteDTO"
+		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO t404_review_write
+			(name, subject, content)
+		VALUES
+			(#{name}, #{subject}, #{content})
+	</insert> 
+
+	<!-- 조회 -->
+	<select id="selectById" resultType="domain.ReviewWriteDTO">
+		SELECT
+			id, subject, content, viewcnt, regdate
+		FROM 
+			t404_review_write
+		WHERE
+			id = #{id}
+	</select>
+	
+	<select id="select" resultType="domain.ReviewWriteDTO">
+		SELECT
+			id, subject, content, viewcnt, regdate
+		FROM
+			t404_review_write
+		ORDER BY id DESC;
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="incViewCnt" flushCache="true">
+		UPDATE 
+			t404_review_write
+		SET
+			viewcnt = viewcnt + 1
+		WHERE id = #{param1}
+	</update>
+	
+	<!-- 글수정 -->
+	<update id="update" flushCache="true"
+		parameterType="domain.ReviewWriteDTO">
+		UPDATE 
+			t404_review_write
+		SET
+			subject = #{subject}, content = #{content}
+		WHERE 
+			id = #{id}
+	</update>
+	
+	
+
+</mapper>

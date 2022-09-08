@@ -115,19 +115,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>아이디</td>
-                            <td>주차장</td>
-                            <td><a href="#">제목</a> </td>
-                            <td>작성자</td>
-                            <td>조회수</td>
-                            <td>등록시간</td>
-                        </tr>            
+                    	<c:forEach var="dto" items="${list }">
+	                        <tr>
+	                            <td>${dto.id }</td>
+	                            <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
+	                            <td>주차장</td>
+	                            <td>작성자</td>
+	                            <td>${dto.viewcnt }</td>
+	                            <td>${dto.regDateTime }</td>
+	                        </tr>            
+                    	</c:forEach>
                     </tbody>
                 </table>
                 <div class="row">
                     <div class="col-12">
-                        <a class="btn btn-outline-dark" href="write">작성</a>
+                        <a class="btn btn-outline-dark" href="review_write">작성</a>
                     </div>
                 </div>
             </div>

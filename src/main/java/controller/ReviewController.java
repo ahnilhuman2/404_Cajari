@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
+import service.review.ReviewDetailService;
+import service.review.ReviewListService;
+import service.review.ReviewSelectService;
+import service.review.ReviewUpdateService;
 import service.review.ReviewWriteService;
 
 @WebServlet("/review/*")
@@ -55,20 +59,35 @@ public class ReviewController extends HttpServlet {
 			case "POST":
 				service = new ReviewWriteService();
 				service.execute(request, response);
+				viewPage = "review_writeOk.jsp";
 				break;
 			}
 			break;
 		case "/review/review_list":
+			service = new ReviewListService();
+			service.execute(request, response);
 			viewPage = "review_list.jsp";
 			break;
 			
 		case "/review/review_detail":
+			service = new ReviewDetailService();
+			service.execute(request, response);
 			viewPage = "review_detail.jsp";
 			break;
 			
 		case "/review/review_update":
-			viewPage = "review_update.jsp";
-			break;
+			switch(method) {
+			case "GET":
+				service = new ReviewSelectService();
+				service.execute(request, response);
+				viewPage = "review_update.jsp";
+				break;
+			case "POST":
+				service = new ReviewUpdateService();
+				service.execute(request, response);
+				viewPage = "review_updateOk.jsp";
+				break;
+			}
 			
 		case "/review/review_delete":
 			
