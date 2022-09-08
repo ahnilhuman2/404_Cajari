@@ -106,7 +106,7 @@ $(document).ready(function(){
 		        	enctype="Multipart/form-data">
 		            <div class="mb-3">
 		                <label for="name">작성자:</label>
-		                <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>
+		                <span class="form-control">${PRINCIPAL.user_id.username }</span>
 		            </div>
 		            <div class="mb-3 mt-3">
 		                <label for="subject">제목:</label>

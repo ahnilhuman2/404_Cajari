@@ -51,9 +51,9 @@
 		parameterType="domain.Qna_WriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_qna_write
-			(subject, content, name)
+			(subject, content, user_id)
 		VALUES
-			(#{subject}, #{content}, #{name})
+			(#{subject}, #{content}, #{user_id.id})
 	</insert>
 
 	<!-- 글 조회 -->
