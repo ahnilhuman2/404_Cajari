@@ -50,7 +50,7 @@ function chkDelete(){
         <div class="mb-3 mt-3 clearfix">
             <span class="float-start me-2">id: ${dto.id}</span>
             <span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
-            <span class="float-end">조회수: ${dto.viewCnt }</span>
+            <span class="float-end">조회수: ${dto.viewcnt }</span>
         </div>
 
         <section>
@@ -59,7 +59,7 @@ function chkDelete(){
         	</form>
             <div class="mb-3">
                 <label for="name">작성자:</label>
-                <span class="form-control" >${dto.user_id.username } (${dto.user_id.name })</span>
+                <span class="form-control" >${dto.user_id.username }</span>
             </div>    
             <div class="mb-3 mt-3">
                 <label for="subject">제목:</label>
@@ -69,48 +69,6 @@ function chkDelete(){
                 <label for="content">내용:</label>
                 <span class="form-control" >${dto.content }</span>
             </div>    
-
-			<!-- 첨부파일목록 -->
-			<div class="container mt-3 mb-3 border rounded">
-			    <div class="mb-3 mt-3">
-			        <label>첨부파일:</label>
-			        <!--첨부파일 이름, 다운로드 링크 -->
-			        <ul class="list-group mb-1">
-			            <c:forEach var="fileDto" items="${fileList }">
-			                <li class="list-group-item"><a href="download?id=${fileDto.id }">${fileDto.source }</a></li>
-			            </c:forEach>
-			        </ul>
-			        <%-- 이미지인 경우 보여주기 --%>
-			        <c:forEach var="fileDto" items="${fileList }">
-			            <c:if test="${fileDto.image == true }">
-			            <div>
-			                <img src="${pageContext.request.contextPath}/upload/${fileDto.file }" class="img-thumbnail">
-			            </div>
-			            </c:if>
-			        </c:forEach>
-			    </div>
-			</div>
-			<!-- 첨부파일목록 -->
-
-            <!-- 하단 링크 -->
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
-            <a class="btn btn-outline-dark" href="update?id=${dto.id }">수정</a>
-            </c:if>
-            
-            <a class="btn btn-outline-dark" href="list?page=${page != null ? page : '' }">목록</a>
-            
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
-            <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
-            </c:if>
-            
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' )}">
-            <a class="btn btn-outline-dark" href="write">작성</a>
-            </c:if>
-            <!-- 하단 링크 -->        
-
-			<!-- 댓글 -->
-			<jsp:include page="qna_comment.jsp"/>
-			<!-- 댓글 -->
 
         </section>
     </div>

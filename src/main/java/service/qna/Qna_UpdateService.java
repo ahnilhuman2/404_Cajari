@@ -28,11 +28,6 @@ public class Qna_UpdateService implements Service {
 		
 		int cnt = 0;
 		
-//		WriteDTO dto = new WriteDTO();
-//		dto.setId(id);
-//		dto.setSubject(subject);
-//		dto.setContent(content);
-		
 		// Builder 사용한 생성
 		Qna_WriteDTO dto = Qna_WriteDTO.builder()
 			.id(id)
