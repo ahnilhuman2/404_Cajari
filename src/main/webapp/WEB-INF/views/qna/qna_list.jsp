@@ -136,8 +136,8 @@
                 <tr>
                     <td>${dto.id }</td>
                     <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
-                    <td>${dto.user.username }</td>
-                    <td>${dto.viewCnt }</td>
+                    <td>${dto.user_id.username }</td>
+                    <td>${dto.viewcnt }</td>
                     <td>${dto.regDateTime}</td>
                 </tr>            
             </c:forEach>           

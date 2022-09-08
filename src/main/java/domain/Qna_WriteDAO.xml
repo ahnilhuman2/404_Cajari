@@ -30,14 +30,14 @@
 			q.content "q_content",
 			q.viewcnt "q_viewcnt",
 			q.regdate "q_regdate",
-			u.id "u_id"
-			u.username "u_username"
-			u.password "u_password"
-			u.name "u_name"
-			u.authorities "u_authorities"
-			u.regdate "u_regdate"
-			u.car_name "u_car_name"
-			u.car_number "u_car_number"
+			u.id "u_id",
+			u.username "u_username",
+			u.password "u_password",
+			u.name "u_name",
+			u.authorities "u_authorities",
+			u.regdate "u_regdate",
+			u.car_name "u_car_name",
+			u.car_number "u_car_number",
 			u.phone_number "u_phone_number"
 		FROM 
 			t404_qna_write q, t404_user u
@@ -64,14 +64,14 @@
 			q.content "q_content",
 			q.viewcnt "q_viewcnt",
 			q.regdate "q_regdate",
-			u.id "u_id"
-			u.username "u_username"
-			u.password "u_password"
-			u.name "u_name"
-			u.authorities "u_authorities"
-			u.regdate "u_regdate"
-			u.car_name "u_car_name"
-			u.car_number "u_car_number"
+			u.id "u_id",
+			u.username "u_username",
+			u.password "u_password",
+			u.name "u_name",
+			u.authorities "u_authorities",
+			u.regdate "u_regdate",
+			u.car_name "u_car_name",
+			u.car_number "u_car_number",
 			u.phone_number "u_phone_number"
 		FROM 
 			t404_qna_write q, t404_user u
