@@ -55,10 +55,9 @@ public class ReviewController extends HttpServlet {
 			case "POST":
 				service = new ReviewWriteService();
 				service.execute(request, response);
-				//viewPage = "review_writeOK.jsp";
 				break;
 			}
-		
+			break;
 		case "/review/review_list":
 			viewPage = "review_list.jsp";
 			break;
@@ -74,6 +73,7 @@ public class ReviewController extends HttpServlet {
 		case "/review/review_delete":
 			
 			break;
+	
 		} // end switch
 		
 		if(viewPage != null) {
