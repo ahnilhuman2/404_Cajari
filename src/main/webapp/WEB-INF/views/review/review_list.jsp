@@ -117,8 +117,8 @@
                     <tbody>
                         <tr>
                             <td>아이디</td>
-                            <td>주차장</td>
                             <td><a href="#">제목</a> </td>
+                            <td>주차장</td>
                             <td>작성자</td>
                             <td>조회수</td>
                             <td>등록시간</td>
