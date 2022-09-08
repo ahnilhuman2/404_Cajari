@@ -84,6 +84,7 @@ public class UserController extends HttpServlet {
 				
 				break;
 			}
+			break;
 			
 		case "/user/logout":
 			if(method.equals("POST")) {
