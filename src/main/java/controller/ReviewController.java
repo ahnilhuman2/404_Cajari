@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.qna.Qna_DeleteService;
+import service.qna.Qna_DetailService;
+import service.qna.Qna_ListService;
+import service.qna.Qna_SelectService;
+import service.qna.Qna_UpdateService;
+import service.qna.Qna_WriteService;
 import service.review.Re_DeleteService;
 import service.review.Re_DetailService;
 import service.review.Re_DownloadService;
@@ -62,29 +68,56 @@ public class ReviewController extends HttpServlet {
 		
 		switch(command) {
 		case "/review/review_write":
-			viewPage = "review_write.jsp";
-				switch(method) {
-				case "GET":
-					viewPage = "review_write.jsp";
-					break;
-				case "POST":
-					service =  new Re_WriteService();
-					service.execute(request, response);
-					break;	
-				}
+			switch(method) {
+			case "GET":
+				viewPage = "review_write.jsp";
+				break;
+			case "POST":
+				service = new Re_WriteService();
+				service.execute(request, response);
+				viewPage = "review_writeOk.jsp";
+				break;
+			}
 			break;
+		
 		case "/review/review_list":
+			service = new Re_ListService();
+			service.execute(request, response);
 			viewPage = "review_list.jsp";
 			break;
+		
 		case "/review/review_detail":
+			service = new Re_DetailService();
+			service.execute(request, response);
 			viewPage = "review_detail.jsp";
 			break;
+		
 		case "/review/review_update":
-			viewPage = "review_update.jsp";
+			switch(method) {
+			case "GET":
+				service = new Re_SelectService();
+				service.execute(request, response);
+				viewPage = "review_update.jsp";
+				break;
+			case "POST":
+				service = new Re_UpdateService();
+				service.execute(request, response);
+				viewPage = "review_updateOk.jsp";
+				break;
+			}
 			break;
+		
 		case "/review/review_delete":
-			viewPage = "review_delete.jsp";
+			switch(method) {
+			case "POST":
+				service = new Re_DeleteService();
+				service.execute(request, response);
+				viewPage = "review_deleteOk.jsp";
+				break;
+			}
 			break;
+		} // end switch
+		
 		// 페이징
 		// pageRows 변경시 동작
 //		case "/board/pageRows":
@@ -94,8 +127,6 @@ public class ReviewController extends HttpServlet {
 //			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
 //			break;
 //		
-		} // end switch
-		
 		// 위에서 결정된 뷰 페이지 (viewPage) 로 forward 해줌
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = 

@@ -20,6 +20,8 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 import common.C;
 import domain.FileDAO;
 import domain.FileDTO;
+import domain.Qna_WriteDAO;
+import domain.Qna_WriteDTO;
 import domain.Review_WriteDAO;
 import domain.Review_WriteDTO;
 import service.Service;
@@ -29,7 +31,47 @@ public class Re_UpdateService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		 
+				// 입력한 값 (parameter) 받아오기
+				int id = Integer.parseInt(request.getParameter("id"));
+				String subject =  request.getParameter("subject");
+				String content =  request.getParameter("content");
+				// ※ 이 단계에서 parameter 검증 해야 한다.
+				
+				SqlSession sqlSession = null;
+				Review_WriteDAO dao = null;
+				
+				int cnt = 0;
+				
+//				WriteDTO dto = new WriteDTO();
+//				dto.setId(id);
+//				dto.setSubject(subject);
+//				dto.setContent(content);
+				
+				// Builder 사용한 생성
+				Review_WriteDTO dto = Review_WriteDTO.builder()
+					.id(id)
+					.subject(subject)
+					.content(content)
+					.build()
+					;
+				
+				try {
+					sqlSession = SqlSessionManager.getInstance().openSession();
+					dao = sqlSession.getMapper(Review_WriteDAO.class);
+					
+					cnt = dao.update(dto);
+					
+					sqlSession.commit();
+				} catch (SQLException e) {  
+					e.printStackTrace();
+				} finally {
+					if(sqlSession!= null) sqlSession.close();
+				}
+				
+				request.setAttribute("result", cnt);
+				request.setAttribute("dto", dto); // id 값을 전달하기 위해
+
+			}		 
 		
 //        //---------------------------------------------
 //        // 1. MultipartRequest 생성 -> 파일 업로드 됨  
@@ -147,8 +189,6 @@ public class Re_UpdateService implements Service {
 //		request.setAttribute("result", cnt);
 //		request.setAttribute("dto", dto);  // id 값을 전달하기 위해
 
-
-	}
 
 }
 

@@ -20,6 +20,28 @@ public class Re_ListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		SqlSession sqlSession = null;
+		Review_WriteDAO dao = null;	
+		
+		List<Review_WriteDTO> list = null;
+		
+		try {
+			sqlSession = SqlSessionManager.getInstance().openSession();
+			dao = sqlSession.getMapper(Review_WriteDAO.class);
+			
+			list = dao.select();
+			// "list" 란  name 으로 request 에 list 저장
+			// 즉, request 에 담아서 컨트롤러에 전달되는 셈.
+			request.setAttribute("list", list);
+			
+			sqlSession.commit();
+		} catch (SQLException e) {  
+			e.printStackTrace();
+		} finally {
+			if(sqlSession!= null) sqlSession.close();
+		}
+		
+		
 //		// 파라미터 받기 (현재 page)
 //		int page = 1;   // 디폴트 페이지 1
 //		String pageParam = request.getParameter("page");

@@ -2,43 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.Review_WriteDAO">
 
-	<!-- 반복해서 사용될 쿼리문은 sql 태그로 정의 include 태그로 가져다 쓸수 있다 -->
-	<sql id="SELECTWRITE">
-		SELECT 
-			r.id "r_id",
-			r.subject "r_subject",
-			r.content "r_content", 
-			r.viewcnt "r_viewcnt", 
-			r.regdate "r_regdate",
-			u.id "u_id",
-			u.username "u_username", 
-			u.password "u_password", 
-			u.name "u_name",
-			u.authorities "u_authorities",
-			u.regdate "u_regdate", 
-			u.car_name "u_car_name",
-			u.car_number "u_car_number",
-			u.phone_number "u_phone_number",
-			p.id "p_id",
-			p.addr "p_addr", 
-			p.weekend_begin_time "p_weekend_begin_time",
-			p.weekend_end_time "p_weektime_end_time", 
-			p.weekday_begin_time "p_weekday_begin_time", 
-			p.weekday_end_time "p_week_end_time", 
-			p.holiday_begin_time "p_holiday_begin_time", 
-			p.holiday_end_time "p_holiday_end_time", 
-			p.holiday_pay_nm "p_holiday_pay_nm", 
-			p.fulltime_monthly "p_fulltime_monthly", 
-			p.weekday_pay_nm "p_weekday_pay_nm", 
-			p.saturday_pay_nm "p_saturday_pay_nm", 
-			p.tel "p_tel", 
-			p.parking_name "p_parking_name"
-		FROM
-			t404_review_write r, t404_user u, t404_parkinglot p
-		WHERE
-			r.user_id  = u.id and r.parking_id = p.id
-	</sql>
-
 	<resultMap type="domain.UserDTO" id="mapUser_id">
 		<result column="u_id" property="id"/>
 		<result column="u_username" property="username"/>
@@ -78,12 +41,41 @@
 		<collection property="parking_id" resultMap="mapParking_id"/>
 	</resultMap>
 
-	<select id="select" resultMap="mapReview_Write">
-		<include refid="SELECTWRITE"/>
-        ORDER BY 
-        	u.id DESC
-	</select>
-
+<select id="select" resultMap="mapRWrite">
+	SELECT 
+			r.id "r_id",
+			r.subject "r_subject",
+			r.content "r_content", 
+			r.viewcnt "r_viewcnt", 
+			r.regdate "r_regdate",
+			u.id "u_id",
+			u.username "u_username", 
+			u.password "u_password", 
+			u.name "u_name",
+			u.authorities "u_authorities",
+			u.regdate "u_regdate", 
+			u.car_name "u_car_name",
+			u.car_number "u_car_number",
+			u.phone_number "u_phone_number",
+			p.id "p_id",
+			p.addr "p_addr", 
+			p.weekend_begin_time "p_weekend_begin_time",
+			p.weekend_end_time "p_weekend_end_time", 
+			p.weekday_begin_time "p_weekday_begin_time", 
+			p.weekday_end_time "p_weekday_end_time", 
+			p.holiday_begin_time "p_holiday_begin_time", 
+			p.holiday_end_time "p_holiday_end_time", 
+			p.holiday_pay_nm "p_holiday_pay_nm", 
+			p.fulltime_monthly "p_fulltime_monthly", 
+			p.weekday_pay_nm "p_weekday_pay_nm", 
+			p.saturday_pay_nm "p_saturday_pay_nm", 
+			p.tel "p_tel", 
+			p.parking_name "p_parking_name"
+		FROM
+			t404_review_write r, t404_user u, t404_parkinglot p
+		WHERE
+			r.user_id  = u.id and r.parking_id = p.id
+</select>
 
 	<insert id="insert" flushCache="true"
 		parameterType="domain.Review_WriteDTO"
@@ -98,8 +90,41 @@
 	
 	<!-- 글 조회 -->
 	<select id="selectById" resultMap="mapReview_Write">
-		<include refid="SELECTWRITE"/>
-			 AND r.id = #{id}
+		SELECT 
+			r.id "r_id",
+			r.subject "r_subject",
+			r.content "r_content", 
+			r.viewcnt "r_viewcnt", 
+			r.regdate "r_regdate",
+			u.id "u_id",
+			u.username "u_username", 
+			u.password "u_password", 
+			u.name "u_name",
+			u.authorities "u_authorities",
+			u.regdate "u_regdate", 
+			u.car_name "u_car_name",
+			u.car_number "u_car_number",
+			u.phone_number "u_phone_number",
+			p.id "p_id",
+			p.addr "p_addr", 
+			p.weekend_begin_time "p_weekend_begin_time",
+			p.weekend_end_time "p_weekend_end_time", 
+			p.weekday_begin_time "p_weekday_begin_time", 
+			p.weekday_end_time "p_weekday_end_time", 
+			p.holiday_begin_time "p_holiday_begin_time", 
+			p.holiday_end_time "p_holiday_end_time", 
+			p.holiday_pay_nm "p_holiday_pay_nm", 
+			p.fulltime_monthly "p_fulltime_monthly", 
+			p.weekday_pay_nm "p_weekday_pay_nm", 
+			p.saturday_pay_nm "p_saturday_pay_nm", 
+			p.tel "p_tel", 
+			p.parking_name "p_parking_name"
+		FROM
+			t404_review_write r, t404_user u, t404_parkinglot p
+		WHERE
+			r.user_id  = u.id AND r.id = #{id}
+			and r.parking_id = p.id AND p.id = #{id}
+			 
         ORDER BY 
         	r.id DESC
 	</select>
@@ -125,7 +150,7 @@
 		DELETE FROM t404_review_write WHERE id = #{id}
 	</delete>
 	
-	<!-- 페이징 용 쿼리 -->
+	<!-- 페이징 용 쿼리
 	<select id="selectFromRow" resultMap="mapReview_Write">
 		<include refid="SELECTWRITE"/>
 		ORDER BY r.id DESC
@@ -134,6 +159,7 @@
 	
 	<select id="countAll" resultType="int">
 		SELECT count(*) FROM t404_review_write
-	</select>
+	</select>  -->
+	
 
 </mapper>
