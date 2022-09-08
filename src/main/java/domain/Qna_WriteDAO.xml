@@ -8,6 +8,7 @@
 		<result column="u_password" property="password"/>
 		<result column="u_name" property="name"/>
 		<result column="u_authorities" property="authorities"/>
+		<result column="u_regdate" property="regDate"/>
 		<result column="u_car_name" property="car_name"/>
 		<result column="u_car_number" property="car_number"/>
 		<result column="u_phone_number" property="phone_number"/>
@@ -34,6 +35,7 @@
 			u.password "u_password"
 			u.name "u_name"
 			u.authorities "u_authorities"
+			u.regdate "u_regdate"
 			u.car_name "u_car_name"
 			u.car_number "u_car_number"
 			u.phone_number "u_phone_number"
@@ -67,6 +69,7 @@
 			u.password "u_password"
 			u.name "u_name"
 			u.authorities "u_authorities"
+			u.regdate "u_regdate"
 			u.car_name "u_car_name"
 			u.car_number "u_car_number"
 			u.phone_number "u_phone_number"
