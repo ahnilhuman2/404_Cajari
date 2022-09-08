@@ -63,6 +63,15 @@ public class ReviewController extends HttpServlet {
 		switch(command) {
 		case "/review/review_write":
 			viewPage = "review_write.jsp";
+				switch(method) {
+				case "GET":
+					viewPage = "review_write.jsp";
+					break;
+				case "POST":
+					service =  new Re_WriteService();
+					service.execute(request, response);
+					break;	
+				}
 			break;
 		case "/review/review_list":
 			viewPage = "review_list.jsp";

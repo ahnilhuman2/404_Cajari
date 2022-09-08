@@ -59,9 +59,11 @@ SELECT * FROM t404_review_comment ORDER BY id DESC;
 SELECT * FROM t404_qna_comment ORDER BY id DESC;
 
 -- reivew 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
-SELECT u.id , u.username, u.password , u.name , u.authorities , u.regdate, u.phone_number
-FROM t404_review_write r, t404_user u
-WHERE r.user_id  = u.id
+SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
+	u.id, u.username, u.password, u.name, u.authorities, u.regdate, u.car_name, u.car_number, u.phone_number,
+	p.id, p.addr, p.weekend_begin_time, p.weekend_end_time, p.weekday_begin_time, p.weekday_end_time, p.holiday_begin_time, p.holiday_end_time, p.holiday_pay_nm, p.fulltime_monthly, p.weekday_pay_nm, p.saturday_pay_nm, p.tel, p.parking_name
+FROM t404_review_write r, t404_user u, t404_parkinglot p
+WHERE r.user_id  = u.id and r.parking_id = p.id
 ORDER BY r.id DESC
 ;
 
