@@ -1,124 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-   
-<c:choose>
-	<c:when test="${empty list || fn:length(list) == 0}">
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			history.back();
-		</script>
-	</c:when>
-	<c:otherwise>
-    	<c:set var="dto" value="${list[0]}"/>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Qna_WritePage</title>
 
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/cover/">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-    	const conPath = "${pageContext.request.contextPath}";
-    	const logged_id = ${PRINCIPAL.id};
-    </script>
-    <script src="${pageContext.request.contextPath }/js/detail.js"></script>    
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <title>조회 - ${dto.subject}</title>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="../css/review.css" rel="stylesheet">
+    
 </head>
 
 <script>
-function chkDelete(){
-	let answer = confirm("삭제하시겠습니까?");
-	if(answer){
-		document.forms['frmDelete'].submit();
-	}
-}
-</script>
+$(document).ready(function(){
+	$('#content').summernote({
+		height: 300,
+	});
+});
+</script>  
 
-<body>
-    <%-- 인증 헤더 --%>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<body class="d-flex h-100 text-center text-bg-dark">
+    
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  	<header class="mb-auto">
+	    <div>
+	      <h3 class="float-md-start mb-0">Cajari</h3>
+	      <nav class="nav nav-masthead justify-content-center float-md-end">
+	        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
+	        <a class="nav-link fw-bold py-1 px-0" href="#">Service</a>
+	        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/aboutus/aboutus">About us</a>
+	        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+	        <a class="nav-link fw-bold py-1 px-0" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
+	      </nav>
+	    </div>
+  	</header>
+  
+  	<main class="px-3">
+  	<h1>Cajari</h1>
+    
+		  <div class="container mt-3">
+		        <h2>작성</h2>
+		        <hr>
+		        <form name="frm" action="qna_write" method="POST"
+		        	enctype="Multipart/form-data">
+		            <div class="mb-3">
+		                <label for="name">작성자:</label>
+		                <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>
+		            </div>
+		            <div class="mb-3 mt-3">
+		                <label for="subject">제목:</label>
+		                <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
+		            </div>
+		            <div class="mb-3 mt-3">
+		                <label for="subject">주차장:</label>
+		                <input type="text" class="form-control" id="parkinglot" placeholder="주차장을 입력하세요" name="parkinglot" required>
+		            </div>
+		            <div class="mb-3 mt-3">
+		                <label for="content">내용:</label>
+		                <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
+		            </div>
+		
+		            <button type="submit" class="btn btn-outline-light">작성완료</button>
+		            <a class="btn btn-outline-light" href="review_list">목록</a>
+		        </form>
+		    </div>
+  	</main>
 
-    <div class="container mt-3">
-        <h2>조회 - ${dto.subject }</h2>
-        <hr>
-        <div class="mb-3 mt-3 clearfix">
-            <span class="float-start me-2">id: ${dto.id}</span>
-            <span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
-            <span class="float-end">조회수: ${dto.viewCnt }</span>
-        </div>
+	  <footer class="mt-auto text-white-50">
+	    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+	  </footer>
+  
+	</div>
 
-        <section>
-        	<form name="frmDelete" action="delete" method="POST">
-        		<input type="hidden" name="id" value="${dto.id }">
-        	</form>
-            <div class="mb-3">
-                <label for="name">작성자:</label>
-                <span class="form-control" >${dto.user.username } (${dto.user.name })</span>
-            </div>    
-            <div class="mb-3 mt-3">
-                <label for="subject">제목:</label>
-                <span class="form-control" >${dto.subject }</span>
-            </div>    
-            <div class="mb-3 mt-3">
-                <label for="content">내용:</label>
-                <span class="form-control" >${dto.content }</span>
-            </div>    
-
-			<!-- 첨부파일목록 -->
-			<div class="container mt-3 mb-3 border rounded">
-			    <div class="mb-3 mt-3">
-			        <label>첨부파일:</label>
-			        <!--첨부파일 이름, 다운로드 링크 -->
-			        <ul class="list-group mb-1">
-			            <c:forEach var="fileDto" items="${fileList }">
-			                <li class="list-group-item"><a href="download?id=${fileDto.id }">${fileDto.source }</a></li>
-			            </c:forEach>
-			        </ul>
-			        <%-- 이미지인 경우 보여주기 --%>
-			        <c:forEach var="fileDto" items="${fileList }">
-			            <c:if test="${fileDto.image == true }">
-			            <div>
-			                <img src="${pageContext.request.contextPath}/upload/${fileDto.file }" class="img-thumbnail">
-			            </div>
-			            </c:if>
-			        </c:forEach>
-			    </div>
-			</div>
-			<!-- 첨부파일목록 -->
-
-            <!-- 하단 링크 -->
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
-            <a class="btn btn-outline-dark" href="update?id=${dto.id }">수정</a>
-            </c:if>
-            
-            <a class="btn btn-outline-dark" href="list?page=${page != null ? page : '' }">목록</a>
-            
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' ) && (PRINCIPAL.id == dto.user.id)}">
-            <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
-            </c:if>
-            
-            <c:if test="${fn:contains(PRINCIPAL.authorities, 'ROLE_MEMBER' )}">
-            <a class="btn btn-outline-dark" href="write">작성</a>
-            </c:if>
-            <!-- 하단 링크 -->        
-
-			<!-- 댓글 -->
-			<jsp:include page="review_comment.jsp"/>
-			<!-- 댓글 -->
-
-        </section>
-    </div>
-</body>
-
+  </body>
+  
 </html>
-
-	</c:otherwise>
-</c:choose>   
-    
-    

@@ -62,82 +62,35 @@ public class ReviewController extends HttpServlet {
 		
 		switch(command) {
 		case "/review/review_write":
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "GET":
-					viewPage = "review_write.jsp";
-					break;
-				case "POST":
-					service = new service.review.Re_WriteService();
-					service.execute(request, response);
-					viewPage = "review_writeOk.jsp";
-					break;
-				}
-			}
+			viewPage = "review_write.jsp";
 			break;
 		case "/review/review_list":
-			service = new Re_ListService();
-			service.execute(request, response);
 			viewPage = "review_list.jsp";
 			break;
-			
-		case "/review/review_detail":  // 로그인한 사람만 접근 가능
-			if(C.securityCheck(request, response, null)) {				
-				service = new Re_DetailService();
-				service.execute(request, response);
-				viewPage = "review_detail.jsp";
-			}
+		case "/review/review_detail":
+			viewPage = "review_detail.jsp";
 			break;
-			
-		case "/review/review_update":  // ROLE_MEMBER + 작성자 만 접근 가능
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "GET":
-					service = new Re_SelectService();  // Service 안에서 작성자 여부 판단. 작성자 아니면 redirect 발생
-					service.execute(request, response);
-					
-					if(!response.isCommitted()) { // 위에서 redirect 되면 forward 진행 안함.				
-						viewPage = "review_update.jsp";
-					}
-					break;
-				case "POST":
-					service = new Re_UpdateService();
-					service.execute(request, response);
-					viewPage = "review_updateOk.jsp";
-					break;
-				}
-			}
+		case "/review/review_update":
+			viewPage = "review_update.jsp";
 			break;
-			
 		case "/review/review_delete":
-			if(C.securityCheck(request, response, new String[] {"ROLE_MEMBER"})) {				
-				switch(method) {
-				case "POST":
-					service = new Re_DeleteService();   // 작성자가 아닌경우 Service 안에서 redirect 발생
-					service.execute(request, response);
-					if(!response.isCommitted()) {						
-						viewPage = "review_deleteOk.jsp";
-					}
-					break;
-				}
-			}
+			viewPage = "review_delete.jsp";
 			break;
-			
 		// 페이징
 		// pageRows 변경시 동작
-		case "/board/pageRows":
-		    int page = Integer.parseInt(request.getParameter("page"));
-		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
-		    request.getSession().setAttribute("pageRows", pageRows);
-			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
-			break;
-		
+//		case "/board/pageRows":
+//		    int page = Integer.parseInt(request.getParameter("page"));
+//		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
+//		    request.getSession().setAttribute("pageRows", pageRows);
+//			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
+//			break;
+//		
 		} // end switch
 		
 		// 위에서 결정된 뷰 페이지 (viewPage) 로 forward 해줌
 		if(viewPage != null) {
 			RequestDispatcher dispatcher = 
-					request.getRequestDispatcher("/WEB-INF/views/review" + viewPage);
+					request.getRequestDispatcher("/WEB-INF/views/review/" + viewPage);
 			
 			dispatcher.forward(request, response);
 		}

@@ -108,7 +108,6 @@
     
     <div class="container mt-3">
         <h2>목록</h2>
-        
         <div class="mb-3 mt-3 clearfix">
             <span class="float-start me-2">총 ${cnt }개</span>
             <span class="float-start">page ${page }/${totalPage }</span>
@@ -130,6 +129,7 @@
                 <tr>
                     <th>#</th>
                     <th>제목</th>
+                    <th>주차장</th>
                     <th>작성자</th>
                     <th>조회수</th>
                     <th>작성일</th>
@@ -139,6 +139,7 @@
             <c:forEach var="dto" items="${list }">
                 <tr>
                     <td>${dto.id }</td>
+                    <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
                     <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
                     <td>${dto.user.username }</td>
                     <td>${dto.viewCnt }</td>
