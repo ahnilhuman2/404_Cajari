@@ -122,7 +122,7 @@ $(document).ready(function(){
 		            </div>
 		
 		            <button type="submit" class="btn btn-outline-light">작성완료</button>
-		            <a class="btn btn-outline-light" href="review_list">목록</a>
+		            <a class="btn btn-outline-light" href="review_list">목록 </a>
 		        </form>
 		    </div>
   	</main>
