@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>review_write</title>
+    <title>review_list</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -101,30 +101,38 @@
         </div>
         <div class="col-lg-12">
             <div class="frame">
-              <h2>작성</h2>
-              <hr>
-              <form name="frm" action="review_write" method="POST"
-                enctype="Multipart/form-data">
-                  <div class="mb-3">
-                      <label for="name">작성자:</label>
-                      <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>
-                  </div>
-                  <div class="mb-3 mt-3">
-                      <label for="subject">제목:</label>
-                      <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
-                  </div>
-                  <div class="mb-3 mt-3">
-                      <label for="subject">주차장:</label>
-                      <input type="text" class="form-control" id="parkinglot" placeholder="주차장을 입력하세요" name="parkinglot" required>
-                  </div>
-                  <div class="mb-3 mt-3">
-                      <label for="content">내용:</label>
-                      <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
-                  </div>
-      
-                  <button type="submit" class="btn btn-outline-dark">작성완료</button>
-                  <a class="btn btn-outline-dark" href="review_list">목록</a>
-              </form>
+              <div class="container mt-3">
+                <h2>목록</h2>
+                <table class="table table-hover">
+                    <thead class="table-success">
+                        <tr>
+                            <th>#</th>
+                            <th>제목</th>
+                            <th>주차장</th>
+                            <th>작성자</th>
+                            <th>조회수</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="dto" items="${list }">
+                        <tr>
+                            <td>아이디</td>
+                            <td>주차장</td>
+                            <td><a href="#">제목</a> </td>
+                            <td>작성자</td>
+                            <td>조회수</td>
+                            <td>등록시간</td>
+                        </tr>            
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-12">
+                        <a class="btn btn-outline-dark" href="write">작성</a>
+                    </div>
+                </div>
+            </div>
                 </div>
             </div>
         </div>
