@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -79,13 +80,31 @@
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 	  <header class="mb-auto">
 	    <div>
-	      <h3 class="float-md-start mb-0">Cajari</h3>
-	      <nav class="nav nav-masthead justify-content-center float-md-end">
+	      <h3 class="float-left-start mb-100">Cajari</h3>
+	      <nav class="nav nav-masthead justify-content-center float-center-end">
+	      
+	      <!-- 누구에게나 보이는 메뉴 로그인여부 x -->
 	        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
 	        <a class="nav-link fw-bold py-1 px-0 " href="${pageContext.request.contextPath }/search/search_main">Service</a>
 	        <a class="nav-link fw-bold py-1 px-0 " href="${pageContext.request.contextPath }/aboutus/aboutus">About us</a>
+
+	      <!-- 로그인한사람에게만 보이는 메뉴 -->
+	      <c:if test="${not empty sessionScope.PRINCIPAL }">
 	        <a class="nav-link fw-bold py-1 px-0 " href="${pageContext.request.contextPath }/review/review_list">Review</a>
 	        <a class="nav-link fw-bold py-1 px-0 " href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
+	      </c:if>  
+	       
+	        <c:if test="${not empty sessionScope.PRINCIPAL }">
+	        <span class="d-flex">
+	        	<span class="text-light p-2"><span>${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span> 님 환영합니다</span>
+	        	<form action="${pageContext.request.contextPath }/user/logout" method="POST">
+		        	<span><button class="btn btn-danger" type="submit">Logout</button></span>
+	        	</form>
+	        	<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+	        		<span><button class="btn btn-primary" type="submit">MyPage</button></span>
+	        	</form>
+	        </span>
+	        </c:if> 
 	      </nav>
 	    </div>
 	  </header>

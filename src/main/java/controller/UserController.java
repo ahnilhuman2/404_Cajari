@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.user.LoginService;
 import service.user.SignInService;
 
 @WebServlet("/user/*")
@@ -64,11 +65,29 @@ public class UserController extends HttpServlet {
 			break;
 			
 		case "/user/login":
-			viewPage = "login.jsp";
-			break;
+			switch(method) {
+			case "GET": // 제자리
+				C.retrieveRedirectAttribute(request);
+				viewPage = "login.jsp";
+				break;
+			case "POST": // 로그인 진행 해야됨
+				service = new LoginService();
+				service.execute(request, response); // 실행하면서 redirect 가 안되고 로그인이 성공하면 ↓↓↓
+				
+				if(!response.isCommitted()) {
+					// 로그인 성공후 home 으로 redirect 하는 방법
+					String redirectUrl = request.getContextPath() + "/home";
+					response.sendRedirect(redirectUrl);
+				}
+				
+				break;
+			}
 			
 		case "/user/logout":
-			
+			if(method.equals("POST")) {
+				request.getSession().removeAttribute(C.PRINCIPAL);
+				response.sendRedirect(request.getContextPath() + "/home");
+			}
 			break;
 			
 		} // end switch

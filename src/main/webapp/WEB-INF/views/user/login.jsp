@@ -76,6 +76,7 @@
 </head>
 
 <body class="d-flex h-100 text-center text-bg-dark">
+
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<header class="mb-auto">
 			<div>
@@ -85,17 +86,23 @@
 		</header>
 
 		<main class="form-signin w-100 m-auto">
-	  		<form>
+	  		<form action="${pageContext.request.contextPath }/home" method="POST">
 		    	<h1 class="h3 mb-3 fw-normal" style="font-size:50px">Cajari</h1>
 		    	<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+		    	
+		    	<div class="row mt-1">
+					<div class="col-12 text-info">
+						${REDIRECT_ATTR.error }
+					</div>
+				</div>
 		
 			    <div class="form-floating">
-			    	<input type="text" class="form-control" id="floatingId" placeholder="id" required>
+			    	<input type="text" class="form-control" id="username" name="username" placeholder="id" value="${REDIRECT_ATTR.username }" required>
 			    <label for="floatingInput">Id</label>
 			    </div>
 		    
 			    <div class="form-floating">
-			    	<input type="password" class="form-control" id="floatingPassword" placeholder="password" required>
+			    	<input type="password" class="form-control" id="password" name="password" placeholder="password" required>
 			    	<label for="floatingPassword">Password</label>
 			    </div>
 		
@@ -105,7 +112,7 @@
 			    	</label>
 			    </div>
 		    
-			    <button class="w-100 btn btn-lg btn-light" type="submit">Sign in</button>
+			    <button class="w-100 btn btn-lg btn-light" type="submit">login</button>
 			    
 			    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
 	  		</form>

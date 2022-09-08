@@ -20,7 +20,7 @@ public class C {
 //	public static final Integer PAGE_ROWS = 10; // 기본 page_rows 값.  한 '페이지'에 몇개의 글을 리스트 할것인가?
 	
 	public static final String REDIRECT_ATTR_NAME = "REDIRECT_ATTR";  // redirect 에 전달할 값들을 담을 session name
-//	public static final String PRINCIPAL = "PRINCIPAL";  // 로그인 하면 저장되는 session name
+	public static final String PRINCIPAL = "PRINCIPAL";  // 로그인 하면 저장되는 session name
 //	public static final String URL_PRIOR = "URL_PRIOR";  // 원래 가고자 했던 url 이 저장된 session name
 	
     // Redirect 시 전달할 값들을 session 에 추가하기

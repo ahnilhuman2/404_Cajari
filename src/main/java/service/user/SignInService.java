@@ -71,10 +71,8 @@ public class SignInService implements Service {
 			dao = sqlSession.getMapper(UserDAO.class);
 			
 			// 이미 회원가입한 아이디(username) 인 경우
-			List<UserDTO> list = dao.selectById(dto);
+			List<UserDTO> list = dao.selectByUser(dto);
 			if(list.size() > 0) {
-				// sendRedirect 는 ContextPath명시안하면 도메인 이하로 하기때문에 ContextPath 가 필요하다
-				response.sendRedirect(conPath + "/user/signin"); 
 				
 				// redirect를 할때 전달할 값들을 저장
 				C.addRedirectAttribute(request, "error", "이미 존재하는 아이디입니다");
@@ -82,6 +80,8 @@ public class SignInService implements Service {
 				C.addRedirectAttribute(request, "name", name);
 				C.addRedirectAttribute(request, "phone_number", phone_number);
 				
+				// sendRedirect 는 ContextPath명시안하면 도메인 이하로 하기때문에 ContextPath 가 필요하다
+				response.sendRedirect(conPath + "/user/signin"); 
 				
 				return;
 			}
