@@ -21,20 +21,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserDTO {
-    private int id;
+    private int u_id;
     private String username;
     private String password;
     private String name;
     private String authorities;
-    private LocalDateTime regDate;
+    private LocalDateTime u_regDate;
     private String car_name;
     private String car_number;
     private String phone_number;
    
     // String 으로 리턴하는 getter
     public String getRegDateTime() {
-        if(this.regDate == null) return "";
-        return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));    
+        if(this.u_regDate == null) return "";
+        return this.u_regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));    
     }  
 
 } // end DTO

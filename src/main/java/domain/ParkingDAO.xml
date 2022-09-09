@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.ParkingDAO">
+
+	<select id="selectById" resultType="domain.ParkingDTO">
+		SELECT
+			id, addr, weekend_begin_time, weekend_end_time,
+			weekday_begin_time, weekday_end_time, holiday_begin_time, holiday_end_time,
+			holiday_pay_nm, fulltime_monthly, weekend_pay_nm, saturday_pay_nm,
+			tel, parking_name
+		FROM
+			t404_parkinglot
+		WHERE
+			id = #{id}		
+	</select>
+
+	
+
+</mapper>

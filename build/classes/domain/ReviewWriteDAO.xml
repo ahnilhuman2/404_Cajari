@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.ReviewWriteDAO">
+	
+	<resultMap type="domain.ParkingDTO" id="mapParking">
+		<result column="p_id" property="p_id"/>
+		<result column="addr" property="addr"/>
+		<result column="weekend_begin_time" property="weekend_begin_time"/>
+		<result column="weekend_end_time" property="weekend_end_time"/>
+		<result column="weekday_begin_time" property="weekday_begin_time"/>
+		<result column="weekday_end_time" property="weekday_end_time"/>
+		<result column="holiday_begin_time" property="holiday_begin_time"/>
+		<result column="holiday_end_time" property="holiday_end_time"/>
+		<result column="holiday_pay_nm" property="holiday_pay_nm"/>
+		<result column="fulltime_monthly" property="fulltime_monthly"/>
+		<result column="weekend_pay_nm" property="weekend_pay_nm"/>
+		<result column="saturday_pay_nm" property="saturday_pay_nm"/>
+		<result column="tel" property="tel"/>
+		<result column="parking_name" property="parking_name"/>
+	</resultMap>
+	
+	<resultMap type="domain.UserDTO" id="mapUser">
+		<result column="u_id" property="u_id"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="authorities" property="authorities"/>
+		<result column="u_regdate" property="u_regDate"/>
+		<result column="car_name" property="car_name"/>
+		<result column="car_number" property="car_number"/>
+		<result column="phone_number" property="phone_number"/>
+	</resultMap>
 
+	<resultMap type="domain.ReviewWriteDTO" id="mapReviewWrite">
+		<result column="r_id" property="r_id"/>
+		<result column="subject" property="subject"/>
+		<result column="content" property="content"/>
+		<result column="viewcnt" property="viewcnt"/>
+		<result column="r_regdate" property="r_regDate"/>
+		<collection property="user" resultMap="mapUser"/>
+		<collection property="parking" resultMap="mapParking"/>
+	</resultMap>
+
+	<select id="select" resultMap="mapReviewWrite">
+		SELECT
+			r.id "r_id", 
+			r.subject "subject", 
+			r.content "content", 
+			r.viewcnt "viewcnt", 
+			r.regdate "r_regdate",
+			u.id "u_id", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "u_regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number", 
+			u.phone_number "phone_number",
+			p.id "p_id", 
+			p.addr "addr", 
+			p.weekend_begin_time "weekend_begin_time", 
+			p.weekend_end_time "weekend_end_time", 
+			p.weekday_begin_time "weekday_begin_time", 
+			p.weekday_end_time "weekday_end_time", 
+			p.holiday_begin_time "holiday_begin_time", 
+			p.holiday_end_time "holiday_end_time", 
+			p.holiday_pay_nm "holiday_pay_nm", 
+			p.fulltime_monthly "fulltime_monthly", 
+			p.weekday_pay_nm "weekday_pay_nm", 
+			p.saturday_pay_nm "saturday_pay_nm", 
+			p.tel "tel", 
+			p.parking_name "parking_name"
+		FROM
+			t404_review_write r, t404_user u, t404_parkinglot p
+		WHERE
+			r.user_id  = u.id and r.parking_id = p.id
+		ORDER BY r.id DESC
+	</select>
 	<insert id="insert" flushCache="true"
 		parameterType="domain.ReviewWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
@@ -21,13 +96,6 @@
 			id = #{id}
 	</select>
 	
-	<select id="select" resultType="domain.ReviewWriteDTO">
-		SELECT
-			id, subject, content, viewcnt, regdate
-		FROM
-			t404_review_write
-		ORDER BY id DESC;
-	</select>
 	
 	<!-- 조회수 증가 -->
 	<update id="incViewCnt" flushCache="true">
