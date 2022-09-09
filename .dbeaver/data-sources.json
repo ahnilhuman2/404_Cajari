@@ -1,7 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-18302f46863-651855012736e9db": {
+		"mysql8-1832074f754-1cf8da6bb05890c": {
 			"provider": "mysql",
 			"driver": "mysql8",
 			"name": "mydb404",
@@ -20,8 +20,7 @@
 					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2",
 					"allowPublicKeyRetrieval": "TRUE"
 				},
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		}
 	},

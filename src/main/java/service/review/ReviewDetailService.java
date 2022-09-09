@@ -18,7 +18,7 @@ public class ReviewDetailService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("r_id"));
 		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
