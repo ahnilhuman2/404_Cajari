@@ -74,46 +74,45 @@
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <h2 class="fw-normal">Cajari</h2>
                     
-            		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                      <li><a href="#" class="nav-link px-2 link-dark">Home</a></li>
-                      <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Review</a></li>
+            	  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="${pageContext.request.contextPath }/home" class="nav-link px-2 link-dark">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
+                    <li><a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="nav-link px-2 link-dark">About us</a></li>
+                    <li><a href="${pageContext.request.contextPath }/review/review_list" class="nav-link px-2 link-dark">Review</a></li>
                     <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
                   </ul>
             
-                  <div class="col-md-3 text-end">
+                  <div class="col-md-1 text-center">
                   	<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
                         <button type="submit" class="btn btn-outline-primary me-2 ">mypage</button>
                   	</form>
                   	<form action="${pageContext.request.contextPath }/cover" method="POST">                	
                         <button type="submit" class="btn btn-outline-primary me-2 ">logout</button>
                   	</form>
+              	</div>
                 </header>
-              </div>
+        	</div>
+        	
+	        <div class="col-lg-12">
+	            <div id = "auth" style="padding-left:50px">
+	                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
+	                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
+	            </div>
+	        </div>
+	        
+	        <div class="col-lg-12">
+	            <div style="text-align:center">
+	                <br>
+	                <br>
+	                <h1>Cajari</h1>
+	                <br>
+	                <br>
+	                <p class="lead">
+	                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
+	                </p>
+	            </div>
+	        </div>
         </div>
-        <div class="col-lg-12">
-            <div id = "auth" style="padding-left:50px">
-                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
-                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
-            </div>
-        </div>
-        
-        <div class="col-lg-12">
-            <div style="text-align:center">
-                <br>
-                <br>
-                <h1>Cajari</h1>
-                <br>
-                <br>
-                <p class="lead">
-                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="frame">
-              
-            </div>
-        </body>
+	</div>
+     </body>
 </html>

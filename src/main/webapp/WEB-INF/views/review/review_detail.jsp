@@ -96,24 +96,28 @@ function chkDelete() {
                     <h2 class="fw-normal">Cajari</h2>
             
                   <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                      <li><a href="#" class="nav-link px-2 link-dark">Home</a></li>
-                      <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Review</a></li>
+                    <li><a href="${pageContext.request.contextPath }/home" class="nav-link px-2 link-dark">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
+                    <li><a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="nav-link px-2 link-dark">About us</a></li>
+                    <li><a href="${pageContext.request.contextPath }/review/review_list" class="nav-link px-2 link-dark">Review</a></li>
                     <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
                   </ul>
             
                   <div class="col-md-3 text-end">
-                        <button type="button" class="btn btn-outline-primary me-2 ">mypage</button>
-                        <button type="button" class="btn btn-outline-primary me-2 ">logout</button>
-                    </div>
+                    <form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+                        <button type="submit" class="btn btn-outline-primary me-2 ">mypage</button>
+                  	</form>
+                  	<form action="${pageContext.request.contextPath }/cover" method="POST">                	
+                        <button type="submit" class="btn btn-outline-primary me-2 ">logout</button>
+                  	</form>
+                   </div>
                 </header>
               </div>
         </div>
         <div class="col-lg-12">
             <div id = "auth" style="padding-left:50px">
-                <span class="badge bg-primary">Premium</span>
-                <h6><span class="TODO">user1</span>님 환영합니다</h6>
+                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
+                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
             </div>
         </div>
         <div class="col-lg-12">
