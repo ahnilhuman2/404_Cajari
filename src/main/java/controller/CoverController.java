@@ -24,6 +24,8 @@ public class CoverController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/cover.jsp");
+		dispatcher.forward(request, response);
 		request.setCharacterEncoding("UTF-8");
 	}
 
