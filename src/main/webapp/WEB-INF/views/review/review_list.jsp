@@ -121,8 +121,8 @@
                     <tbody>
                     	<c:forEach var="dto" items="${list }">
 	                        <tr>
-	                            <td>${dto.r_id }</td>
-	                            <td><a href="detail?id=${dto.r_id }">${dto.subject }</a></td>
+	                            <td>${dto.id }</td>
+	                            <td><a href="review_detail?id=${dto.id }">${dto.subject }</a></td>
 	                            <td>${dto.parking.parking_name }</td>
 	                            <td>${dto.user.username }</td>
 	                            <td>${dto.viewcnt }</td>

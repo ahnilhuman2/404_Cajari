@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import common.C;
 import domain.ParkingDTO;
 import domain.ReviewWriteDAO;
 import domain.ReviewWriteDTO;
+import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -24,7 +26,7 @@ public class ReviewWriteService implements Service {
 		String content = request.getParameter("content");
 
 		ReviewWriteDTO dto = new ReviewWriteDTO();
-		
+
 		dto.setParking(null);
 		dto.setSubject(subject);
 		dto.setContent(content);
@@ -39,7 +41,7 @@ public class ReviewWriteService implements Service {
 			dao = sqlSession.getMapper(ReviewWriteDAO.class);
 			
 			cnt = dao.insert(dto);
-			System.out.println("글작성 성공 " + cnt + " : " + dto.getR_id());
+			System.out.println("글작성 성공 " + cnt + " : " + dto.getId());
 			
 			sqlSession.commit();
 		} catch (SQLException e) {

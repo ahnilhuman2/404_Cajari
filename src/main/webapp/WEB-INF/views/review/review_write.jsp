@@ -107,16 +107,16 @@
                 enctype="Multipart/form-data">
                   <div class="mb-3">
                       <label for="name">작성자:</label>
-                      <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>
+                      <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
                   </div>
                   <div class="mb-3 mt-3">
                       <label for="subject">제목:</label>
                       <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
                   </div>
-                <!-- <div class="mb-3 mt-3"> --> 
-                   <!--    <label for="subject">주차장:</label> --> 
-              <!--         <input type="text" class="form-control" id="parkingName" placeholder="주차장을 입력하세요" name="parkingName" required> --> 
-             <!--     </div> -->
+                  <div class="mb-3 mt-3"> 
+                      <label for="subject">주차장:</label>
+              		  <input type="text" class="form-control" id="parkingName" placeholder="주차장을 입력하세요" name="parkingName" required> 
+                  </div> 
                   <div class="mb-3 mt-3">
                       <label for="content">내용:</label>
                       <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
