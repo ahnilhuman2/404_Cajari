@@ -137,7 +137,7 @@ function chkDelete() {
                 </div>
         
                 <section>
-                  <form name="frmDelete" action="review_delete" method="POST">
+                  <form name="frmDelete" action="qna_delete" method="POST">
                     <input type="hidden" name="id" value="${dto.id }">
                   </form>
                     <div class="mb-3">

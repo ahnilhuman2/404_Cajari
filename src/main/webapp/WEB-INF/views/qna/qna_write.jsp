@@ -103,8 +103,7 @@
             <div class="frame">
               <h2>작성</h2>
               <hr>
-              <form name="frm" action="qna_write" method="POST"
-                enctype="Multipart/form-data">
+              <form name="frm" action="qna_write" method="POST">
                   <div class="mb-3">
                       <label for="name">작성자:</label>
                       <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>

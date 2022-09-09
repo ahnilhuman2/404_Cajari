@@ -26,12 +26,12 @@
 	</sql>
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="u_id" property="u_id"/>
+		<result column="u_id" property="id"/>
 		<result column="username" property="username"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>
 		<result column="authorities" property="authorities"/>
-		<result column="u_regdate" property="u_regDate"/>
+		<result column="u_regdate" property="regDate"/>
 		<result column="car_name" property="car_name"/>
 		<result column="car_number" property="car_number"/>
 		<result column="phone_number" property="phone_number"/>
