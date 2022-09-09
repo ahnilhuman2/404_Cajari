@@ -57,6 +57,8 @@ public class C {
     	session.removeAttribute(REDIRECT_ATTR_NAME);
     }
     
+    
+    
 //	// 현재 진입하려는 url 에 대한 권한 체크
 //	// 기본적으로 아래 메소드를 호출하는 것은 authentication(로그인) 은 되어 있어야 한다는 뜻이다
 //	// 1. 로그인은 되어 있는 상태인지 확인

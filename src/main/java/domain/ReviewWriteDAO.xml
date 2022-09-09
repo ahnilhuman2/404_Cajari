@@ -3,7 +3,7 @@
 <mapper namespace="domain.ReviewWriteDAO">
 	
 	<resultMap type="domain.ParkingDTO" id="mapParking">
-		<result column="p_id" property="p_id"/>
+		<result column="id" property="id"/>
 		<result column="addr" property="addr"/>
 		<result column="weekend_begin_time" property="weekend_begin_time"/>
 		<result column="weekend_end_time" property="weekend_end_time"/>
@@ -20,35 +20,35 @@
 	</resultMap>
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="u_id" property="u_id"/>
+		<result column="id" property="id"/>
 		<result column="username" property="username"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>
 		<result column="authorities" property="authorities"/>
-		<result column="u_regdate" property="u_regDate"/>
+		<result column="regdate" property="regDate"/>
 		<result column="car_name" property="car_name"/>
 		<result column="car_number" property="car_number"/>
 		<result column="phone_number" property="phone_number"/>
 	</resultMap>
 
 	<resultMap type="domain.ReviewWriteDTO" id="mapReviewWrite">
-		<result column="r_id" property="r_id"/>
+		<result column="id" property="id"/>
 		<result column="subject" property="subject"/>
 		<result column="content" property="content"/>
 		<result column="viewcnt" property="viewcnt"/>
-		<result column="r_regdate" property="r_regDate"/>
+		<result column="regdate" property="regDate"/>
 		<collection property="user" resultMap="mapUser"/>
 		<collection property="parking" resultMap="mapParking"/>
 	</resultMap>
 
 	<select id="select" resultMap="mapReviewWrite">
 		SELECT
-			r.id "r_id", 
+			r.id "id", 
 			r.subject "subject", 
 			r.content "content", 
 			r.viewcnt "viewcnt", 
 			r.regdate "r_regdate",
-			u.id "u_id", 
+			u.id "id", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
@@ -57,7 +57,7 @@
 			u.car_name "car_name", 
 			u.car_number "car_number", 
 			u.phone_number "phone_number",
-			p.id "p_id", 
+			p.id "id", 
 			p.addr "addr", 
 			p.weekend_begin_time "weekend_begin_time", 
 			p.weekend_end_time "weekend_end_time", 
@@ -81,20 +81,20 @@
 		parameterType="domain.ReviewWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_review_write
-			(name, subject, content)
+			(subject, content, user_id, parking_id)
 		VALUES
-			(#{name}, #{subject}, #{content})
+			(#{subject}, #{content}, #{user.id}, #{parking.id})
 	</insert> 
 
 	<!-- 조회 -->
 	<select id="selectById" resultMap="mapReviewWrite">
 		SELECT
-			r.id "r_id", 
+			r.id "id", 
 			r.subject "subject", 
 			r.content "content", 
 			r.viewcnt "viewcnt", 
 			r.regdate "r_regdate",
-			u.id "u_id", 
+			u.id "id", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
@@ -103,7 +103,7 @@
 			u.car_name "car_name", 
 			u.car_number "car_number", 
 			u.phone_number "phone_number",
-			p.id "p_id", 
+			p.id "id", 
 			p.addr "addr", 
 			p.weekend_begin_time "weekend_begin_time", 
 			p.weekend_end_time "weekend_end_time", 
@@ -120,7 +120,7 @@
 		FROM
 			t404_review_write r, t404_user u, t404_parkinglot p
 		WHERE
-			r.user_id  = u.id and r.parking_id = p.id and r.id = #{r_id}
+			r.user_id  = u.id and r.parking_id = p.id and r.id = #{id}
 		ORDER BY 
 			r.id DESC
 	</select>
@@ -147,7 +147,7 @@
 	</update>
 	
 	<delete id="deleteById" flushCache="true">
-		DELETE FROM t404_review_write WHERE id = #{r_id]
+		DELETE FROM t404_review_write WHERE id = #{param1]
 	</delete>
 	
 	

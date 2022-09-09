@@ -21,7 +21,8 @@ public class ReviewUpdateService implements Service {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		String subject = request.getParameter("subject");
-//		String parkingName = request.getParameter("parkingName");
+
+
 		String content = request.getParameter("content");
 
 		
@@ -31,7 +32,7 @@ public class ReviewUpdateService implements Service {
 		int cnt = 0;
 		
 		ReviewWriteDTO dto = ReviewWriteDTO.builder()
-			.r_id(id)
+			.id(id)
 			.subject(subject)
 			.content(content)
 			.build()

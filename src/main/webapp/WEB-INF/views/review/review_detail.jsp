@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<%-- <c:choose>
+<c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
 			alert("리뷰가 삭제되거나 없습니다.");
@@ -13,7 +12,7 @@
 	<c:otherwise>
 	
 	<c:set var="dto" value="${list[0] }"/>
-     --%>
+     
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -131,14 +130,14 @@ function chkDelete() {
                 <h2>조회 - ${dto.subject }</h2>
                 <hr>
                 <div class="mb-3 mt-3 clearfix">
-                    <span class="float-start me-2">id: ${dto.r_id }</span>
+                    <span class="float-start me-2">id: ${dto.id }</span>
                     <span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
                     <span class="float-end">조회수: ${dto.viewcnt }</span>
                 </div>
         
                 <section>
                   <form name="frmDelete" action="review_delete" method="POST">
-                    <input type="hidden" name="id" value="${dto.r_id }">
+                    <input type="hidden" name="id" value="${dto.id }">
                   </form>
                     <div class="mb-3">
                         <label for="name">작성자:</label>
@@ -158,7 +157,7 @@ function chkDelete() {
                     </div>    
         
                     <!-- 하단 링크 -->
-                    <a class="btn btn-outline-dark" href="review_update?id=${dto.r_id }">수정</a>
+                    <a class="btn btn-outline-dark" href="review_update?id=${dto.id }">수정</a>
                     <a class="btn btn-outline-dark" href="review_list">목록</a>
                     <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
                     <a class="btn btn-outline-dark" href="review_write">작성</a>
@@ -174,5 +173,5 @@ function chkDelete() {
 		</body>
 	</html>
 
-<%-- 	</c:otherwise>
-</c:choose> --%>
+ 	</c:otherwise>
+</c:choose>

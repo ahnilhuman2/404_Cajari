@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 public class ParkingDTO {
-	private int p_id;	// id
+	private int id;	// id
 	private String addr; // addr
 	private String weekend_begin_time;
 	private String weekend_end_time;
