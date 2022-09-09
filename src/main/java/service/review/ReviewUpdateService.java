@@ -31,7 +31,7 @@ public class ReviewUpdateService implements Service {
 		int cnt = 0;
 		
 		ReviewWriteDTO dto = ReviewWriteDTO.builder()
-			.id(id)
+			.r_id(id)
 			.subject(subject)
 			.content(content)
 			.build()
