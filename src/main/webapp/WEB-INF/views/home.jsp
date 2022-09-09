@@ -94,8 +94,8 @@
         </div>
         <div class="col-lg-12">
             <div id = "auth" style="padding-left:50px">
-                <span class="badge bg-primary">Premium</span>
-                <h6><span class="TODO">user1</span>님 환영합니다</h6>
+                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
+                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
             </div>
         </div>
         
