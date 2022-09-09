@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.Service;
-import service.review.ReviewDeleteService;
-import service.review.ReviewDetailService;
-import service.review.ReviewListService;
-import service.review.ReviewSelectService;
-import service.review.ReviewUpdateService;
-import service.review.ReviewWriteService;
+import service.qna.QnAWriteService;
+
 
 @WebServlet("/qna/*")
 public class QnAController extends HttpServlet {
@@ -58,47 +54,47 @@ public class QnAController extends HttpServlet {
 				break;
 				
 			case "POST":
-				service = new ReviewWriteService();
+				service = new QnAWriteService();
 				service.execute(request, response);
 				viewPage = "qna_writeOk.jsp";
 				break;
 			}
 			break;
-		case "/qna/qna_list":
-			service = new ReviewListService();
-			service.execute(request, response);
-			viewPage = "qna_list.jsp";
-			break;
-			
-		case "/qna/qna_detail":
-			service = new ReviewDetailService();
-			service.execute(request, response);
-			viewPage = "qna_detail.jsp";
-			break;
-			
-		case "/qna/qna_update":
-			switch(method) {
-			case "GET":
-				service = new ReviewSelectService();
-				service.execute(request, response);
-				viewPage = "qna_update.jsp";
-				break;
-			case "POST":
-				service = new ReviewUpdateService();
-				service.execute(request, response);
-				viewPage = "qna_updateOk.jsp";
-				break;
-			}
-			
-		case "/qna/review_delete":
-			switch(method) {
-			case "POST":
-				service = new ReviewDeleteService();
-				service.execute(request, response);
-				viewPage = "qna_deleteOk.jsp";
-				break;
-			}
-			break;
+//		case "/qna/qna_list":
+//			service = new QnAListService();
+//			service.execute(request, response);
+//			viewPage = "qna_list.jsp";
+//			break;
+//			
+//		case "/qna/qna_detail":
+//			service = new QnADetailService();
+//			service.execute(request, response);
+//			viewPage = "qna_detail.jsp";
+//			break;
+//			
+//		case "/qna/qna_update":
+//			switch(method) {
+//			case "GET":
+//				service = new QnASelectService();
+//				service.execute(request, response);
+//				viewPage = "qna_update.jsp";
+//				break;
+//			case "POST":
+//				service = new QnAUpdateService();
+//				service.execute(request, response);
+//				viewPage = "qna_updateOk.jsp";
+//				break;
+//			}
+//			
+//		case "/qna/review_delete":
+//			switch(method) {
+//			case "POST":
+//				service = new QnADeleteService();
+//				service.execute(request, response);
+//				viewPage = "qna_deleteOk.jsp";
+//				break;
+//			}
+//			break;
 	
 		} // end switch
 		
@@ -108,5 +104,5 @@ public class QnAController extends HttpServlet {
 			
 			dispatcher.forward(request, response);
 		}
-	}
-}
+	}// end action()
+}// end Controller
