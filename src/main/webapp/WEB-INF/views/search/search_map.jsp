@@ -20,6 +20,9 @@
 	  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e157a116310babfe805b8aca0d0245c8&libraries=services,clusterer,drawing"></script>
     <style>
 
+
+
+
     /*profile*/
 
 .profile-section{
@@ -89,37 +92,67 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
     </style>
 </head>
 <body>
+	<header class="py-3 mb-4 border-bottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-1">
+							<h1 class="fw-normal">Cajari</h1>
+						</div>
+						
+						<div class="col-lg-8">
+							<ul class="nav nav-tabs align-itmes-center">
+							    <li class="nav-item">
+							    	<a  class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
+							    </li>
+							    <li class="nav-item dropdown">
+							  		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="${pageContext.request.contextPath }/search/search_main" role="button" aria-expanded="false">Search</a>
+								    <ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_basic">Basic Search</a></li>
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_map">Map Search</a></li>
+									</ul>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutUs/aboutUs">About us</a>
+							    </li>
+						    </ul>
+						</div>
+						
+						<div class="col-lg-3">
+							<div>
+		               			<span class="align-items-center badge bg-light"><p class="text-dark">${sessionScope.PRINCIPAL.authorities }</p>
+			                		<h6 class="text-dark"><span class="text-dark">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>	
+		                		<div class="text-center">
+			                  		<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+			                        	<button type="submit" class="btn btn-outline-dark" style="float: right;">mypage</button>
+			                  		</form>
+			                  		<form action="${pageContext.request.contextPath }/cover" method="POST">                	
+			                       		<button type="submit" class="btn btn-outline-dark" style="float: right;">logout</button>
+			                  		</form>
+		              			</div>
+		               			</span>
+	            			</div>
+						</div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <h2 class="fw-normal">Cajari</h2>
-            
-                  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="${pageContext.request.contextPath }/home" class="nav-link px-2 link-dark">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="${pageContext.request.contextPath }/review/review_list" class="nav-link px-2 link-dark">Review</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
-                  </ul>
-            
-                  <div class="col-md-3 text-end">
-                        <button type="button" class="btn btn-outline-primary me-2 ">mypage</button>
-                        <button type="button" class="btn btn-outline-primary me-2 ">logout</button>
-                    </div>
-                </header>
-              </div>
-        </div>
-        <div class="col-lg-12">
-            <div id = "auth" style="padding-left:50px">
-                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
-                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div style="text-align:center">
-                <h2>Cajari</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<main>
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			
+			<div class="col-lg-6">
         	<div class="map_wrap">
           		<div id="map" style="width:800px;height:1000px; margin-right: 100px"></div>
           			<div class="custom_typecontrol radius_border">
@@ -130,16 +163,26 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
           <div class="custom_zoomcontrol radius_border"> 
               	<span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
               	<span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
-          </div>
-          </div>
-              <td>
+          	</div>
+          	</div>
+			
+			</div>
+			
+			<div class="col-lg-3"></div>
+		</div>
+	</div>
+        <div class="col-lg-12">
+            <div style="text-align:center">
           		<div>
             		<input type='text' id="text1" placeholder="지역입력">
             		<input type='button' value='검색' onclick="search()">
           		</div>
             </div>
         </div>
-          <script type="text/javascript">
+	
+	</main>
+
+<script type="text/javascript">
           var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
           var options = { //지도를 생성할 때 필요한 기본 옵션
             center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -163,30 +206,17 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
                   roadmapControl.className = 'btn';
               }
           }
-         
-      
-          // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-          function zoomIn() {
-              map.setLevel(map.getLevel() - 1);
-          }
-      
-          // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
-          function zoomOut() {
-              map.setLevel(map.getLevel() + 1);
-          }
-          //컨트롤러
-          </script>
-          
-          <script type="text/javascript">
-            function search() {
-              var searchQuery = $("#text1").val();
-              
-              
-               $.ajax({
-                 url : "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/" + searchQuery, // 어디로 갈거니? // 갈 때 데이터
-                 type : "get", // 타입은 뭘 쓸거니?
-                 datatype : "json",
-                 success : function(data) { // 갔다온 다음 결과값
+</script>
+ 
+<script type="text/javascript">
+function search() {
+	var searchQuery = $("#text1").val();
+	
+	$.ajax({
+		url : "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/" + searchQuery, // 어디로 갈거니? // 갈 때 데이터
+		type : "get", // 타입은 뭘 쓸거니?
+		datatype : "json",
+		success : function(data) { // 갔다온 다음 결과값
                    //console.log(data.GetParkInfo.row);
                    data.GetParkInfo.row.forEach(r => {
                      var lat = r.LAT;
@@ -219,7 +249,19 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
                  }
                });
             }
+         
+      
+          // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+          function zoomIn() {
+              map.setLevel(map.getLevel() - 1);
+          }
+      
+          // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+          function zoomOut() {
+              map.setLevel(map.getLevel() + 1);
+          }
+          //컨트롤러
           </script>
-        
+
 </body>
 </html>
