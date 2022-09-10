@@ -67,6 +67,10 @@
     </style>
 </head>
 <body>
+<!-- 
+	<%-- 인증 헤더 --%>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+ -->
     <div class="row">
         <div class="col-lg-12">
             <div class="container">
@@ -106,7 +110,7 @@
               <form name="frm" action="qna_write" method="POST">
                   <div class="mb-3">
                       <label for="name">작성자:</label>
-                      <input type="text" class="form-control" id="name" placeholder="작성자를 입력하세요" name="name" required>
+                      <span class="form-control">${PRINCIPAL.username } (${PRINCIPAL.name })</span>
                   </div>
                   <div class="mb-3 mt-3">
                       <label for="subject">제목:</label>
@@ -124,9 +128,9 @@
                   <button type="submit" class="btn btn-outline-dark">작성완료</button>
                   <a class="btn btn-outline-dark" href="qna_list">목록</a>
               </form>
-                </div>
-            </div>
-        </div>
+                </div><!-- end frame -->
+            </div><!-- end forth grid -->
+        </div><!-- end row -->
         
         
 </body>

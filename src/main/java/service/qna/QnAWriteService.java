@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionManager;
 
+import common.C;
 import domain.QnAWriteDAO;
 import domain.QnAWriteDTO;
 import domain.UserDTO;
@@ -19,15 +20,15 @@ public class QnAWriteService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 1.
-		String name = request.getParameter("name");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		
-		// 1.을 DTO에 담기 --> ???? 다른 테이블의 컬럼을 이용할 수 있나????
-		QnAWriteDTO dto = new QnAWriteDTO();
-		UserDTO dtoU = new UserDTO();
+		// 현재 로그인 한 사용자 정보
+		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 		
-		dtoU.setName(name);
+		// 1.을 DTO에 담기
+		QnAWriteDTO dto = new QnAWriteDTO();
+		dto.setUser(user);
 		dto.setSubject(subject);
 		dto.setContent(content);
 		
@@ -42,7 +43,7 @@ public class QnAWriteService implements Service {
 		
 		try {
 			// 트랜잭션 시작 --> ???? getInstance가 왜 정의가 안되있지????
-			sqlSession = SqlSessionManager.get
+			sqlSession = SqlSessionManager.getInstance().openSession();
 			// MyBatis 가 생성한 DAO(리턴 타입은 WriteDAO 이다)
 			dao = sqlSession.getMapper(QnAWriteDAO.class); 
 			// 글 작성하고 auto-generated된 id값을 dto 에 받아옴
