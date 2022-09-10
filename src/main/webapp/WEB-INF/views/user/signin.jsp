@@ -130,10 +130,7 @@
                     <p style="font-size:15px">이미 Cajari 계정이 있으신가요?
                       <a href="${pageContext.request.contextPath }/user/login">로그인하기</a>
                     </p>	
-                    <button class="w-30 btn btn-lg btn-light" type="submit">Sign in</button>	
-                      
-                      
-                    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+                    <button class="btn btn-lg btn-secondary fw-bold border-white bg-black" type="submit">Sign in</button>	
                     
                   </form>
                 </main>

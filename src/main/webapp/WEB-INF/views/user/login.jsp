@@ -108,7 +108,7 @@
                       </label>
                     </div>
                   	<br>
-                    <button class="w-30 btn btn-lg btn-light" type="submit">Login</button>
+                    <button class="btn btn-lg btn-secondary fw-bold border-white bg-black" type="submit">Login</button>
                     
                   </form>
               </main>
