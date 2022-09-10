@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qna - ${dto.subject }</title>
+    <title>조회 - ${dto.subject }</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -131,47 +131,52 @@ function chkDelete() {
                 <h2>조회 - ${dto.subject }</h2>
                 <hr>
                 <div class="mb-3 mt-3 clearfix">
-                    <span class="float-start me-2">id: ${dto.id }</span>
+                    <span class="float-start me-2">id: ${dto.q_id }</span>
                     <span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
                     <span class="float-end">조회수: ${dto.viewcnt }</span>
                 </div>
         
                 <section>
                   <form name="frmDelete" action="qna_delete" method="POST">
-                    <input type="hidden" name="id" value="${dto.id }">
+                    <input type="hidden" name="id" value="${dto.q_id }">
                   </form>
                     <div class="mb-3">
                         <label for="name">작성자:</label>
-                        <span class="form-control" >el-작성자</span>
+                        <span class="form-control" >${dto.user.username } (${dto.user.name })</span>
                     </div>    
                     <div class="mb-3 mt-3">
                         <label for="subject">제목:</label>
                         <span class="form-control" >${dto.subject }</span>
-                    </div>    
-                    <div class="mb-3 mt-3">
-                      <label for="subject">주차장:</label>
-                      <span class="form-control" >el-주차장</span>
-                  </div>    
+                    </div>      
                     <div class="mb-3 mt-3">
                         <label for="content">내용:</label>
                         <span class="form-control" >${dto.content }</span>
                     </div>    
         
                     <!-- 하단 링크 -->
-                    <a class="btn btn-outline-dark" href="qna_update?id=${dto.id }">수정</a>
-                    <a class="btn btn-outline-dark" href="qna_list">목록</a>
+                    <c:if test="${(PRINCIPAL.id == dto.user.id)}">
+                    <a class="btn btn-outline-dark" href="qna_update?id=${dto.q_id }">수정</a>
+                    </c:if>
+                    
+                    <a class="btn btn-outline-dark" href="qna_list?page=${page != null ? page : '' }">목록</a>
+                    
+                    <c:if test="${(PRINCIPAL.id == dto.user.id)}">
                     <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
+                    </c:if>
+                    
+                    <c:if test="${(PRINCIPAL.id == dto.user.id)}">
                     <a class="btn btn-outline-dark" href="qna_write">작성</a>
+                    </c:if>
                     <!-- 하단 링크 -->        
         
                 </section>
             </div>
-            </div>
-                </div>
-            </div>
+            </div><!-- end frame -->
+                </div><!-- end forth grid -->
+            </div><!-- end row -->
         
         
-		</body>
+		</body><!-- end body -->
 	</html>
 
 	</c:otherwise>

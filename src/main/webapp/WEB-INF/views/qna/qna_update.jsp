@@ -121,16 +121,16 @@
                 <h2>수정</h2>
                 <hr>
                 <div class="mb-3 mt-3 clearfix">
-                    <span class="float-start me-2">id: ${dto.id }</span>
+                    <span class="float-start me-2">id: ${dto.q_id }</span>
                     <span class="float-end ms-4">작성일: ${dto.regDateTime }</span>
                     <span class="float-end">조회수: ${dto.viewcnt }</span>
                 </div>
         
                 <form action="qna_update" method="POST">
-                    <input type="hidden" name="id" value="${dto.id }"/>
+                    <input type="hidden" name="id" value="${dto.q_id }"/>
                     <div class="mb-3">
                         <label for="name">작성자:</label>
-                        <span class="form-control" readonly>el 작성자</span>
+                        <span class="form-control" readonly>${dto.user.username } (${dto.user.name })</span>
                     </div>    
                     <div class="mb-3 mt-3">
                         <label for="subject">제목:</label>
@@ -149,7 +149,9 @@
         
                 </form>
             </div>
-        </body>
+             </div><!-- end frame -->
+              </div><!-- end forth grid -->
+        </body><!-- end body -->
         
 	</html>
 </c:otherwise>
