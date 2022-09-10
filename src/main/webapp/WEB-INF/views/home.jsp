@@ -58,61 +58,157 @@
 }
 
 
-
 .frame{
     margin: 30px 150px;
     display: flex;
     flex-direction: column;
 }
 
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+}
+
+@media (min-width: 768px) {
+   		.bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        }
+}
+
+.b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+}
+
     </style>
 
 <body>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <h2 class="fw-normal">Cajari</h2>
-                    
-            	  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="${pageContext.request.contextPath }/home" class="nav-link px-2 link-dark">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="${pageContext.request.contextPath }/review/review_list" class="nav-link px-2 link-dark">Review</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
-                  </ul>
-            
-                  <div class="col-md-1 text-center">
-                  	<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
-                        <button type="submit" class="btn btn-outline-primary me-2 ">mypage</button>
-                  	</form>
-                  	<form action="${pageContext.request.contextPath }/cover" method="POST">                	
-                        <button type="submit" class="btn btn-outline-primary me-2 ">logout</button>
-                  	</form>
-              	</div>
-                </header>
-        	</div>
-        	
-	        <div class="col-lg-12">
-	            <div id = "auth" style="padding-left:50px">
-	                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
-	                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
-	            </div>
-	        </div>
-	        
-	        <div class="col-lg-12">
-	            <div style="text-align:center">
-	                <br>
-	                <br>
-	                <h1>Cajari</h1>
-	                <br>
-	                <br>
-	                <p class="lead">
-	                  <a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">서비스 시작</a>
-	                </p>
-	            </div>
-	        </div>
-        </div>
-	</div>
-     </body>
+	<header class="py-3 mb-4 border-bottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-1">
+							<h1 class="fw-normal">Cajari</h1>
+						</div>
+						
+						<div class="col-lg-8">
+							<ul class="nav nav-tabs align-itmes-center">
+							    <li class="nav-item">
+							    	<a  class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
+							    </li>
+							    <li class="nav-item dropdown">
+							  		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="${pageContext.request.contextPath }/search/search_main" role="button" aria-expanded="false">Search</a>
+								    <ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_basic">Basic Search</a></li>
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_map">Map Search</a></li>
+									</ul>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutUs/aboutUs">About us</a>
+							    </li>
+						    </ul>
+						</div>
+						
+						<div class="col-lg-3">
+							<div>
+		               			<span class="align-items-center badge bg-light"><p class="text-dark">${sessionScope.PRINCIPAL.authorities }</p>
+			                		<h6 class="text-dark"><span class="text-dark">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>	
+		                		<div class="text-center">
+			                  		<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+			                        	<button type="submit" class="btn btn-outline-dark" style="float: right;">mypage</button>
+			                  		</form>
+			                  		<form action="${pageContext.request.contextPath }/cover" method="POST">                	
+			                       		<button type="submit" class="btn btn-outline-dark" style="float: right;">logout</button>
+			                  		</form>
+		              			</div>
+		               			</span>
+	            			</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+			        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+			        
+						  <div class="carousel-inner">
+						  
+						    <div class="carousel-item active">
+						      <img src="./Image/Jari1.png"  class="d-block w-100" alt="Cajari1">
+						    </div>
+						    
+						    <div class="carousel-item">
+						      <img src="./Image/Jari2.png" class="d-block w-100" alt="Cajari2">
+						    </div>
+						    
+						    <div class="carousel-item">
+						      <img src="./Image/Jari3.png" class="d-block w-100" alt="Cajari3">
+						    </div>
+						    
+						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Previous</span>
+						  </button>
+						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Next</span>
+						  </button>
+						  
+						  </div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</main>
+
+</body>
 </html>

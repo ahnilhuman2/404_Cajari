@@ -57,6 +57,16 @@
     margin-bottom: 40px;
 }
 
+#carouselExampleControls > .carousel-inner > .carousel-item active > img {
+	top : 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 400px;
+}
+
+.container {
+	margin-bottom: 20px;
+}
 
 
 .frame{
@@ -73,25 +83,75 @@
             <div class="container">
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <h2 class="fw-normal">Cajari</h2>
-            
                 </header>
               </div>
         </div>
         
         <div class="col-lg-12">
             <div style="text-align:center">
-                <br>
-                <br>
-                <h1>Cajari</h1>
-                <br>
-                <br>
-               	<a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Login</a>
-                <a href="${pageContext.request.contextPath }/user/signin" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Sign in</a>
+                <h1>Welcome</h1>
+                <h3>Cajari</h3>
             </div>
         </div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+				</div>
+				
+				<div class="col-lg-4">
+			        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+			        
+						  <div class="carousel-inner">
+						  
+						    <div class="carousel-item active">
+						      <img src="./Image/Jari1.png"  class="d-block w-100" alt="Cajari1">
+						    </div>
+						    
+						    <div class="carousel-item">
+						      <img src="./Image/Jari2.png" class="d-block w-100" alt="Cajari2">
+						    </div>
+						    
+						    <div class="carousel-item">
+						      <img src="./Image/Jari3.png" class="d-block w-100" alt="Cajari3">
+						    </div>
+						    
+						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Previous</span>
+						  </button>
+						  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Next</span>
+						  </button>
+						  
+						  </div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4">
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row">
+		        <div class="col-lg-12">
+		        	<div style="text-align:center">
+		               	<a href="${pageContext.request.contextPath }/user/login" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Login</a>
+		                <a href="${pageContext.request.contextPath }/user/signin" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Sign in</a>
+		        	</div>
+		        </div>
+			</div>
+		</div>
+		
+        
         <div class="col-lg-12">
             <div class="frame">
               
             </div>
-        </body>
+        </div>
+       </div>  
+    </body>
 </html>
