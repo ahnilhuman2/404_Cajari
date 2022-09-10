@@ -5,7 +5,6 @@
     
 <!DOCTYPE html>
 <html lang="ko">
-<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,9 +113,6 @@
               </main>
             </div>
         </div>
-        <div class="col-lg-12">
-            <div class="frame">
-              
-            </div>
-        </body>
+      </div>
+   </body>
 </html>

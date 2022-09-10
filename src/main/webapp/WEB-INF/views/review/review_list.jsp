@@ -67,48 +67,68 @@
     </style>
 </head>
 <body>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <h2 class="fw-normal">Cajari</h2>
-            
-                  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="${pageContext.request.contextPath }/home" class="nav-link px-2 link-dark">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Service</a></li>
-                    <li><a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="nav-link px-2 link-dark">About us</a></li>
-                    <li><a href="${pageContext.request.contextPath }/review/review_list" class="nav-link px-2 link-dark">Review</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Q & A</a></li>
-                  </ul>
-            
-                  <div class="col-md-3 text-end">
-                    <form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
-                        <button type="submit" class="btn btn-outline-primary me-2 ">mypage</button>
-                  	</form>
-                  	<form action="${pageContext.request.contextPath }/cover" method="POST">                	
-                        <button type="submit" class="btn btn-outline-primary me-2 ">logout</button>
-                  	</form>
-                  </div>
-                </header>
-              </div>
-        </div>
-        <div class="col-lg-12">
-            <div id = "auth" style="padding-left:50px">
-                <span class="badge bg-primary">${sessionScope.PRINCIPAL.authorities }</span>
-                <h6><span class="TODO">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div style="text-align:center">
-                <h2>Cajari</h2>
-            </div>
-        </div>
+        <header class="py-3 mb-4 border-bottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-1">
+							<h1 class="fw-normal">Cajari</h1>
+						</div>
+						
+						<div class="col-lg-8">
+							<ul class="nav nav-tabs align-itmes-center">
+							    <li class="nav-item">
+							    	<a  class="nav-link active" aria-current="page" href="${pageContext.request.contextPath }/home">Home</a>
+							    </li>
+							    <li class="nav-item dropdown">
+							  		<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="${pageContext.request.contextPath }/search/search_main" role="button" aria-expanded="false">Search</a>
+								    <ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_basic">Basic Search</a></li>
+										<li><a class="dropdown-item" href="${pageContext.request.contextPath }/search/search_map">Map Search</a></li>
+									</ul>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/review/review_list">Review</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
+							    </li>
+							    <li class="nav-item">
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutus">About us</a>
+							    </li>
+						    </ul>
+						</div>
+						
+						<div class="col-lg-3">
+							<div>
+		               			<span class="align-items-center badge bg-light"><p class="text-dark">${sessionScope.PRINCIPAL.authorities }</p>
+			                		<h6 class="text-dark"><span class="text-dark">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>	
+		                		<div class="text-center">
+			                  		<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+			                        	<button type="submit" class="btn btn-outline-dark" style="float: right;">mypage</button>
+			                  		</form>
+			                  		<form action="${pageContext.request.contextPath }/cover" method="POST">                	
+			                       		<button type="submit" class="btn btn-outline-dark" style="float: right;">logout</button>
+			                  		</form>
+		              			</div>
+		               			</span>
+	            			</div>
+						</div> <!-- end col -->
+
+					</div> <!-- end row -->
+				</div> <!-- end container -->
+			</div> 
+		</div>
+	</header>
+	
+	
         <div class="col-lg-12">
             <div class="frame">
               <div class="container mt-3">
                 <h2>목록</h2>
                 <table class="table table-hover">
-                    <thead class="table-success">
+                    <thead class="table-light">
                         <tr>
                             <th>#</th>
                             <th>제목</th>

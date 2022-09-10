@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review_write</title>
+    <title>Map Search</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -120,7 +120,7 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
 							    	<a class="nav-link" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
 							    </li>
 							    <li class="nav-item">
-							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutUs/aboutUs">About us</a>
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutus/aboutus">About us</a>
 							    </li>
 						    </ul>
 						</div>

@@ -5,7 +5,6 @@
     
 <!DOCTYPE html>
 <html lang="ko">
-<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +12,8 @@
     <title>Home</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
+    
+<style>
 
     /*profile*/
 
@@ -160,7 +160,7 @@ img {
 							    	<a class="nav-link" href="${pageContext.request.contextPath }/qna/qna_list">Q & A</a>
 							    </li>
 							    <li class="nav-item">
-							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutUs/aboutUs">About us</a>
+							    	<a class="nav-link" href="${pageContext.request.contextPath }/aboutus">About us</a>
 							    </li>
 						    </ul>
 						</div>
@@ -254,7 +254,7 @@ img {
 							<div class="card-body">
 								<h5 class="card-title">About Us</h5>
 								<p class="card-text">서비스에 대한 전반적인 정보를 알 수 있습니다.</p>
-								<a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="btn btn-dark">About Us</a>
+								<a href="${pageContext.request.contextPath }/aboutus" class="btn btn-dark">About Us</a>
 							</div>
 						</div>
 					</div>
