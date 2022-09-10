@@ -115,7 +115,21 @@
         -webkit-overflow-scrolling: touch;
 }
 
-    </style>
+.carousel-item {
+		min-height: 200px; 
+  		background: no-repeat center center scroll; 
+  		-webkit-background-size: cover; 
+  		-moz-background-size: cover; 
+  		-o-background-size: cover; 
+  		background-size: cover; 
+}
+
+img {
+	max-width: 100%;
+	height: 350px;
+}
+
+</style>
 
 <body>
 	<header class="py-3 mb-4 border-bottom">
@@ -174,7 +188,7 @@
 	</header>
 
 	<main>
-		<div class="container">
+		<div class="container" style="width:100%; height: 350px;">
 			<div class="row">
 				<div class="col-lg-12">
 			        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -182,15 +196,15 @@
 						  <div class="carousel-inner">
 						  
 						    <div class="carousel-item active">
-						      <img src="./Image/Jari1.png"  class="d-block w-100" alt="Cajari1">
+						    	<img src="./Image/map.png"  class="d-block w-100" alt="Cajari1">
 						    </div>
 						    
 						    <div class="carousel-item">
-						      <img src="./Image/Jari2.png" class="d-block w-100" alt="Cajari2">
+						      <img src="./Image/search.png" class="d-block w-100" alt="Cajari2">
 						    </div>
 						    
 						    <div class="carousel-item">
-						      <img src="./Image/Jari3.png" class="d-block w-100" alt="Cajari3">
+						      <img src="./Image/information.png" class="d-block w-100" alt="Cajari3">
 						    </div>
 						    
 						  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -206,6 +220,45 @@
 					</div>
 				</div>
 				
+			</div>
+		</div>
+		
+		<div class="album py-5 ">
+			<div class="container">
+				<div class="row" style="none;">
+					<div class="col-lg-4">
+						<div class="card" style="width: 18rem;">
+						<img src="./Image/map2.png" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">맵으로 찾기</h5>
+								<p class="card-text">맵을 통해 원하는 지역에 공용주차장을 찾을 수 있습니다.</p>
+								<a href="${pageContext.request.contextPath }/search/search_map" class="btn btn-dark">Map Search</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-lg-4">
+						<div class="card" style="width: 18rem;">
+						<img src="./Image/search2.png" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">검색으로 찾기</h5>
+								<p class="card-text">검색을 통해 원하는 지역에 공용주차장을 찾을 수 있습니다.</p>
+								<a href="${pageContext.request.contextPath }/search/search_basic" class="btn btn-dark">Basic Search</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-lg-4">
+						<div class="card" style="width: 18rem;">
+						<img src="./Image/information2.png" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title">About Us</h5>
+								<p class="card-text">서비스에 대한 전반적인 정보를 알 수 있습니다.</p>
+								<a href="${pageContext.request.contextPath }/aboutUs/aboutUs" class="btn btn-dark">About Us</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>
