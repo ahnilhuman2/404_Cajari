@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionManager;
+import sqlmapper.SqlSessionManager;
 
 import common.C;
 import domain.QnAWriteDAO;

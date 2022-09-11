@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionManager;
+import sqlmapper.SqlSessionManager;
 
 import common.C;
 import domain.QnAWriteDAO;

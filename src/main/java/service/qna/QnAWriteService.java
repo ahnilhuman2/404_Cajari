@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionManager;
+import sqlmapper.SqlSessionManager;
 
 import common.C;
 import domain.QnAWriteDAO;
@@ -42,7 +42,6 @@ public class QnAWriteService implements Service {
 		QnAWriteDAO dao = null;
 		
 		try {
-			// 트랜잭션 시작 --> ???? getInstance가 왜 정의가 안되있지????
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			// MyBatis 가 생성한 DAO(리턴 타입은 WriteDAO 이다)
 			dao = sqlSession.getMapper(QnAWriteDAO.class); 
