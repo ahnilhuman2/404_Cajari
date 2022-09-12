@@ -26,7 +26,12 @@ public class ReviewWriteService implements Service {
 		String content = request.getParameter("content");
 
 		ReviewWriteDTO dto = new ReviewWriteDTO();
-
+		
+		System.out.println("aaaaaaaaaaaaaa");
+		System.out.println(subject);
+		System.out.println(parkingName);
+		System.out.println(content);
+		
 		dto.setParking(null);
 		dto.setSubject(subject);
 		dto.setContent(content);

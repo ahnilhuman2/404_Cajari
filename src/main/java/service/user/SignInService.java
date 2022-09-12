@@ -28,6 +28,13 @@ public class SignInService implements Service {
 		String car_name = request.getParameter("car_name");
 		String car_number = request.getParameter("car_number");
 		
+		System.out.println(username);
+		System.out.println(name);
+		System.out.println(password);
+		System.out.println(re_password);
+		System.out.println(phone_number);
+		System.out.println("bbbbb");
+		
 		// 작성한 텍스트 공백제거
 		username = username.trim();
 		password = password.trim();

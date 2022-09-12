@@ -122,8 +122,53 @@
 		</div>
 	</header>
 	
+		<div class="col-lg-12">
+            <div class="frame" style="text-align:center;" >
+                <br>
+                <br>
+                <main class="form-signin w-100 m-auto">
+                  <form method="POST" action="${pageContext.request.contextPath }/review/review_write">   
+                    <h1 class="h3 mb-3 fw-normal" style="font-size:50px">Cajari</h1>
+                    <h1 class="h3 mb-3 fw-normal">작성</h1>
+                    
+             
+                      
+                    <%-- <div class="form=floating">
+                      <label for="name">작성자:</label>
+                      <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
+                  	</div> --%>
+                    
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingName" name="name" placeholder="name" value="${PRINCIPAL.username }" required>
+                      <label for="floatingPassword">이름</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingSubject" name="subject" placeholder="subject" required>
+                      <label for="floatingPassword">제목</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingPassword" name="parkingName" placeholder="parkingName" required>
+                      <label for="floatingPassword">주차장</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingPassword" name="content" placeholder="content" required>
+                      <label for="floatingPassword">내용</label>
+                    </div>
+                    
+                    
+                    
+                    <button class="btn btn-lg btn-secondary fw-bold border-white bg-black" type="submit">작성</button>	
+                    
+                  </form>
+                </main>
+            </div>
+        </div>
 	
-        <div class="col-lg-12">
+	
+        <%-- <div class="col-lg-12">
             <div class="frame">
               <h2>작성</h2>
               <hr>
@@ -152,7 +197,7 @@
                 </div>
             </div>
         </div>
-        
+         --%>
         
 </body>
 </html>
