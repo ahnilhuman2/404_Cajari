@@ -89,6 +89,7 @@ public class ReviewController extends HttpServlet {
 				viewPage = "review_updateOk.jsp";
 				break;
 			}
+			break;
 			
 		case "/review/review_delete":
 			switch(method) {

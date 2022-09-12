@@ -143,7 +143,7 @@
 	                        <tr>
 	                            <td>${dto.id }</td>
 	                            <td><a href="review_detail?id=${dto.id }">${dto.subject }</a></td>
-	                            <td>${dto.parking.parking_name }</td>
+	                            <td>${dto.parking_write }</td>
 	                            <td>${dto.user.username }</td>
 	                            <td>${dto.viewcnt }</td>
 	                            <td>${dto.regDateTime }</td>

@@ -2,22 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.ReviewWriteDAO">
 	
-	<resultMap type="domain.ParkingDTO" id="mapParking">
-		<result column="id" property="id"/>
-		<result column="addr" property="addr"/>
-		<result column="weekend_begin_time" property="weekend_begin_time"/>
-		<result column="weekend_end_time" property="weekend_end_time"/>
-		<result column="weekday_begin_time" property="weekday_begin_time"/>
-		<result column="weekday_end_time" property="weekday_end_time"/>
-		<result column="holiday_begin_time" property="holiday_begin_time"/>
-		<result column="holiday_end_time" property="holiday_end_time"/>
-		<result column="holiday_pay_nm" property="holiday_pay_nm"/>
-		<result column="fulltime_monthly" property="fulltime_monthly"/>
-		<result column="weekend_pay_nm" property="weekend_pay_nm"/>
-		<result column="saturday_pay_nm" property="saturday_pay_nm"/>
-		<result column="tel" property="tel"/>
-		<result column="parking_name" property="parking_name"/>
-	</resultMap>
+
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
 		<result column="id" property="id"/>
@@ -33,95 +18,70 @@
 
 	<resultMap type="domain.ReviewWriteDTO" id="mapReviewWrite">
 		<result column="id" property="id"/>
+		<result column="parking_write" property="parking_write"/>
 		<result column="subject" property="subject"/>
 		<result column="content" property="content"/>
 		<result column="viewcnt" property="viewcnt"/>
 		<result column="regdate" property="regDate"/>
 		<collection property="user" resultMap="mapUser"/>
-		<collection property="parking" resultMap="mapParking"/>
 	</resultMap>
 
 	<select id="select" resultMap="mapReviewWrite">
-		SELECT
+		SELECT 
 			r.id "id", 
+			r.parking_write "parking_write", 
 			r.subject "subject", 
 			r.content "content", 
 			r.viewcnt "viewcnt", 
-			r.regdate "r_regdate",
+			r.regdate "regdate",
 			u.id "id", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
 			u.authorities "authorities", 
-			u.regdate "u_regdate", 
+			u.regdate "regdate", 
 			u.car_name "car_name", 
-			u.car_number "car_number", 
-			u.phone_number "phone_number",
-			p.id "id", 
-			p.addr "addr", 
-			p.weekend_begin_time "weekend_begin_time", 
-			p.weekend_end_time "weekend_end_time", 
-			p.weekday_begin_time "weekday_begin_time", 
-			p.weekday_end_time "weekday_end_time", 
-			p.holiday_begin_time "holiday_begin_time", 
-			p.holiday_end_time "holiday_end_time", 
-			p.holiday_pay_nm "holiday_pay_nm", 
-			p.fulltime_monthly "fulltime_monthly", 
-			p.weekday_pay_nm "weekday_pay_nm", 
-			p.saturday_pay_nm "saturday_pay_nm", 
-			p.tel "tel", 
-			p.parking_name "parking_name"
-		FROM
-			t404_review_write r, t404_user u, t404_parkinglot p
-		WHERE
-			r.user_id  = u.id and r.parking_id = p.id
-		ORDER BY r.id DESC
+			u.car_number "car_number",
+			u.phone_number "phone_number"
+		FROM 
+			t404_review_write r, t404_user u
+		WHERE 
+			r.user_id  = u.id
+		ORDER BY 
+			r.id DESC
 	</select>
 	
 	<insert id="insert" flushCache="true"
 		parameterType="domain.ReviewWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_review_write
-			(subject, content, user_id, parking_id)
+			(subject, content, user_id, parking_write)
 		VALUES
-			(#{subject}, #{content}, #{user.id}, #{parking.id})
+			(#{subject}, #{content}, #{user.id}, #{parking_write})
 	</insert> 
 
 	<!-- 조회 -->
 	<select id="selectById" resultMap="mapReviewWrite">
-		SELECT
+		SELECT 
 			r.id "id", 
+			r.parking_write "parking_write", 
 			r.subject "subject", 
 			r.content "content", 
 			r.viewcnt "viewcnt", 
-			r.regdate "r_regdate",
+			r.regdate "regdate",
 			u.id "id", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
 			u.authorities "authorities", 
-			u.regdate "u_regdate", 
+			u.regdate "regdate", 
 			u.car_name "car_name", 
-			u.car_number "car_number", 
-			u.phone_number "phone_number",
-			p.id "id", 
-			p.addr "addr", 
-			p.weekend_begin_time "weekend_begin_time", 
-			p.weekend_end_time "weekend_end_time", 
-			p.weekday_begin_time "weekday_begin_time", 
-			p.weekday_end_time "weekday_end_time", 
-			p.holiday_begin_time "holiday_begin_time", 
-			p.holiday_end_time "holiday_end_time", 
-			p.holiday_pay_nm "holiday_pay_nm", 
-			p.fulltime_monthly "fulltime_monthly", 
-			p.weekday_pay_nm "weekday_pay_nm", 
-			p.saturday_pay_nm "saturday_pay_nm", 
-			p.tel "tel", 
-			p.parking_name "parking_name"
-		FROM
-			t404_review_write r, t404_user u, t404_parkinglot p
-		WHERE
-			r.user_id  = u.id and r.parking_id = p.id and r.id = #{id}
+			u.car_number "car_number",
+			u.phone_number "phone_number"
+		FROM 
+			t404_review_write r, t404_user u
+		WHERE 
+			r.user_id  = u.id
 		ORDER BY 
 			r.id DESC
 	</select>
@@ -142,13 +102,13 @@
 		UPDATE 
 			t404_review_write
 		SET
-			subject = #{subject}, content = #{content}
+			subject = #{subject}, content = #{content}, parking_write = #{parking_write}
 		WHERE 
-			id = #{r_id}
+			id = #{id}
 	</update>
 	
 	<delete id="deleteById" flushCache="true">
-		DELETE FROM t404_review_write WHERE id = #{param1]
+		DELETE FROM t404_review_write WHERE id = #{param1}
 	</delete>
 	
 	

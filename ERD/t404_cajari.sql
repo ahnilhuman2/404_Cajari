@@ -4,11 +4,11 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS t404_file;
 DROP TABLE IF EXISTS t404_reserve;
-DROP TABLE IF EXISTS t404_review_comment;
-DROP TABLE IF EXISTS t404_review_write;
 DROP TABLE IF EXISTS t404_parkinglot;
 DROP TABLE IF EXISTS t404_qna_comment;
 DROP TABLE IF EXISTS t404_qna_write;
+DROP TABLE IF EXISTS t404_review_comment;
+DROP TABLE IF EXISTS t404_review_write;
 DROP TABLE IF EXISTS t404_user;
 
 
@@ -95,7 +95,7 @@ CREATE TABLE t404_review_write
 (
 	id int NOT NULL AUTO_INCREMENT,
 	user_id int NOT NULL,
-	parking_id int NOT NULL,
+	parking_write varchar(80) NOT NULL,
 	subject varchar(200) NOT NULL,
 	content longtext,
 	viewcnt int DEFAULT 0 CHECK(viewcnt >= 0),
@@ -124,14 +124,6 @@ CREATE TABLE t404_user
 /* Create Foreign Keys */
 
 ALTER TABLE t404_reserve
-	ADD FOREIGN KEY (parking_id)
-	REFERENCES t404_parkinglot (id)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE t404_review_write
 	ADD FOREIGN KEY (parking_id)
 	REFERENCES t404_parkinglot (id)
 	ON UPDATE RESTRICT

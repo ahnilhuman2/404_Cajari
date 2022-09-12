@@ -3,6 +3,7 @@ SELECT id "id", username "username", password "password", phone_number "phone_nu
 
 ALTER TABLE t404_user AUTO_INCREMENT = 1;
 ALTER TABLE t404_review_write AUTO_INCREMENT = 1;
+ALTER TABLE t404_review_comment AUTO_INCREMENT = 1;
 ALTER TABLE t404_qna_write AUTO_INCREMENT = 1;
 ALTER TABLE t404_qna_comment AUTO_INCREMENT = 1;
 
@@ -21,11 +22,11 @@ INSERT INTO t404_parkinglot(id, addr, parking_name) VALUES
 ;
 
 -- review_write sample
-INSERT INTO t404_review_write(user_id, parking_id , subject, content) VALUES
-(1, 1, '제목입니다1', '네용입니다1'),
-(1, 1, '제목입니다2', '내용입니다2'),
-(3, 2, '제목입니다3', '내용입니다3'),
-(2, 3, '제목입니다4', '내용입니다4')
+INSERT INTO t404_review_write(user_id, parking_write, subject, content) VALUES
+(1, '강남주차장', '제목입니다1', '네용입니다1'),
+(1, '강남주차장', '제목입니다2', '내용입니다2'),
+(3, '강서주차장', '제목입니다3', '내용입니다3'),
+(2, '강동주차장', '제목입니다4', '내용입니다4')
 ;
 
 -- qna_write sample
@@ -59,11 +60,10 @@ SELECT * FROM t404_review_comment ORDER BY id DESC;
 SELECT * FROM t404_qna_comment ORDER BY id DESC;
 
 -- reivew 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
-SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
-	u.id, u.username, u.password, u.name, u.authorities, u.regdate, u.car_name, u.car_number, u.phone_number,
-	p.id, p.addr, p.weekend_begin_time, p.weekend_end_time, p.weekday_begin_time, p.weekday_end_time, p.holiday_begin_time, p.holiday_end_time, p.holiday_pay_nm, p.fulltime_monthly, p.weekday_pay_nm, p.saturday_pay_nm, p.tel, p.parking_name
-FROM t404_review_write r, t404_user u, t404_parkinglot p
-WHERE r.user_id  = u.id and r.parking_id = p.id
+SELECT r.id, r.parking_write, r.subject, r.content, r.viewcnt, r.regdate,
+	u.id, u.username, u.password, u.name, u.authorities, u.regdate, u.car_name, u.car_number, u.phone_number
+FROM t404_review_write r, t404_user u
+WHERE r.user_id  = u.id
 ORDER BY r.id DESC
 ;
 

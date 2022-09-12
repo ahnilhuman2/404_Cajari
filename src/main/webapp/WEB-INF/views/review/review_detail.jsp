@@ -169,7 +169,7 @@ function chkDelete() {
                     </div>    
                     <div class="mb-3 mt-3">
                       <label for="subject">주차장:</label>
-                      <span class="form-control" >${dto.parking.parking_name }</span>
+                      <span class="form-control" >${dto.parking_write }</span>
                   </div>    
                     <div class="mb-3 mt-3">
                         <label for="content">내용:</label>

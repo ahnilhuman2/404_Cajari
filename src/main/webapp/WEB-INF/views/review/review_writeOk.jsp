@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("등록 성공");
-			location.href = "detail?id=${dto.id}";
+			location.href = "review_detail?id=${dto.id}";
 		</script>
 	</c:otherwise>
 </c:choose>

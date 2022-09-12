@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class ReviewWriteDTO {
 	private int id; // t404_review_write id
 	private UserDTO user; // t404_user id
-	private ParkingDTO parking; // t404_parkinglot
+	private String parking_write;
 	private String subject; // t404_review_write subject
 	private String content; // t404_review_write content
 	private int viewcnt; // t404_review_write viewcnt

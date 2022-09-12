@@ -154,11 +154,15 @@
                     </div>    
                     <div class="mb-3 mt-3">
                         <label for="subject">제목:</label>
-                        <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject }" required>
+                        <input type="text" class="form-control" id="subject" name="subject" value="${dto.subject }" required>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="subject">주차장:</label>
+                        <input type="text" class="form-control" id="parkingName" name="parkingName" value="${dto.parking_write }" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="content">내용:</label>
-                        <textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+                        <textarea class="form-control" rows="5" id="content" name="content">${dto.content }</textarea>
                     </div>
         
                     <!-- 하단 링크 -->
