@@ -138,24 +138,25 @@
                       <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
                   	</div> --%>
                     
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingName" name="name" placeholder="name" value="${PRINCIPAL.username }" required>
-                      <label for="floatingPassword">이름</label>
+                    <div class="mb-3 mt-3">
+                      <label for="username">아이디</label>
+                      <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
+                   <!--  <input type="text" class="form-control" id="name" name="name" placeholder="name" value="${PRINCIPAL.username }" required>  -->
                     </div>
                     
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingSubject" name="subject" placeholder="subject" required>
-                      <label for="floatingPassword">제목</label>
+                    <div class="mb-3 mt-3">
+                      <label for="subject">제목</label>
+                      <input type="text" class="form-control" id="subject" name="subject" placeholder="subject" required>
                     </div>
                     
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingPassword" name="parkingName" placeholder="parkingName" required>
-                      <label for="floatingPassword">주차장</label>
+                    <div class="mb-3 mt-3">
+                      <label for="parkingName">주차장</label>
+                      <input type="text" class="form-control" id="password" name="parkingName" placeholder="parkingName" required>
                     </div>
                     
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingPassword" name="content" placeholder="content" required>
-                      <label for="floatingPassword">내용</label>
+                    <div class="mb-3 mt-3">
+                      <label for="content">내용</label>
+                      <textarea class="form-control" rows="5" id="content" name="content" placeholder="content" required></textarea>
                     </div>
                     
                     

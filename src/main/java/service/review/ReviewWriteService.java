@@ -20,18 +20,23 @@ public class ReviewWriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String name = request.getParameter("name");
+		
 		String subject = request.getParameter("subject");
 		String parkingName = request.getParameter("parkingName");
 		String content = request.getParameter("content");
+		
+		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+		String parking = parkingName;
 
 		ReviewWriteDTO dto = new ReviewWriteDTO();
 		
-		System.out.println("aaaaaaaaaaaaaa");
+		System.out.println(user);
+		System.out.println(parking);
 		System.out.println(subject);
 		System.out.println(parkingName);
 		System.out.println(content);
 		
+		dto.setUser(user);
 		dto.setParking(null);
 		dto.setSubject(subject);
 		dto.setContent(content);

@@ -77,6 +77,7 @@
 			r.user_id  = u.id and r.parking_id = p.id
 		ORDER BY r.id DESC
 	</select>
+	
 	<insert id="insert" flushCache="true"
 		parameterType="domain.ReviewWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
