@@ -170,7 +170,7 @@ img {
 		               			<span class="align-items-center badge bg-light"><p class="text-dark">${sessionScope.PRINCIPAL.authorities }</p>
 			                		<h6 class="text-dark"><span class="text-dark">${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })</span>님 환영합니다</h6>	
 		                		<div class="text-center">
-			                  		<form action="${pageContext.request.contextPath }/mypage/my_information" method="POST">
+			                  		<form action="${pageContext.request.contextPath }/mypage" method="GET">
 			                        	<button type="submit" class="btn btn-outline-dark" style="float: right;">mypage</button>
 			                  		</form>
 			                  		<form action="${pageContext.request.contextPath }/cover" method="POST">                	
