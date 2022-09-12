@@ -49,8 +49,8 @@ INSERT INTO t404_review_comment(review_write_id, user_id, content) VALUES
 INSERT INTO t404_qna_comment(qna_id, user_id, content) VALUES
 (1, 1, '1. user1이 1번글에 댓글 작성.'),
 (2, 1, '2. user1이 1번글에 댓글 작성.'),
-(5, 2, '3. user1이 2번글에 댓글 작성.'),
-(8, 3, '4. user1이 2번글에 댓글 작성.')
+(4, 2, '3. user1이 2번글에 댓글 작성.'),
+(3, 3, '4. user1이 2번글에 댓글 작성.')
 ;
 
 SELECT * FROM t404_user ORDER BY id DESC;
