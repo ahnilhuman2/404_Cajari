@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("수정 성공");
-			location.href = "detail?id=${dto.id}";
+			location.href = "qna_detail?id=${dto.id}";
 		</script>
 	</c:otherwise>
 </c:choose>

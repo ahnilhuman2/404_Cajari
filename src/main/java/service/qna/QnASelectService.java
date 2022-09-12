@@ -50,9 +50,6 @@ public class QnASelectService implements Service {
 //				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
 //				return;
 //			}			
-			
-			request.setAttribute("list", list);
-			
 			sqlSession.commit();
 		} catch (SQLException e) {  
 			e.printStackTrace();

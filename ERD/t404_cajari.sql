@@ -63,7 +63,7 @@ CREATE TABLE t404_qna_write
 	user_id int NOT NULL,
 	subject varchar(200) NOT NULL,
 	content longtext NOT NULL,
-	viewcnt int,
+	viewcnt int DEFAULT 0 CHECK(viewcnt >= 0),
 	regdate datetime DEFAULT now(),
 	PRIMARY KEY (id)
 );

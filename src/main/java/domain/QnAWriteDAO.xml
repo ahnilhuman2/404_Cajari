@@ -46,19 +46,24 @@
 		<collection property="user" resultMap="mapUser"/>
 	</resultMap>
 	
+	<select id="select" resultMap="mapQnAWrite">
+		<include refid="SELECTWRITE"/>
+		ORDER BY q.id DESC
+	</select>
+	
 	<insert id="insert" flushCache="true"
 		parameterType="domain.QnAWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_qna_write
-			(user_id, subject, content)
+			(subject, content, user_id)
 		VALUES
-			(#{user.id}, #{subject}, #{content})
+			(#{subject}, #{content}, #{user.id})
 	</insert> 
 	
 	<!-- 조회 -->
 	<select id="selectById" resultMap="mapQnAWrite">
 		<include refid="SELECTWRITE"/>
-			AND q.id = #{id}
+			<!--AND q.id = #{id}  -->
 		ORDER BY 
 			q.id DESC
 	</select>
@@ -66,16 +71,12 @@
 	<!-- 조회수 증가 -->
 	<update id="incViewCnt" flushCache="true">
 		UPDATE 
-			t404_review_write
+			t404_qna_write
 		SET
 			viewcnt = viewcnt + 1
-		WHERE id = #{param1}
+		WHERE id = #{id}
 	</update>
 	
-	<select id="select" resultMap="mapQnAWrite">
-		<include refid="SELECTWRITE"/>
-		ORDER BY q.id DESC
-	</select>
 	
 	<!-- 글수정 -->
 	<update id="update" flushCache="true"
@@ -90,11 +91,10 @@
 	
 	<!-- 글삭제 -->
 	<delete id="deleteById" flushCache="true">
-		DELETE FROM t404_qna_write WHERE id = #{id]
+		DELETE FROM t404_qna_write WHERE id = #{id}
 	</delete>
 	
-	<!-- 페이징 용 쿼리 -->
-	<!-- 
+	
 	
 	<select id="selectFromRow" resultMap="mapQnAWrite">
 		<include refid="SELECTWRITE"/>
@@ -105,6 +105,6 @@
 	<select id="countAll" resultType="int">
 		SELECT count(*) FROM t404_qna_write
 	</select>
-	 -->
+	 
 
 </mapper>

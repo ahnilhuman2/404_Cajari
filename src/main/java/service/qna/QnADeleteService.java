@@ -32,13 +32,13 @@ public class QnADeleteService implements Service {
 			dao = sqlSession.getMapper(QnAWriteDAO.class);
 			
 			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
-			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-			List<QnAWriteDTO> list = dao.selectById(id);
-			UserDTO writeUser = list.get(0).getUser();
-			if(loggedUser.getId() != writeUser.getId()) {
-				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
-				return;
-			}	
+//			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+//			List<QnAWriteDTO> list = dao.selectById(id);
+//			UserDTO writeUser = list.get(0).getUser();
+//			if(loggedUser.getId() != writeUser.getId()) {
+//				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
+//				return;
+//			}	
 			
 			cnt = dao.deleteById(id);
 			

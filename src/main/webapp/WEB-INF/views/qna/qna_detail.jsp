@@ -186,10 +186,10 @@ function chkDelete() {
          --%>
         
         			<!-- 하단 링크 -->
-                    <a class="btn btn-outline-dark" href="review_update?id=${dto.id }">수정</a>
-                    <a class="btn btn-outline-dark" href="review_list">목록</a>
+                    <a class="btn btn-outline-dark" href="qna_update?id=${dto.id }">수정</a>
+                    <a class="btn btn-outline-dark" href="qna_list">목록</a>
                     <button type="button" class="btn btn-outline-dark" onclick="chkDelete()">삭제</button>
-                    <a class="btn btn-outline-dark" href="review_write">작성</a>
+                    <a class="btn btn-outline-dark" href="qna_write">작성</a>
                     <!-- 하단 링크 --> 
         
                 </section>

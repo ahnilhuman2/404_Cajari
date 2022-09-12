@@ -142,7 +142,6 @@
                         <tr>
                             <th>#</th>
                             <th>제목</th>
-                            <th>주차장</th>
                             <th>작성자</th>
                             <th>조회수</th>
                             <th>작성일</th>
@@ -152,7 +151,7 @@
                     	<c:forEach var="dto" items="${list }">
 	                        <tr>
 	                            <td>${dto.id }</td>
-	                            <td><a href="detail?id=${dto.id }">${dto.subject }</a></td>
+	                            <td><a href="qna_detail?id=${dto.id }">${dto.subject }</a></td>
 	                            <td>${dto.user.username }</td>
 	                            <td>${dto.viewcnt }</td>
 	                            <td>${dto.regdate }</td>

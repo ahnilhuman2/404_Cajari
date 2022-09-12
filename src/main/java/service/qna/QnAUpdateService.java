@@ -37,11 +37,10 @@ public class QnAUpdateService implements Service {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(QnAWriteDAO.class);
 			
-			
-			
 			cnt = dao.update(dto);
 			
 			sqlSession.commit();
+			
 		} catch (SQLException e) {  
 			e.printStackTrace();
 		} finally {

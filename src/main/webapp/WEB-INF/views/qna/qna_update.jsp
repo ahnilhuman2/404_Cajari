@@ -6,7 +6,7 @@
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
-			alert("리뷰가 삭제되거나 없습니다.");
+			alert("QnA가 삭제되거나 없습니다.");
 			history.back();
 		</script>
 	</c:when>
@@ -21,9 +21,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>review - ${dto.subject }</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>QnA - ${dto.subject }</title>
+</head>
+    
     <style>
 
     /*profile*/
@@ -147,7 +149,7 @@
                     </div>    
                     <div class="mb-3 mt-3">
                         <label for="subject">제목:</label>
-                        <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" value="{dto.subject }" required>
+                        <input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject }" required>
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="content">내용:</label>
@@ -162,8 +164,9 @@
         
                 </form>
             </div>
-             </div><!-- end frame -->
-              </div><!-- end forth grid -->
+             </div>
+              </div>
+             </div>
         </body><!-- end body -->
         
 	</html>

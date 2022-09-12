@@ -93,9 +93,9 @@ public class QnAController extends HttpServlet {
 					service = new QnASelectService();
 					service.execute(request, response);
 					// 위에서 redirect 되면 forward 진행 안함.
-					if(!response.isCommitted()) {
+//					if(!response.isCommitted()) {
 						viewPage = "qna_update.jsp";
-					}
+//					}
 					break;
 				case "POST":
 					service = new QnAUpdateService();
@@ -103,9 +103,10 @@ public class QnAController extends HttpServlet {
 					viewPage = "qna_updateOk.jsp";
 					break;
 				}
+				break;
 //			}
 			
-		case "/qna/review_delete":
+		case "/qna/qna_delete":
 			// 로그인한 사람만 접근 가능
 //			if(C.securityCheck(request, response, null)) {
 				switch(method) {
@@ -113,9 +114,9 @@ public class QnAController extends HttpServlet {
 					// 작성자가 아닌경우 Service 안에서 redirect 발생
 					service = new QnADeleteService();
 					service.execute(request, response);
-					if(!response.isCommitted()) {
+//					if(!response.isCommitted()) {
 						viewPage = "qna_deleteOk.jsp";
-					}
+//					}
 					break;
 				}
 //			}
