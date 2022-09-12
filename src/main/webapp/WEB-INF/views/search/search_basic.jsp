@@ -186,5 +186,80 @@ img {
 			</div> 
 		</div>
 	</header>
+	
+	        <div class="col-lg-12">
+            <div style="text-align:center">
+                <h1>Cajari</h1>
+                <h3>검색으로 찾기</h3>
+            </div>
+        </div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+				</div>
+				
+				<div class="col-lg-4">
+					<div class="input-group mb-3">
+			        <input type="text" id="inputaddress" class="form-control" placeholder="지역을 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+          			<button class="btn btn-dark" type="button" id="button-addon2" onclick="test1()">찾기</button> 
+          			</div>    
+				</div>
+				
+				<div class="col-lg-4">
+				</div>
+				
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+				</div>
+				
+				<div class="col-lg-4">
+			        <table id="table" class="table">
+			          <thead>
+			            <tr>
+			                <th>주차장</th>
+			                <th>주소</th>
+			            </tr>
+			          </thead>
+			          <tbody id="tbody">
+			              
+			          </tbody>
+			        </table>     
+				</div>
+				
+				<div class="col-lg-4">
+				</div>
+				
+			</div>
+		</div>
+		<script>
+	    function test1() {
+	      let address = $("#inputaddress").val()
+	      if (!address) {
+	        return
+	      }
+	      $.ajax({
+	        url: "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/ /" + address + "/",
+	        type: "get",
+	        crossDomain: true,
+	        success: function (json, status) {
+	          tbody = $("#tbody")
+	          tbody.empty();
+	          json.GetParkInfo.row.forEach(function (r) {
+	            console.log(r)
+	            markup = "<tr>";
+	            markup += "<td>" + r.PARKING_NAME + "</td>";
+	            markup += "<td>" + r.ADDR + "</td>";
+	            markup += "</tr>";
+	            tbody.append(markup)
+	
+	          })
+	        }
+	      });
+	    }
+  </script>
 </body>
 </html>
