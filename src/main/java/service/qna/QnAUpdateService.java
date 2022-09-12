@@ -20,7 +20,6 @@ public class QnAUpdateService implements Service {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		// ※ 이 단계에서 parameter 검증 해야 한다.
 		
 		SqlSession sqlSession = null;
 		QnAWriteDAO dao = null;		
@@ -28,7 +27,7 @@ public class QnAUpdateService implements Service {
 		int cnt = 0;
 		
 		QnAWriteDTO dto = QnAWriteDTO.builder()
-				.q_id(id)
+				.id(id)
 				.subject(subject)
 				.content(content)
 				.build()
@@ -37,6 +36,8 @@ public class QnAUpdateService implements Service {
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(QnAWriteDAO.class);
+			
+			
 			
 			cnt = dao.update(dto);
 			

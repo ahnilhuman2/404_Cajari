@@ -24,8 +24,8 @@ public interface QnAWriteDAO {
 	
 	// 페이징 
 	// 몇번째(from) 부터 몇개(rows) 를 SELECT
-	public List<QnAWriteDTO> selectFromRow(int from, int rows) throws SQLException;
-		
-	// 전체 글의 개수
-	public int countAll() throws SQLException;
+//	public List<QnAWriteDTO> selectFromRow(int from, int rows) throws SQLException;
+//		
+//	// 전체 글의 개수
+//	public int countAll() throws SQLException;
 }

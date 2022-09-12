@@ -123,12 +123,12 @@ public class QnAController extends HttpServlet {
 			
 		// 페이징
 		// pageRows 변경시 동작
-		case "/board/pageRows":
-		    int page = Integer.parseInt(request.getParameter("page"));
-		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
-		    request.getSession().setAttribute("pageRows", pageRows);
-			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
-			break;
+//		case "/board/pageRows":
+//		    int page = Integer.parseInt(request.getParameter("page"));
+//		    Integer pageRows = Integer.parseInt(request.getParameter("pageRows"));
+//		    request.getSession().setAttribute("pageRows", pageRows);
+//			response.sendRedirect(request.getContextPath() + "/board/list?page=" + page);
+//			break;
 	
 		} // end switch
 		

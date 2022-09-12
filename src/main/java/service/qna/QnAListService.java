@@ -47,15 +47,16 @@ public class QnAListService implements Service {
 		
 		List<QnAWriteDTO> list = null;
 		
-		int startPage = 1;
-		int endPage = 10;
+//		int startPage = 1;
+//		int endPage = 10;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(QnAWriteDAO.class);
 			
-			//pagination 없다 가정하고 만든 임시 코드
 			list = dao.select();
+			// "list" 란  name 으로 request 에 list 저장
+			// request 에 담아서 컨트롤러에 전달
 			request.setAttribute("list", list);
 			
 			

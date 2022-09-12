@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="domain.QnaWriteDAO">
+<mapper namespace="domain.QnAWriteDAO">
 
 	<!-- 반복해서 사용될 쿼리문은 sql 태그로 정의 include 태그로 가져다 쓸수 있다 -->
 	<sql id="SELECTWRITE">
 		SELECT
-			q.id "q_id", 
+			q.id "id", 
 			q.subject "subject", 
 			q.content "content", 
 			q.viewcnt "viewcnt", 
-			q.regdate "q_regdate",
-			q.id "q_id", 
+			q.regdate "regdate",
+			u.id "id", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
 			u.authorities "authorities", 
-			u.regdate "u_regdate", 
+			u.regDate "regDate", 
 			u.car_name "car_name", 
 			u.car_number "car_number", 
 			u.phone_number "phone_number"
@@ -26,49 +26,43 @@
 	</sql>
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="u_id" property="id"/>
+		<result column="id" property="id"/>
 		<result column="username" property="username"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>
 		<result column="authorities" property="authorities"/>
-		<result column="u_regdate" property="regDate"/>
+		<result column="regDate" property="regDate"/>
 		<result column="car_name" property="car_name"/>
 		<result column="car_number" property="car_number"/>
 		<result column="phone_number" property="phone_number"/>
 	</resultMap>
 
 	<resultMap type="domain.QnAWriteDTO" id="mapQnAWrite">
-		<result column="q_id" property="q_id"/>
+		<result column="id" property="id"/>
 		<result column="subject" property="subject"/>
 		<result column="content" property="content"/>
 		<result column="viewcnt" property="viewcnt"/>
-		<result column="q_regdate" property="q_regDate"/>
+		<result column="regdate" property="regdate"/>
 		<collection property="user" resultMap="mapUser"/>
 	</resultMap>
-
-	<select id="select" resultMap="mapQnAWrite">
-		<include refid="SELECTWRITE"/>
-		ORDER BY q.id DESC
-	</select>
 	
 	<insert id="insert" flushCache="true"
 		parameterType="domain.QnAWriteDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_qna_write
-			(name, subject, content)
+			(user_id, subject, content)
 		VALUES
-			(#{name}, #{subject}, #{content})
+			(#{user.id}, #{subject}, #{content})
 	</insert> 
-
+	
 	<!-- 조회 -->
 	<select id="selectById" resultMap="mapQnAWrite">
 		<include refid="SELECTWRITE"/>
-			AND q.id = #{q_id}
+			AND q.id = #{id}
 		ORDER BY 
 			q.id DESC
 	</select>
-	
-	
+
 	<!-- 조회수 증가 -->
 	<update id="incViewCnt" flushCache="true">
 		UPDATE 
@@ -78,6 +72,11 @@
 		WHERE id = #{param1}
 	</update>
 	
+	<select id="select" resultMap="mapQnAWrite">
+		<include refid="SELECTWRITE"/>
+		ORDER BY q.id DESC
+	</select>
+	
 	<!-- 글수정 -->
 	<update id="update" flushCache="true"
 		parameterType="domain.QnAWriteDTO">
@@ -86,15 +85,17 @@
 		SET
 			subject = #{subject}, content = #{content}
 		WHERE 
-			id = #{q_id}
+			id = #{id}
 	</update>
 	
 	<!-- 글삭제 -->
 	<delete id="deleteById" flushCache="true">
-		DELETE FROM t404_qna_write WHERE id = #{q_id]
+		DELETE FROM t404_qna_write WHERE id = #{id]
 	</delete>
 	
 	<!-- 페이징 용 쿼리 -->
+	<!-- 
+	
 	<select id="selectFromRow" resultMap="mapQnAWrite">
 		<include refid="SELECTWRITE"/>
 		ORDER BY q.id DESC
@@ -104,5 +105,6 @@
 	<select id="countAll" resultType="int">
 		SELECT count(*) FROM t404_qna_write
 	</select>
+	 -->
 
 </mapper>

@@ -47,7 +47,7 @@ public class QnAWriteService implements Service {
 			dao = sqlSession.getMapper(QnAWriteDAO.class); 
 			// 글 작성하고 auto-generated된 id값을 dto 에 받아옴
 			cnt = dao.insert(dto);  
-			System.out.println("글작성 성공 " + cnt + " : " + dto.getQ_id());
+			System.out.println("글작성 성공 " + cnt + " : " + dto.getId());
 			
 			// 트랜잭션 끝 (null 반환)
 			sqlSession.commit();  

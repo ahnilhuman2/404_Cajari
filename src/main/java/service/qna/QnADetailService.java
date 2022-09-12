@@ -22,10 +22,10 @@ public class QnADetailService implements Service {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		// 페이징 관련
-	    HttpSession session = request.getSession();
-	    Integer page = (Integer)session.getAttribute("page");
-	    if(page == null) page = 1;
-	    request.setAttribute("page", page);
+//	    HttpSession session = request.getSession();
+//	    Integer page = (Integer)session.getAttribute("page");
+//	    if(page == null) page = 1;
+//	    request.setAttribute("page", page);
 	    
 	    SqlSession sqlSession = null;
 		QnAWriteDAO dao = null;		
