@@ -31,6 +31,7 @@
     <mapper resource="domain/ReviewWriteDAO.xml"/>
     <mapper resource="domain/ParkingDAO.xml"/>
     <mapper resource="domain/QnAWriteDAO.xml"/>
+    <mapper resource="domain/QnACommentDAO.xml"/>
   </mappers>
 
 </configuration>
