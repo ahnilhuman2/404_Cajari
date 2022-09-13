@@ -77,8 +77,8 @@ ORDER BY q.id DESC
 
 # 페이징
 -- 다량의 데이터
-INSERT INTO t404_review_write (user_id, parking_id, subject, content)
-SELECT user_id, parking_id, subject, content FROM t404_review_write;
+INSERT INTO t404_review_write (user_id, parking_write, subject, content)
+SELECT user_id, parking_write, subject, content FROM t404_review_write;
 
 SELECT count(*) FROM t404_review_write;
 
