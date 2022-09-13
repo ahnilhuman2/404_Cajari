@@ -9,6 +9,9 @@ public interface ReserveDAO {
 	
 	// 특정 id 글 읽어 (SELECT)
 	public abstract List<ReserveDTO> selectById(int id) throws SQLException;
+	
+	
+	public abstract List<ReserveDTO> selectByUser(int id) throws SQLException;
 		
 	
 	// 전체 SELECT

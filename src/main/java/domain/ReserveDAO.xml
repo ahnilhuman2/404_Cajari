@@ -91,4 +91,12 @@
 		ORDER BY 
 			r.id DESC
 	</select>
+	
+	<!-- 조회 -->
+	<select id="selectByUser" resultMap="mapReserve">
+		<include refid="SELECTRESERVE"/>
+			AND r.id = u.id
+		ORDER BY 
+			r.id DESC
+	</select>
 </mapper>
