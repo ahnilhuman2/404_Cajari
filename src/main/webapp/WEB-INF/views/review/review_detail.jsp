@@ -186,19 +186,14 @@
 							</div>
 
 							<!-- 하단 링크 -->
-							<c:if test="${fn:contains(PRINCIPAL.authorities, 'PREMIUM') && PRINCIPAL.id == dto.user.id }">
-								<a class="btn btn-outline-dark"
-									href="review_update?id=${dto.id }">수정</a>
-							</c:if>
-							<a class="btn btn-outline-dark" href="review_list">목록</a>
-							<c:if
-								test="${fn:contains(PRINCIPAL.authorities, 'PREMIUM') && PRINCIPAL.id == dto.user.id }">
-								<button type="button" class="btn btn-outline-dark"
-									onclick="chkDelete()">삭제</button>
-							</c:if>
-							<c:if test="${fn:contains(PRINCIPAL.authorities, 'PREMIUM') }">
-								<a class="btn btn-outline-dark" href="review_write">작성</a>
-							</c:if>
+
+							<a class="btn btn-outline-dark"
+								href="review_update?id=${dto.id }">수정</a> <a
+								class="btn btn-outline-dark" href="review_list">목록</a>
+							<button type="button" class="btn btn-outline-dark"
+								onclick="chkDelete()">삭제</button>
+							<a class="btn btn-outline-dark" href="review_write">작성</a>
+
 							<!-- 하단 링크 -->
 
 						</section>
