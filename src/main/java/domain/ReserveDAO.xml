@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="domain.ReserveDAO"></mapper>
+
+	<sql id="SELECTREVIEWWRITE">
+		SELECT 
+			r.id "id", 
+			r.regdate "regdate",
+			r.checkin_time "checkin_time", 
+			u.id "id", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number",
+			u.phone_number "phone_number"
+		FROM 
+			t404_reserve r, t404_user u
+		WHERE 
+			r.user_id  = u.id
+	</sql>
