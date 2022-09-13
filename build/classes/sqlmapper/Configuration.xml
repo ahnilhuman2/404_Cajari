@@ -32,6 +32,7 @@
     <mapper resource="domain/ParkingDAO.xml"/>
     <mapper resource="domain/QnAWriteDAO.xml"/>
     <mapper resource="domain/QnACommentDAO.xml"/>
+    <mapper resource="domain/FileDAO.xml"/>
   </mappers>
 
 </configuration>

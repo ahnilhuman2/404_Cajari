@@ -92,40 +92,40 @@ SELECT * FROM  t404_review_write ORDER BY id DESC LIMIT 10, 10; -- 2page
 -- --------------------------------------------
 -- 파일첨부
 
-SELECT * FROM t4_file;
+SELECT * FROM t404_file;
 
 --  첨부 파일이 있는 게시글 조회
-SELECT w.id "w_id", f.id "f_id", f.source, f.file
-FROM t4_write w, t4_file f
-WHERE w.id  = f.write_id
-ORDER BY w.id DESC
+SELECT r.id "r_id", f.id "f_id", f.source, f.file
+FROM t404_review_write r, t404_file f
+WHERE r.id  = f.review_write_id
+ORDER BY r.id DESC
 ;
 
 -- 특정 글 (write.id)의 첨부파일 1개 INSERT (작성, 수정)
-INSERT INTO t4_file (source, file, write_id)
+INSERT INTO t404_file (source, file, write_id)
 VALUES (?, ?, ?)
 ;
 
 -- 특정 글 (write_id)의 첨부파일(들)을 SELECT  (조회, 수정)
-SELECT id, source, file, write_id
-FROM t4_file
-WHERE write_id = 1
+SELECT id, source, file, review_write_id
+FROM t404_file
+WHERE review_write_id = 1
 ORDER BY id DESC
 ;
 
 
 -- 특정 첨부파일 (file.id) 하나를 SELECT
-SELECT id, source, file, write_id
-FROM t4_file
+SELECT id, source, file, review_write_id
+FROM t404_file
 WHERE id = ?
 ;
 
 -- 특정 첨부파일 (file.id) 하나를 DELETE (수정)
-DELETE FROM t4_file WHERE id = ?
+DELETE FROM t404_file WHERE id = ?
 ;
 
 -- 특정 글의 (write_id) 의 첨부파일(들)을  DELETE  (삭제)
-DELETE FROM t4_file WHERE write_id = ?
+DELETE FROM t404_file WHERE review_write_id = ?
 ;
 
 # -------------------------------------------------------

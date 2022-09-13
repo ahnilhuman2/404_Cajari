@@ -190,8 +190,62 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="container mt-1">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<li class="page-item disabled"><a class="page-link">Previous</a>
+					</li>
+					<%-- << 표시 여부 --%>
+					<c:if test="${page > 1 }">
+						<li class="page-item"><a class="page-link" href="${url }"
+							title="처음"><i class='fas fa-angle-double-left'></i></a></li>
+					</c:if>
+
+					<%-- < 표시 여부 --%>
+					<c:if test="${startPage > 1 }">
+						<li class="page-item"><a class="page-link"
+							href="${url }?page=${startPage - 1 }"><i
+								class='fas fa-angle-left'></i></a></li>
+					</c:if>
+
+					<%-- 페이징 안의 '숫자' 표시 --%>
+					<c:if test="${totalPage > 1 }">
+						<c:forEach var="k" begin="${startPage }" end="${endPage }">
+							<c:choose>
+								<c:when test="${k != page }">
+									<li class="page-item"><a class="page-link"
+										href="${url }?page=${k }">${k }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item active"><a class="page-link"
+										href="javascript:void(0);">${k }</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</c:if>
+
+					<%-- > 표시 여부 --%>
+					<c:if test="${totalPage > endPage }">
+						<li class="page-item"><a class="page-link"
+							href="${url }?page=${endPage + 1 }"><i
+								class='fas fa-angle-right'></i></a></li>
+					</c:if>
+
+					<%-- >> 표시 여부 --%>
+					<c:if test="${page < totalPage }">
+						<li class="page-item"><a class="page-link"
+							href="${url }?page=${totalPage }"><i
+								class='fas fa-angle-double-right'></i></a></li>
+					</c:if>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/review/review_list?page=${page + 1}">Next</a></li>
+
+				</ul>
+			</nav>
+		</div>
+
 	</div>
-	</div>
+
 
 
 </body>

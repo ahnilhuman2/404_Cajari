@@ -183,7 +183,7 @@
 							<button type="submit" class="btn btn-outline-dark">수정완료</button>
 							<button type="button" class="btn btn-outline-dark"
 								onclick="history.back()">이전으로</button>
-							<a class="btn btn-outline-dark" href="review_list">목록</a>
+							<a class="btn btn-outline-dark" href="review_list?page=${page != null ? page : '' }">목록</a>
 							<!-- 하단 링크 -->
 
 						</form>

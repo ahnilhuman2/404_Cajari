@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -22,6 +23,12 @@ public class ReviewSelectService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println(id);
+		
+		HttpSession session = request.getSession();
+		Integer page = (Integer)session.getAttribute("page");
+		if(page == null) page = 1;
+		request.setAttribute("page", page);
+		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
 		
