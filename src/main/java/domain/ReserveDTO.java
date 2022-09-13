@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class ReserveDTO {
     private int id;
     private UserDTO user; 
-    private ParkingDTO parking_name;
+    private ParkingDTO parking;
     private LocalDateTime regDate; 
     private String checkin_time;
     

@@ -33,6 +33,7 @@
     <mapper resource="domain/QnAWriteDAO.xml"/>
     <mapper resource="domain/QnACommentDAO.xml"/>
     <mapper resource="domain/FileDAO.xml"/>
+    <mapper resource="domain/ReserveDAO.xml"/>
   </mappers>
 
 </configuration>

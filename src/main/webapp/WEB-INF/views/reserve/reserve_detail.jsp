@@ -152,13 +152,12 @@
 						<hr>
 						<div class="mb-3 mt-3 clearfix">
 							<span class="float-start me-2">id: ${dto.id }</span> <span
-								class="float-end ms-4">작성일: ${dto.regDateTime }</span> <span
-								class="float-end">조회수: ${dto.viewcnt }</span>
+								class="float-end ms-4">작성일: ${dto.regDateTime }</span>
 						</div>
 
 						<section>
 
-							<form name="frmDelete" action="review_delete" method="POST">
+							<form name="frmDelete" action="reserve_delete" method="POST">
 								<input type="hidden" name="id" value="${dto.id }">
 							</form>
 
@@ -166,10 +165,10 @@
 								<label for="name">작성자:</label> <span class="form-control">${dto.user.username }</span>
 							</div>
 							<div class="mb-3 mt-3">
-								<label for="subject">주차장:</label> <span class="form-control">el 주차장명</span>
+								<label for="subject">주차장:</label> <span class="form-control">${dto.parking.parking_name }</span>
 							</div>
 							<div class="mb-3 mt-3">
-								<label for="subject">입차시간:</label> <span class="form-control">el 시간자리</span>
+								<label for="subject">입차시간:</label> <span class="form-control">${dto.checkin_time }</span>
 							</div>
 
 							<!-- 하단 링크 -->

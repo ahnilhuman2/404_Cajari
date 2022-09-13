@@ -141,7 +141,7 @@
 						<hr>
 
 						<form method="POST"
-							action="${pageContext.request.contextPath }/review/review_write">
+							action="${pageContext.request.contextPath }/reserve/reserve_write">
 							<div class="mb-3">
 								<label for="username">아이디</label> <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
 							</div>

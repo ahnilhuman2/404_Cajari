@@ -58,6 +58,7 @@ SELECT * FROM t404_review_write ORDER BY id DESC;
 SELECT * FROM t404_qna_write ORDER BY id DESC;
 SELECT * FROM t404_review_comment ORDER BY id DESC;
 SELECT * FROM t404_qna_comment ORDER BY id DESC;
+SELECT * FROM t404_reserve ORDER BY id DESC;
 
 -- reivew 글 조회 (작성자 포함 JOIN)SELECT r.id, r.subject, r.content, r.viewcnt, r.regdate,
 SELECT r.id, r.parking_write, r.subject, r.content, r.viewcnt, r.regdate,
@@ -100,6 +101,38 @@ FROM t404_review_write r, t404_file f
 WHERE r.id  = f.review_write_id
 ORDER BY r.id DESC
 ;
+
+SELECT 
+			r.id "id", 
+			r.regdate "regdate",
+			r.checkin_time "checkin_time", 
+			u.id "userid", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number",
+			u.phone_number "phone_number",
+			p.id "parkid", 
+			p.addr "addr", 
+			p.weekend_begin_time "weekend_begin_time", 
+			p.weekend_end_time "weekend_end_time", 
+			p.weekday_begin_time "weekday_begin_time", 
+			p.weekday_end_time "weekday_end_time", 
+			p.holiday_begin_time "holiday_begin_time", 
+			p.holiday_end_time "holiday_end_time", 
+			p.holiday_pay_nm "holiday_pay_nm", 
+			p.fulltime_monthly "fulltime_monthly", 
+			p.weekday_pay_nm "weekday_pay_nm", 
+			p.saturday_pay_nm "saturday_pay_nm", 
+			p.tel "tel", 
+			p.parking_name "parking_name"
+		FROM 
+			t404_reserve r, t404_user u, t404_parkinglot p
+		WHERE 
+			r.user_id = u.id and r.parking_id = p.id;
 
 -- 특정 글 (write.id)의 첨부파일 1개 INSERT (작성, 수정)
 INSERT INTO t404_file (source, file, write_id)

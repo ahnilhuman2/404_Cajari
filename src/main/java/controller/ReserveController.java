@@ -13,6 +13,7 @@ import service.Service;
 import service.reserve.ReserveDeleteService;
 import service.reserve.ReserveDetailService;
 import service.reserve.ReserveListService;
+import service.reserve.ReserveWriteService;
 import service.review.ReviewDeleteService;
 import service.review.ReviewDetailService;
 import service.review.ReviewListService;
@@ -61,6 +62,7 @@ public class ReserveController extends HttpServlet {
 				break;
 				
 			case "POST":
+				service = new ReserveWriteService();
 				viewPage = "reserve_writeOk.jsp";
 				break;
 			}
