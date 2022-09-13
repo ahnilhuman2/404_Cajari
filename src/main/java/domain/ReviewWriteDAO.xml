@@ -10,7 +10,7 @@
 			r.content "content", 
 			r.viewcnt "viewcnt", 
 			r.regdate "regdate",
-			u.id "id", 
+			u.id "userid", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
@@ -26,7 +26,7 @@
 	</sql>
 
 	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="id" property="id"/>
+		<result column="userid" property="id"/>
 		<result column="username" property="username"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>

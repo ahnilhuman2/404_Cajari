@@ -15,6 +15,8 @@
 	rel="stylesheet" />
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 
 /*profile*/
@@ -140,8 +142,8 @@
 						<h1 class="h3 mb-3 fw-normal">작성</h1>
 						<hr>
 
-						<form method="POST"
-							action="${pageContext.request.contextPath }/review/review_write">
+						<form method="POST" enctype="Multipart/form-data"
+							action="review_write">
 							<div class="mb-3">
 								<label for="username">아이디</label> <span class="form-control">${PRINCIPAL.username }(${PRINCIPAL.name })</span>
 							</div>
@@ -164,7 +166,28 @@
 									name="content" required></textarea>
 							</div>
 
+							<div class="container mt-3 mb-3 border rounded">
+								<div class="mb-3 mt-3">
+									<label>첨부파일:</label>
+									<div id="files"></div>
+									<button type="button" id="btnAdd" class="btn btn-secondary">추가</button>
+								</div>
+							</div>
+							<script>
+			var i = 0;
+			$("#btnAdd").click(function(){
+			    $("#files").append(`
+			    			<div class="input-group mb-2">
+			   				<input class="form-control col-xs-3" type="file" name="upfile\${i}"/>
+			    			<button type="button" class="btn btn-outline-danger" onclick="$(this).parent().remove()">삭제</button>
+			    			</div>`);
+			    i++;
+			});
+			</script>
+
 							<button class="btn btn-outline-dark" type="submit">작성</button>
+							<a class="btn btn-outline-dark"
+								href="review_list?page=${page != null ? page : '' }">목록</a>
 
 						</form>
 					</div>

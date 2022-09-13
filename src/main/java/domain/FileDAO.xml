@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.FileDAO">
+
+<insert id="insert" flushCache="true"
+	parameterType="list">
+	INSERT INTO t404_file (source, file, review_write_id)
+	VALUES
+		<foreach collection="param1" item="e" separator=",">
+			(#{e.source}, #{e.file}, #{param2})
+		</foreach>
+
+</insert>
+
 </mapper>

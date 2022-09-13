@@ -140,4 +140,25 @@ ORDER BY c.id DESC
 ;
 
 
+		SELECT 
+			r.id "id", 
+			r.parking_write "parking_write", 
+			r.subject "subject", 
+			r.content "content", 
+			r.viewcnt "viewcnt", 
+			r.regdate "regdate",
+			u.id "id", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number",
+			u.phone_number "phone_number"
+		FROM 
+			t404_review_write r, t404_user u
+		WHERE 
+			r.user_id  = u.id
+			;
 

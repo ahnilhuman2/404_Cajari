@@ -43,8 +43,8 @@ public class ReviewSelectService implements Service {
 			
 			System.out.println(id);
 			System.out.println(request.getSession().getAttribute(C.PRINCIPAL));
-			System.out.println(list.get(0).getUser());
 			System.out.println(dao.selectById(id));
+			System.out.println(list.get(0).getUser());
 			
 			// 로그인 한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO logUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
