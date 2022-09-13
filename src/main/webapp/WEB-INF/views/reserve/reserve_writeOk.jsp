@@ -5,14 +5,14 @@
 <c:choose>
 	<c:when test="${result == 0 }">
 		<script>
-			alert("취소 실패");
+			alert("예약 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("예약이 취소되었습니다");
-			location.href = "reserve_list";
+			alert("예약 성공");
+			location.href = "review_detail?id=${dto.id}";
 		</script>
 	</c:otherwise>
 </c:choose>
