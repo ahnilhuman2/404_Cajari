@@ -21,4 +21,11 @@ public interface ReviewWriteDAO {
 	
 	// 특정 id 글 삭제
 	public abstract int deleteById(int id) throws SQLException;
+	
+	// 몇번째(from) 부터 몇개(row) 를 SELECT
+	public List<ReviewWriteDTO> selectFromRow(int from, int rows) throws SQLException;
+	
+	// 전체 글의 개수
+	public int countAll() throws SQLException;
+	
 }

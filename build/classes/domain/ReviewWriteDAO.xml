@@ -2,8 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.ReviewWriteDAO">
 	
+	<sql id="SELECTREVIEWWRITE">
+		SELECT 
+			r.id "id", 
+			r.parking_write "parking_write", 
+			r.subject "subject", 
+			r.content "content", 
+			r.viewcnt "viewcnt", 
+			r.regdate "regdate",
+			u.id "id", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number",
+			u.phone_number "phone_number"
+		FROM 
+			t404_review_write r, t404_user u
+		WHERE 
+			r.user_id  = u.id
+	</sql>
 
-	
 	<resultMap type="domain.UserDTO" id="mapUser">
 		<result column="id" property="id"/>
 		<result column="username" property="username"/>
@@ -27,26 +48,7 @@
 	</resultMap>
 
 	<select id="select" resultMap="mapReviewWrite">
-		SELECT 
-			r.id "id", 
-			r.parking_write "parking_write", 
-			r.subject "subject", 
-			r.content "content", 
-			r.viewcnt "viewcnt", 
-			r.regdate "regdate",
-			u.id "id", 
-			u.username "username", 
-			u.password "password", 
-			u.name "name", 
-			u.authorities "authorities", 
-			u.regdate "regdate", 
-			u.car_name "car_name", 
-			u.car_number "car_number",
-			u.phone_number "phone_number"
-		FROM 
-			t404_review_write r, t404_user u
-		WHERE 
-			r.user_id  = u.id
+		<include refid="SELECTREVIEWWRITE"/>
 		ORDER BY 
 			r.id DESC
 	</select>
@@ -62,26 +64,8 @@
 
 	<!-- 조회 -->
 	<select id="selectById" resultMap="mapReviewWrite">
-		SELECT 
-			r.id "id", 
-			r.parking_write "parking_write", 
-			r.subject "subject", 
-			r.content "content", 
-			r.viewcnt "viewcnt", 
-			r.regdate "regdate",
-			u.id "id", 
-			u.username "username", 
-			u.password "password", 
-			u.name "name", 
-			u.authorities "authorities", 
-			u.regdate "regdate", 
-			u.car_name "car_name", 
-			u.car_number "car_number",
-			u.phone_number "phone_number"
-		FROM 
-			t404_review_write r, t404_user u
-		WHERE 
-			r.user_id  = u.id
+		<include refid="SELECTREVIEWWRITE"/>
+			AND r.id = #{id}
 		ORDER BY 
 			r.id DESC
 	</select>
@@ -111,6 +95,15 @@
 		DELETE FROM t404_review_write WHERE id = #{param1}
 	</delete>
 	
+	<!-- 페이지 -->
+	<select id="selectFromRow" resultMap="mapReviewWrite">
+		<include refid="SELECTREVIEWWRITE"/>
+		ORDER BY r.id DESC
+		LIMIT #{param1}, #{param2}
+	</select>
 	
+	<select id="countAll" resultType="int">
+		SELECT count(*) FROM t404_review_write
+	</select>
 
 </mapper>

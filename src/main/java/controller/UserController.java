@@ -77,6 +77,10 @@ public class UserController extends HttpServlet {
 				if(!response.isCommitted()) {
 					// 로그인 성공후 home 으로 redirect 하는 방법
 					String redirectUrl = request.getContextPath() + "/home";
+					
+					// 혹시 이전에 가고자 했던 url이 존재했다면 해당 url로 redirect 한다.
+					String urlPrior = C.retrieveUrlPrior(request);
+					if(urlPrior != null) redirectUrl = urlPrior;
 
 					response.sendRedirect(redirectUrl);
 					return;
@@ -91,6 +95,10 @@ public class UserController extends HttpServlet {
 				request.getSession().removeAttribute(C.PRINCIPAL);
 				response.sendRedirect(request.getContextPath() + "/cover");
 			}
+			break;
+			
+		case "/user/user_rejectAuth":
+			viewPage = "user_rejectAuth.jsp";
 			break;
 			
 		} // end switch
