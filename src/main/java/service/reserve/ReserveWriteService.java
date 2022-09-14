@@ -20,8 +20,8 @@ public class ReserveWriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String checkin_time = request.getParameter("checkin_time");
-		String parkName = request.getParameter("parking_name");
+		String checkin_time = request.getParameter("parkingTime");
+		String parkName = request.getParameter("parkingName");
 		
 		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 

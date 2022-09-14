@@ -79,7 +79,7 @@
 		parameterType="domain.ReserveDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 		INSERT INTO t404_reserve
-			(checkin_time, content, user_id, parking_write)
+			(checkin_time, user_id, parking_write)
 		VALUES
 			(#{checkin_time}, #{user.id}, #{parking.parking_id})
 	</insert> 	
