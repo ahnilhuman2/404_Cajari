@@ -2,7 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.ReserveDAO">
 
-	<sql id="SELECTRESERVE">
+
+	
+	<resultMap type="domain.UserDTO" id="mapUser">
+		<result column="userid" property="id"/>
+		<result column="username" property="username"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="authorities" property="authorities"/>
+		<result column="regdate" property="regDate"/>
+		<result column="car_name" property="car_name"/>
+		<result column="car_number" property="car_number"/>
+		<result column="phone_number" property="phone_number"/>
+	</resultMap>
+	
+
+	<resultMap type="domain.ReserveDTO" id="mapReserve">
+		<result column="id" property="id"/>
+		<result column="checkin_time" property="checkin_time"/>
+		<result column="regdate" property="regDate"/>
+		<collection property="user" resultMap="mapUser"/>
+	</resultMap>	
+	
+	<insert id="insert" flushCache="true" parameterType="domain.ReserveDTO"
+		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
+	    INSERT INTO t404_reserve(user_id, parking_id, checkin_time)
+	    VALUES(#{user.id}, #{parking.id}, #{checkin_time})	
+	</insert>
+	 	
+	
+	<!-- 글 조회 -->
+	<select id="selectById" resultType="domain.ReserveDTO">
 		SELECT 
 			r.id "id", 
 			r.regdate "regdate",
@@ -34,69 +64,5 @@
 			t404_reserve r, t404_user u, t404_parkinglot p
 		WHERE 
 			r.user_id = u.id and r.parking_id = p.id
-	</sql>
-	
-	<resultMap type="domain.ParkingDTO" id="mapParking">
-		<result column="parkid" property="id"/>
-		<result column="addr" property="addr"/>
-		<result column="weekend_begin_time" property="weekend_begin_time"/>
-		<result column="weekend_end_time" property="weekend_end_time"/>
-		<result column="weekday_begin_time" property="weekday_begin_time"/>
-		<result column="weekday_end_time" property="weekday_end_time"/>
-		<result column="holiday_begin_time" property="holiday_begin_time"/>
-		<result column="holiday_end_time" property="holiday_end_time"/>
-		<result column="holiday_pay_nm" property="holiday_pay_nm"/>
-		<result column="fulltime_monthly" property="fulltime_monthly"/>
-		<result column="weekday_pay_nm" property="weekend_pay_nm"/>
-		<result column="saturday_pay_nm" property="saturday_pay_nm"/>
-		<result column="tel" property="tel"/>
-		<result column="parking_name" property="parking_name"/>
-	</resultMap>
-	
-	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="userid" property="id"/>
-		<result column="username" property="username"/>
-		<result column="password" property="password"/>
-		<result column="name" property="name"/>
-		<result column="authorities" property="authorities"/>
-		<result column="regdate" property="regDate"/>
-		<result column="car_name" property="car_name"/>
-		<result column="car_number" property="car_number"/>
-		<result column="phone_number" property="phone_number"/>
-	</resultMap>
-	
-
-	<resultMap type="domain.ReserveDTO" id="mapReserve">
-		<result column="id" property="id"/>
-		<result column="checkin_time" property="checkin_time"/>
-		<result column="regdate" property="regDate"/>
-		<collection property="user" resultMap="mapUser"/>
-		<collection property="parking" resultMap="mapParking"/>
-	</resultMap>	
-	
-	
-	<insert id="insert" flushCache="true"
-		parameterType="domain.ReserveDTO"
-		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-		INSERT INTO t404_reserve
-			(checkin_time, user_id, parking_write)
-		VALUES
-			(#{checkin_time}, #{user.id}, #{parking.parking_id})
-	</insert> 	
-	
-	<!-- 조회 -->
-	<select id="selectById" resultMap="mapReserve">
-		<include refid="SELECTRESERVE"/>
-			AND r.id = #{id}
-		ORDER BY 
-			r.id DESC
-	</select>
-	
-	<!-- 조회 -->
-	<select id="selectByUser" resultMap="mapReserve">
-		<include refid="SELECTRESERVE"/>
-			AND r.id = u.id
-		ORDER BY 
-			r.id DESC
 	</select>
 </mapper>

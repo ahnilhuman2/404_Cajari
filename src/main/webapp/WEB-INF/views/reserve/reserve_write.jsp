@@ -148,13 +148,13 @@
 
 							<div class="mb-3 mt-3">
 								<label for="parkingName">주차장</label> <input type="text"
-									class="form-control" id="password" name="parkingName"
+									class="form-control" id="password" name="parking_id"
 									placeholder="주차장명을 입력하세요." required>
 							</div>
 
 							<div class="mb-3 mt-3">
 								<label for="parkingName">입차시간</label> <input type="text"
-									class="form-control" id="password" name="parkingTime"
+									class="form-control" id="password" name="checkin_time"
 									placeholder="시간을 입력하세요." required>
 							</div>
 

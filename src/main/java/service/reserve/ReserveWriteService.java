@@ -20,23 +20,30 @@ public class ReserveWriteService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String checkin_time = request.getParameter("parkingTime");
-		String parkName = request.getParameter("parkingName");
+		
+		int parkingId = Integer.parseInt(request.getParameter("parking_id"));  // 어느글에 대한 댓글인지
+	    int userId = Integer.parseInt(request.getParameter("user_id"));  // 누가 작성한 댓글인지
+	    String checkin_time = request.getParameter("checkin_time");
 		
 		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 
 		ReserveDTO dto = new ReserveDTO();
 		
+		ParkingDTO park = new ParkingDTO();
+	    park.setId(parkingId);
+	    
+		
 		System.out.println(user);
+		System.out.println(userId);
 		System.out.println(checkin_time);
-		System.out.println(parkName);
+		System.out.println(parkingId);
 		System.out.println("aaaaaaa");
 		
 		
 		
 		dto.setUser(user);
 		dto.setCheckin_time(checkin_time);
-		dto.setParking(null);
+		dto.setParking(park);
 		
 		int cnt = 0;
 		
