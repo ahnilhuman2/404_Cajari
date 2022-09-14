@@ -7,5 +7,10 @@ import java.util.Map;
 public interface FileDAO {
 
 	public int insert(List<Map<String, Object>> list, int reviewWriteId) throws SQLException;
-	
+
+	// 특정 글 (writeId) 의 첨부파일(들) SELECT
+	public List<FileDTO> selectFilesByWrite(int reviewWriteId) throws SQLException;
+
+	// 특정 첨부파일 (id) 한개 SELECT
+	public List<FileDTO> selectById(int id) throws SQLException;
 }

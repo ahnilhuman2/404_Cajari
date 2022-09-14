@@ -2,14 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.FileDAO">
 
-<insert id="insert" flushCache="true"
-	parameterType="list">
-	INSERT INTO t404_file (source, file, review_write_id)
-	VALUES
+	<insert id="insert" flushCache="true" parameterType="list">
+		INSERT INTO t404_file (source, file, review_write_id)
+		VALUES
 		<foreach collection="param1" item="e" separator=",">
-			(#{e.source}, #{e.file}, #{param2})
+			(#{e.source},
+			#{e.file}, #{param2})
 		</foreach>
-
-</insert>
+	</insert>
+	
+	<sql id="SELECTFILE">
+		SELECT id, source, file, review_write_id
+		FROM t404_file
+	</sql>
+	
+	<select id="selectFilesByWrite" resultType="domain.FileDTO">
+		<include refid="SELECTFILE"/>
+		WHERE
+			review_write_id = #{param1}
+		ORDER BY id ASC
+	</select>
+	
+	<select id="selectById" resultType="domain.FileDTO">
+		<include refid="SELECTFILE"/>
+		WHERE id = #{id}
+	</select>
 
 </mapper>

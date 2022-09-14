@@ -170,7 +170,7 @@
 								<div class="mb-3 mt-3">
 									<label>첨부파일:</label>
 									<div id="files"></div>
-									<button type="button" id="btnAdd" class="btn btn-secondary">추가</button>
+									<button type="button" id="btnAdd" class="btn btn-dark">추가</button>
 								</div>
 							</div>
 							<script>
