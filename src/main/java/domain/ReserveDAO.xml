@@ -26,8 +26,8 @@
 	
 	<insert id="insert" flushCache="true" parameterType="domain.ReserveDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-	    INSERT INTO t404_reserve(user_id, parking_id, checkin_time)
-	    VALUES(#{user.id}, #{parking.id}, #{checkin_time})	
+	    INSERT INTO t404_reserve(parking_id, checkin_time)
+	    VALUES(#{parking.id}, #{checkin_time})	
 	</insert>
 	 	
 	

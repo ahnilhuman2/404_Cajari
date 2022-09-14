@@ -122,6 +122,8 @@ public class ReviewController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/review/review_list?page=" + page);
 			break;
 			
+			
+			
 		} // end switch
 		
 		if(viewPage != null) {
