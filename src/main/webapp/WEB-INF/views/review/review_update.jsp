@@ -27,6 +27,15 @@
 	rel="stylesheet" />
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<%-- 웹에디터 Summernote .  jQuery 필요 --%>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <style>
 
 /*profile*/
@@ -72,6 +81,16 @@
 	flex-direction: column;
 }
 </style>
+</head>
+
+<script>
+$(document).ready(function(){
+	$('#content').summernote({
+		height: 300,
+	});
+});
+</script>
+
 <body>
 	<header class="py-3 mb-4 border-bottom">
 		<div class="row">
@@ -156,7 +175,8 @@
 								class="float-end">조회수: ${dto.viewcnt }</span>
 						</div>
 
-						<form action="review_update" method="POST">
+						<form action="review_update" method="POST"
+							enctype="Multipart/form-data">
 							<input type="hidden" name="id" value="${dto.id }" />
 
 							<div class="mb-3">
@@ -179,11 +199,61 @@
 									name="content">${dto.content }</textarea>
 							</div>
 
+							<!-- 기존 첨부파일  목록 (삭제 가능) -->
+							<c:if test="${not empty fileList && fn:length(fileList) > 0 }">
+								<div class="container mt-3 mb-3 border rounded">
+									<div id="delFiles"></div>
+									<!-- 삭제할 file 의 id 값(들)을 담기위한 div -->
+									<div class="mb-3 mt-3">
+										<label>첨부파일:</label>
+										<c:forEach var="fileDto" items="${fileList }">
+											<div class="input-group mb-2">
+												<input class="form-control col-xs-3" type="text" readonly
+													value="${fileDto.source }">
+												<button type="button" class="btn btn-outline-danger"
+													onclick="deleteFiles(${fileDto.id}); $(this).parent().remove()">삭제</button>
+											</div>
+										</c:forEach>
+									</div>
+								</div>
+							</c:if>
+
+							<script>
+			function deleteFiles(fileId){
+			    // 삭제할 file 의 id 값(들)을 #delFiles 에 담아 submit 한다
+			    $("#delFiles").append(`<input type='hidden' name='delfile' value='\${fileId}'>`);				
+			}
+			</script>
+							<!-- 기존 첨부파일  목록 (삭제 가능) -->
+
+							<!-- 새로운 첨부파일 추가 -->
+							<!-- 새로운 첨부파일 (추가가능)  write.jsp 의 내용과 거의 똑같다.-->
+							<div class="container mt-3 mb-3 border rounded">
+								<div class="mb-3 mt-3">
+									<label>첨부파일추가:</label>
+									<div id="files"></div>
+									<button type="button" id="btnAdd" class="btn btn-dark">추가</button>
+								</div>
+							</div>
+							<script>
+			var i = 0;
+			$("#btnAdd").click(function(){
+			    $("#files").append(`
+			            <div class="input-group mb-2">
+			                <input class="form-control col-xs-3" type="file" name="upfile\${i}"/>
+			                <button type="button" class="btn btn-outline-danger" onclick="$(this).parent().remove()">삭제</button>
+			            </div>`);
+			    i++;
+			});
+			</script>
+							<!-- 새로운 첨부파일 추가 -->
+
 							<!-- 하단 링크 -->
 							<button type="submit" class="btn btn-outline-dark">수정완료</button>
 							<button type="button" class="btn btn-outline-dark"
 								onclick="history.back()">이전으로</button>
-							<a class="btn btn-outline-dark" href="review_list?page=${page != null ? page : '' }">목록</a>
+							<a class="btn btn-outline-dark"
+								href="review_list?page=${page != null ? page : '' }">목록</a>
 							<!-- 하단 링크 -->
 
 						</form>

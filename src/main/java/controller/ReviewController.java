@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.review.DownloadService;
 import service.review.ReviewDeleteService;
 import service.review.ReviewDetailService;
 import service.review.ReviewListService;
@@ -122,7 +123,10 @@ public class ReviewController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/review/review_list?page=" + page);
 			break;
 			
-			
+		case "/review/download":
+			service = new DownloadService();
+			service.execute(request, response);
+			break;
 			
 		} // end switch
 		

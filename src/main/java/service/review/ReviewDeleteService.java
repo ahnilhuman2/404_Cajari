@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
+import domain.FileDAO;
+import domain.FileDTO;
 import domain.ReviewWriteDAO;
 import domain.ReviewWriteDTO;
 import domain.UserDTO;
@@ -24,12 +26,17 @@ public class ReviewDeleteService implements Service {
 		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
+		FileDAO fileDao = null;
 		
 		int cnt = 0;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(ReviewWriteDAO.class);			
+			dao = sqlSession.getMapper(ReviewWriteDAO.class);	
+			fileDao = sqlSession.getMapper(FileDAO.class);
+			
+			List<FileDTO> fileList = fileDao.selectFilesByWrite(id);
+			C.deleteFiles(fileList, request);
 			
 			// 로그인 한 사용자가 아니면 여기서 redirect 해야 한다
 			UserDTO logUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);

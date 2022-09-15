@@ -40,8 +40,8 @@ INSERT INTO t404_qna_write(user_id, subject, content) VALUES
 -- sample review_comment
 INSERT INTO t404_review_comment(review_write_id, user_id, content) VALUES
 (5, 1, '1. user1이 1번글에 댓글 작성.'),
-(5, 2, '2. user1이 1번글에 댓글 작성.'),
-(7, 3, '3. user1이 2번글에 댓글 작성.'),
+(5, 1, '2. user1이 1번글에 댓글 작성.'),
+(7, 1, '3. user1이 2번글에 댓글 작성.'),
 (8, 1, '4. user1이 2번글에 댓글 작성.')
 ;
 
@@ -165,11 +165,11 @@ DELETE FROM t404_file WHERE review_write_id = ?
 # 댓글
 
 # 특정글 의 (댓글 + 사용자) 정보
-SELECT c.id "id", c.content "content", c.regdate "regdate",
-    u.id "user_id", u.username "user_username", u.password "user_password", u.name "user_name", u.authorities "user_authorities", u.regdate "user_regdate"
-FROM t4_comment c, t4_user u
-WHERE c.user_id = u.id AND c.write_id = 1
-ORDER BY c.id DESC
+SELECT rc.id "id", rc.content "content", rc.regdate "regdate",
+    u.id "user_id", u.username "username", u.password "password", u.name "name", u.authorities "authorities", u.regdate "regdate"
+FROM t404_review_comment rc, t404_user u
+WHERE rc.user_id = u.id
+ORDER BY rc.id DESC
 ;
 
 

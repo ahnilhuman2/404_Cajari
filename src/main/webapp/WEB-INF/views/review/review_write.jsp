@@ -17,6 +17,14 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<%-- 웹에디터 Summernote .  jQuery 필요 --%>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <style>
 
 /*profile*/
@@ -63,6 +71,15 @@
 }
 </style>
 </head>
+
+<script>
+$(document).ready(function(){
+	$('#content').summernote({
+		height: 300,
+	});
+});
+</script>
+
 <body>
 	<header class="py-3 mb-4 border-bottom">
 		<div class="row">

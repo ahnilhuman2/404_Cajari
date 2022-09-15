@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
+import domain.FileDAO;
+import domain.FileDTO;
 import domain.ReviewWriteDAO;
 import domain.ReviewWriteDTO;
 import domain.UserDTO;
@@ -31,15 +33,19 @@ public class ReviewSelectService implements Service {
 		
 		SqlSession sqlSession = null;
 		ReviewWriteDAO dao = null;
+		FileDAO fileDao = null;
 		
 		List<ReviewWriteDTO> list = null;
+		List<FileDTO> fileList = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReviewWriteDAO.class);
+			fileDao = sqlSession.getMapper(FileDAO.class); // myBatis 부분
 			
 			// 글읽기
 			list = dao.selectById(id);
+			fileList = fileDao.selectFilesByWrite(id);
 			
 			System.out.println(id);
 			System.out.println(request.getSession().getAttribute(C.PRINCIPAL));
@@ -55,6 +61,7 @@ public class ReviewSelectService implements Service {
 			}
 			
 			request.setAttribute("list", list);
+			request.setAttribute("fileList", fileList); // 읽어온걸 최종적으로 response
 			
 			sqlSession.commit();
 		} catch (SQLException e) {

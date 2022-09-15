@@ -27,5 +27,21 @@
 		<include refid="SELECTFILE"/>
 		WHERE id = #{id}
 	</select>
+	
+	<select id="selectByIds" resultType="domain.FileDTO"
+		parameterType="java.util.ArrayList">
+		<include refid="SELECTFILE"/>
+		WHERE id IN
+			<foreach collection="array" item="e" separator="," open="(" close=")">
+				#{e}
+			</foreach>
+		ORDER BY id ASC
+	</select>
+	
+	<delete id="deleteByIds" flushCache="true"
+		parameterType="java.util.ArrayList">
+		DELETE FROM t404_file
+		WHERE id IN ( <foreach collection="array" item="e" separator=",">${e}</foreach> )
+	</delete>
 
 </mapper>

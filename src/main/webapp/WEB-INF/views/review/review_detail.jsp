@@ -25,6 +25,7 @@
 	rel="stylesheet" />
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
 
 /*profile*/
@@ -221,6 +222,10 @@
 							<a class="btn btn-outline-dark" href="review_write">작성</a>
 
 							<!-- 하단 링크 -->
+
+							<!-- 댓글 -->
+							<jsp:include page="review_Cmt.jsp" />
+							<!-- 댓글 -->
 
 						</section>
 					</div>
