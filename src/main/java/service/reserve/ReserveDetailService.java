@@ -10,8 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
+import common.C;
 import domain.ReserveDAO;
 import domain.ReserveDTO;
+import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -30,16 +32,19 @@ public class ReserveDetailService implements Service {
 		SqlSession sqlSession = null;
 		ReserveDAO dao = null;
 		
-		List<ReserveDTO> list = null;
+		ReserveDTO reserveDTO = null;
+		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReserveDAO.class);
 			
 			// 조회수 증가 + 글읽기
-			list = dao.selectById(id);
+			reserveDTO = dao.selectById(id);
 			
-			request.setAttribute("list", list);
+			request.setAttribute("dto", reserveDTO);
+			request.setAttribute("user", user);
 			
 			sqlSession.commit();
 		} catch (SQLException e) {

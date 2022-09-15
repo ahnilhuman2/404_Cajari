@@ -6,12 +6,23 @@
 		SELECT
 			id, addr, weekend_begin_time, weekend_end_time,
 			weekday_begin_time, weekday_end_time, holiday_begin_time, holiday_end_time,
-			holiday_pay_nm, fulltime_monthly, weekend_pay_nm, saturday_pay_nm,
+			holiday_pay_nm, fulltime_monthly, weekday_pay_nm, saturday_pay_nm,
 			tel, parking_name
 		FROM
 			t404_parkinglot
 		WHERE
 			id = #{id}		
+	</select>
+	<select id="selectByName" resultType="domain.ParkingDTO">
+		SELECT
+			id, addr, weekend_begin_time, weekend_end_time,
+			weekday_begin_time, weekday_end_time, holiday_begin_time, holiday_end_time,
+			holiday_pay_nm, fulltime_monthly, weekday_pay_nm, saturday_pay_nm,
+			tel, parking_name
+		FROM
+			t404_parkinglot
+		WHERE
+			parking_name = #{name}		
 	</select>
 
 	

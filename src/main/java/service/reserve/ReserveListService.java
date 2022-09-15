@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import common.C;
 import domain.ReserveDAO;
 import domain.ReserveDTO;
+import domain.UserDTO;
 import service.Service;
 import sqlmapper.SqlSessionManager;
 
@@ -18,20 +20,19 @@ public class ReserveListService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
 		
 		SqlSession sqlSession = null;
 		ReserveDAO dao = null;	
 		
 		List<ReserveDTO> list = null;
 		
-		System.out.println(id);
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(ReserveDAO.class);
 			
-			list = dao.selectByUser(id);
+			list = dao.selectByUserId(user.getId());
 			// "list" 란  name 으로 request 에 list 저장
 			// 즉, request 에 담아서 컨트롤러에 전달되는 셈.
 

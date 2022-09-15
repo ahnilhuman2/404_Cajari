@@ -63,6 +63,7 @@ public class ReserveController extends HttpServlet {
 				
 			case "POST":
 				service = new ReserveWriteService();
+				service.execute(request, response);
 				viewPage = "reserve_writeOk.jsp";
 				break;
 			}

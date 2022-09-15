@@ -26,8 +26,8 @@
 	
 	<insert id="insert" flushCache="true" parameterType="domain.ReserveDTO"
 		keyProperty="id" useGeneratedKeys="true" keyColumn="id">
-	    INSERT INTO t404_reserve(parking_id, checkin_time)
-	    VALUES(#{parking.id}, #{checkin_time})	
+	    INSERT INTO t404_reserve(user_id, parking_id, checkin_time)
+	    VALUES(#{user.id}, #{parking.id}, #{checkin_time})	
 	</insert>
 	 	
 	
@@ -56,13 +56,51 @@
 			p.holiday_end_time "holiday_end_time", 
 			p.holiday_pay_nm "holiday_pay_nm", 
 			p.fulltime_monthly "fulltime_monthly", 
-			p.weekend_pay_nm "weekend_pay_nm", 
+			p.weekday_pay_nm "weekday_pay_nm", 
 			p.saturday_pay_nm "saturday_pay_nm", 
 			p.tel "tel", 
 			p.parking_name "parking_name"
 		FROM 
-			t404_reserve r, t404_user u, t404_parkinglot p
+			t404_reserve r 
+			inner join t404_user u on r.user_id = u.id
+			inner join t404_parkinglot p on r.parking_id = p.id
 		WHERE 
-			r.user_id = u.id and r.parking_id = p.id
+			r.id = #{id}
+	</select>
+	
+	<select id="selectByUserId" resultType="domain.ReserveDTO">
+		SELECT 
+			r.id "id", 
+			r.regdate "regdate",
+			r.checkin_time "checkin_time", 
+			u.id "userid", 
+			u.username "username", 
+			u.password "password", 
+			u.name "name", 
+			u.authorities "authorities", 
+			u.regdate "regdate", 
+			u.car_name "car_name", 
+			u.car_number "car_number",
+			u.phone_number "phone_number",
+			p.id "parkid", 
+			p.addr "addr", 
+			p.weekend_begin_time "weekend_begin_time", 
+			p.weekend_end_time "weekend_end_time", 
+			p.weekday_begin_time "weekday_begin_time", 
+			p.weekday_end_time "weekday_end_time", 
+			p.holiday_begin_time "holiday_begin_time", 
+			p.holiday_end_time "holiday_end_time", 
+			p.holiday_pay_nm "holiday_pay_nm", 
+			p.fulltime_monthly "fulltime_monthly", 
+			p.weekday_pay_nm "weekday_pay_nm", 
+			p.saturday_pay_nm "saturday_pay_nm", 
+			p.tel "tel", 
+			p.parking_name "parking_name"
+		FROM 
+			t404_reserve r 
+			inner join t404_user u on r.user_id = u.id
+			inner join t404_parkinglot p on r.parking_id = p.id
+		WHERE 
+			u.id = #{userId}
 	</select>
 </mapper>

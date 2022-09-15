@@ -148,7 +148,7 @@
 			<div class="col-lg-12">
 				<div class="frame">
 					<div class="container mt-3">
-						<h2>- ${dto.id }님의 예약 -</h2>
+						<h2>- ${user.username }님의 예약 -</h2>
 						<hr>
 						<div class="mb-3 mt-3 clearfix">
 							<span class="float-start me-2">id: ${dto.id }</span>
@@ -161,7 +161,7 @@
 							</form>
 
 							<div class="mb-3">
-								<label for="name">작성자:</label> <span class="form-control">${dto.user.username }</span>
+								<label for="name">작성자:</label> <span class="form-control">${user.username }</span>
 							</div>
 							<div class="mb-3 mt-3">
 								<label for="subject">주차장:</label> <span class="form-control">${dto.parking.parking_name }</span>

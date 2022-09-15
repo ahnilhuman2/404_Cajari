@@ -179,7 +179,7 @@
 				</table>
 				<div class="row">
 					<div class="col-12">
-						<a class="btn btn-outline-dark" href="home">Home</a>
+						<a class="btn btn-outline-dark" href="../home">Home</a>
 					</div>
 				</div>
 			</div>

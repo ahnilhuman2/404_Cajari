@@ -148,7 +148,7 @@
 
 							<div class="mb-3 mt-3">
 								<label for="parkingName">주차장</label> <input type="text"
-									class="form-control" id="password" name="parking_id"
+									class="form-control" id="password" name="parking_name"
 									placeholder="주차장명을 입력하세요." required>
 							</div>
 

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
+import domain.ParkingDAO;
 import domain.ParkingDTO;
 import domain.ReserveDAO;
 import domain.ReserveDTO;
@@ -21,7 +22,7 @@ public class ReserveWriteService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		int parkingId = Integer.parseInt(request.getParameter("parking_id"));  // 어떤 주차장인지
+		String parkingName = request.getParameter("parking_name");  // 어떤 주차장인지
 //	    int userId = Integer.parseInt(request.getParameter("user_id"));  // 누가 작성한 댓글인지
 	    String checkin_time = request.getParameter("checkin_time");
 		
@@ -29,31 +30,31 @@ public class ReserveWriteService implements Service {
 
 		ReserveDTO dto = new ReserveDTO();
 		
-		ParkingDTO park = new ParkingDTO();
-	    park.setParking_name(null);
 	    
 		
 		System.out.println(user);
 		System.out.println(checkin_time);
-		System.out.println(parkingId);
-		System.out.println(park);
 		System.out.println("aaaaaaa");
 		
 		
 		
 		dto.setUser(user);
 		dto.setCheckin_time(checkin_time);
-		dto.setParking(park);
+		
 		
 		int cnt = 0;
 		
 		SqlSession sqlSession = null;
 		ReserveDAO dao = null;
+		ParkingDAO parkingDAO = null;
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
+			parkingDAO = sqlSession.getMapper(ParkingDAO.class);
 			dao = sqlSession.getMapper(ReserveDAO.class);
 			
+			ParkingDTO parkingDTO = parkingDAO.selectByName(parkingName);
+			dto.setParking(parkingDTO);
 			cnt = dao.insert(dto);
 			System.out.println("예약 성공 " + cnt + " : " + dto.getId());
 			

@@ -12,6 +12,8 @@
     <title>Basic Search</title>
     <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
 <style>
 
@@ -207,21 +209,26 @@ img {
 				</div>
 				
 				<div class="col-lg-4">
+					<a class="btn btn-outline-dark" href="../reserve/reserve_write">예약하기</a>
 				</div>
 				
 			</div>
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-2">
 				</div>
 				
-				<div class="col-lg-4">
+				<div class="col-lg-8">
 			        <table id="table" class="table">
 			          <thead>
 			            <tr>
 			                <th>주차장</th>
 			                <th>주소</th>
+			                <th>야간개방</th>
+			                <th>종류</th>
+			                <th>유료/무료</th>
+			                <th>연락처</th>
 			            </tr>
 			          </thead>
 			          <tbody id="tbody">
@@ -230,7 +237,7 @@ img {
 			        </table>     
 				</div>
 				
-				<div class="col-lg-4">
+				<div class="col-lg-2">
 				</div>
 				
 			</div>
@@ -242,17 +249,22 @@ img {
 	        return
 	      }
 	      $.ajax({
-	        url: "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/ /" + address + "/",
+	        url: "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/" + address + "/",
 	        type: "get",
 	        crossDomain: true,
 	        success: function (json, status) {
 	          tbody = $("#tbody")
 	          tbody.empty();
+	          console.log(json);
 	          json.GetParkInfo.row.forEach(function (r) {
 	            console.log(r)
 	            markup = "<tr>";
 	            markup += "<td>" + r.PARKING_NAME + "</td>";
 	            markup += "<td>" + r.ADDR + "</td>";
+	            markup += "<td>" + r.NIGHT_FREE_OPEN_NM + "</td>";
+	            markup += "<td>" + r.OPERATION_RULE_NM + "</td>";
+	            markup += "<td>" + r.PAY_NM + "</td>";
+	            markup += "<td>" + r.TEL + "</td>";
 	            markup += "</tr>";
 	            tbody.append(markup)
 	

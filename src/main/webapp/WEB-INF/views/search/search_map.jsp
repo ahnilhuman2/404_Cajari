@@ -270,8 +270,19 @@ html, body {
 				<div>
 					<input type='text' id="text1" placeholder="지역입력"> <input
 						type='button' value='검색' onclick="search()">
+						<a class="btn btn-outline-dark" href="../reserve/reserve_write">예약하기</a>
 				</div>
 			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-6">
+				</div>
+			<div class="col-lg-3">
+				<a class="btn btn-outline-dark" href="../reserve/reserve_write">예약하기</a>
+			</div>
+			<div class="col-lg-3">
+				</div>
 		</div>
 
 	</main>
@@ -302,12 +313,12 @@ html, body {
           }
 </script>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 function search() {
 	var searchQuery = $("#text1").val();
 	
 	$.ajax({
-		url : "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/5/" + searchQuery, // 어디로 갈거니? // 갈 때 데이터
+		url : "http://openapi.seoul.go.kr:8088/41766e4d5461686e35336e4a557477/json/GetParkInfo/1/3/" + searchQuery, // 어디로 갈거니? // 갈 때 데이터
 		type : "get", // 타입은 뭘 쓸거니?
 		datatype : "json",
 		success : function(data) { // 갔다온 다음 결과값
@@ -317,20 +328,45 @@ function search() {
                      var lng = r.LNG;
                      console.log(r);
                      var points = [];
+                     var point = new kakao.maps.LatLng(lat, lng);
                      points.push(new kakao.maps.LatLng(lat, lng));
                      
                    // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
-                       var bounds = new kakao.maps.LatLngBounds();    //위치 중앙 다시 보기
-      
-                       var i, marker;
-                       for (i = 0; i < points.length; i++) {
-                           // 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-                           marker = new kakao.maps.Marker({ position : points[i] });
-                           marker.setMap(map);
-                           
-                           // LatLngBounds 객체에 좌표를 추가합니다
-                           bounds.extend(points[i]);
-                       }
+                     var bounds = new kakao.maps.LatLngBounds();    //위치 중앙 다시 보기
+    
+    
+                     var marker = new kakao.maps.Marker({ position : point });
+                     marker.setMap(map);
+                     
+                     // LatLngBounds 객체에 좌표를 추가합니다
+                     bounds.extend(point);
+                     var content = '<div class="wrap">' + 
+                     '    <div class="info">' + 
+                     '        <div class="title">' + 
+                                r.PARKING_NAME +
+                                
+                     '        </div>' + 
+                     '        <div class="body">' + 
+                     '            <div class="desc">' + 
+                     '                <div class="ellipsis">' + r.ADDR + '</div>' + 
+                     '                <div class="jibun ellipsis">' + r.NIGHT_FREE_OPEN_NM +'</div>' +               
+                     '                <div class="jibun ellipsis">' + r.OPERATION_RULE_NM +'</div>' +               
+                     '                <div class="jibun ellipsis">' + r.PAY_NM +'</div>' +               
+                     '                <div class="jibun ellipsis">' + r.TEL +'</div>' +               
+                     '            </div>' + 
+                     '        </div>' + 
+                     '    </div>' +    
+                     '</div>';
+
+	               // 마커 위에 커스텀오버레이를 표시합니다
+	               // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+	                 var overlay = new kakao.maps.CustomOverlay({
+	                   content: content,
+	                   map: map,
+	                   position: marker.getPosition()       
+	                 });
+	
+	                 overlay.setMap(map);
       
                            // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
                            // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
@@ -338,11 +374,11 @@ function search() {
                        map.setBounds(bounds);
                    })
                  },
-                 error : function() {
-                   alert('error');			
-                 }
-               });
-            }
+        error : function() {
+             alert('error');			
+        }
+    });
+}
          
       
           // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
@@ -355,7 +391,7 @@ function search() {
               map.setLevel(map.getLevel() + 1);
           }
           //컨트롤러
-          </script>
+</script>
 
 </body>
 </html>
