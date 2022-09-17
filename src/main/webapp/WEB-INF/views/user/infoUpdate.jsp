@@ -139,8 +139,7 @@
 			<div class="col-lg-8">
 				<div class="frame" style="text-align: center;">
 					<main class="form-signin w-100 m-auto">
-						<form method="POST"
-							action="${pageContext.request.contextPath }/user/infoUpdate">
+						<form>
 
 							<div class="row mt-1">
 								<div class="col-12 text-info">${REDIRECT_ATTR.error }</div>
@@ -148,50 +147,34 @@
 
 							<div class="form-floating" style="background-color: light">
 								<span class="form-control" id="id"
-									aria-label="readonly input example" readonly>${sessionScope.PRINCIPAL.username }</span>
+									aria-label="readonly input example" readonly>닉네임 : ${sessionScope.PRINCIPAL.username }</span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<span type="text" class="form-control" id="name" readonly>${sessionScope.PRINCIPAL.name }</span>
+								<span type="text" class="form-control" id="name" readonly>이름 : ${sessionScope.PRINCIPAL.name }</span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<span type="password" class="form-control" id="password"
-									name="password" placeholder="password" required></span>
+								<span type="text" class="form-control" id="phone_number"
+									readonly>핸드폰 :  ${sessionScope.PRINCIPAL.phone_number } </span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="password" class="form-control" id="re_password"
-									name="re_password" placeholder="re_password" required>
-								<label for="re_password">* 새 비밀번호 확인</label>
+								<span type="text" class="form-control" id="car_name" readonly>
+									차종 : ${sessionScope.PRINCIPAL.car_name } </span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="text" class="form-control" id="phone_number"
-									name="phone_number" placeholder="phoneNum" required> <label
-									for="floatingPassword"></label>${dto.phone_number }
+								<span type="text" class="form-control" id="car_number" readonly>
+									차번호 : ${sessionScope.PRINCIPAL.car_number } </span>
 							</div>
-							<br>
-
-							<div class="form-floating">
-								<input type="text" class="form-control" id="car_name"
-									name="car_name" placeholder="carName">
-							</div>
-							<br>
-
-							<div class="form-floating">
-								<input type="text" class="form-control" id="car_number"
-									name="car_number" placeholder="carNum">
-							</div>
-							<br>
-
-							<button
+							<br> <a
 								class="btn btn-lg btn-secondary fw-bold border-white bg-black"
-								type="submit">수정완료</button>
+								href="${pageContext.request.contextPath }/mypage">마이페이지로</a>
 
 						</form>
 					</main>
