@@ -1,4 +1,4 @@
-package service.userInfo;
+package service.user;
 
 import java.io.IOException;
 
