@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>Profile</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -27,8 +27,7 @@
 }
 
 #profile-picture {
-	width: 350px;
-	margin-right: 60px;
+	width: 150px;
 }
 
 #info-edit {
@@ -116,33 +115,89 @@
 									</div> </span>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<div class="col-lg-12">
-		<div style="text-align: center">
-			<h1>My Page</h1>
+	<div class="frame" style="text-align: center;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<img class="img-fluid rounded-circle" id="profile-picture"
+						src="../Image/gv70.png">
+					<h1>My Profile</h1>
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="col-lg-12">
-		<div class="frame">
-			<div class="profile-section">
-				<img class="img-fluid rounded-circle" id="profile-picture"
-					src="./Image/gv70.png">
-				<div class="introduction">
-					<br>
-					<p>${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })<br>${sessionScope.PRINCIPAL.authorities }</p>
-					<a class="btn btn-outline-dark" style="margin-bottom: 10px;"
-						href="${pageContext.request.contextPath }/user/infoUpdate">내 정보</a>
-					<br> <a class="btn btn-outline-dark"
-						href="${pageContext.request.contextPath }/reserve/reserve_list">예약내역</a>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<div class="frame" style="text-align: center;">
+					<main class="form-signin w-100 m-auto">
+						<form method="POST"
+							action="${pageContext.request.contextPath }/user/infoUpdate">
+
+							<div class="row mt-1">
+								<div class="col-12 text-info">${REDIRECT_ATTR.error }</div>
+							</div>
+
+							<div class="form-floating" style="background-color: light">
+								<span class="form-control" id="id"
+									aria-label="readonly input example" readonly>${sessionScope.PRINCIPAL.username }</span>
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<span type="text" class="form-control" id="name" readonly>${sessionScope.PRINCIPAL.name }</span>
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<span type="password" class="form-control" id="password"
+									name="password" placeholder="password" required></span>
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<input type="password" class="form-control" id="re_password"
+									name="re_password" placeholder="re_password" required>
+								<label for="re_password">* 새 비밀번호 확인</label>
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<input type="text" class="form-control" id="phone_number"
+									name="phone_number" placeholder="phoneNum" required> <label
+									for="floatingPassword"></label>${dto.phone_number }
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<input type="text" class="form-control" id="car_name"
+									name="car_name" placeholder="carName">
+							</div>
+							<br>
+
+							<div class="form-floating">
+								<input type="text" class="form-control" id="car_number"
+									name="car_number" placeholder="carNum">
+							</div>
+							<br>
+
+							<button
+								class="btn btn-lg btn-secondary fw-bold border-white bg-black"
+								type="submit">수정완료</button>
+
+						</form>
+					</main>
 				</div>
 			</div>
+			<div class="col-lg-2"></div>
 		</div>
 	</div>
 

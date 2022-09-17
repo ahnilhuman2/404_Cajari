@@ -170,8 +170,9 @@
 						<c:forEach var="dto" items="${list }">
 							<tr>
 								<td>${dto.id }</td>
-								<td><a href="review_detail?id=${dto.id }">${dto.user.username }</a></td>
-								<td>el-입차시간</td>
+								<td><a href="review_detail?id=${user.username }">${sessionScope.PRINCIPAL.username }</a></td>
+								<td>${pdto.parking_name }</td>
+								<td>${dto.checkin_time }</td>
 								<td>${dto.regDateTime }</td>
 							</tr>
 						</c:forEach>

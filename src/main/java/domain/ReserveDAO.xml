@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="domain.ReserveDAO">
 
+	<resultMap type="domain.ParkingDTO" id="mapParking">
+		<result column="parkid" property="id"/>
+		<result column="addr" property="addr"/>
+		<result column="weekend_begin_time" property="weekend_begin_time"/>
+		<result column="weekend_end_time" property="weekend_end_time"/>
+		<result column="weekday_begin_time" property="weekday_begin_time"/>
+		<result column="weekday_end_time" property="weekday_end_time"/>
+		<result column="holiday_begin_time" property="holiday_begin_time"/>
+		<result column="holiday_end_time" property="holiday_end_time"/>
+		<result column="holiday_pay_nm" property="holiday_pay_nm"/>
+		<result column="fulltime_monthly" property="fulltime_monthly"/>
+		<result column="weekend_pay_nm" property="weekend_pay_nm"/>
+		<result column="saturday_pay_nm" property="saturday_pay_nm"/>
+		<result column="tel" property="tel"/>
+		<result column="parking_name" property="parking_name"/>
+	</resultMap>
 
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
@@ -22,6 +38,7 @@
 		<result column="checkin_time" property="checkin_time"/>
 		<result column="regdate" property="regDate"/>
 		<collection property="user" resultMap="mapUser"/>
+		<collection property="parking" resultMap="mapParking"/>
 	</resultMap>	
 	
 	<insert id="insert" flushCache="true" parameterType="domain.ReserveDTO"

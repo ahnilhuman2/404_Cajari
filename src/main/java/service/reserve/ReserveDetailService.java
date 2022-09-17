@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import common.C;
+import domain.ParkingDAO;
+import domain.ParkingDTO;
 import domain.ReserveDAO;
 import domain.ReserveDTO;
 import domain.UserDTO;
@@ -34,7 +36,6 @@ public class ReserveDetailService implements Service {
 		
 		ReserveDTO reserveDTO = null;
 		UserDTO user = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-
 		
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();

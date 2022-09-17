@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.C;
 import service.Service;
+import service.user.InfoSelectService;
+import service.user.InfoUpdateService;
 import service.user.LoginService;
 import service.user.SignInService;
-import service.userInfo.InfoSelectService;
-import service.userInfo.InfoUpdateService;
 
 @WebServlet("/user/*")
 public class UserController extends HttpServlet {
@@ -107,25 +107,24 @@ public class UserController extends HttpServlet {
 		case "/user/user_rejectAuth":
 			viewPage = "user_rejectAuth.jsp";
 			break;
-
-		case "/user/user_profile":
-//			service = new ProfileService();
+			
+//		case "/user/profile":
+//			viewPage = "profile.jsp";
+//			service = new InfoViewService();
 //			service.execute(request, response);
-			viewPage = "userinfo_profile.jsp";
-			break;
+//			break;
 
-		case "/user/user_update":
+		case "/user/infoUpdate":
 			switch (method) {
 			case "GET":
 				service = new InfoSelectService();
 				service.execute(request, response);
-				viewPage = "userinfo_update.jsp";
+				viewPage = "infoUpdate.jsp";
 				break;
 			case "POST":
 				service = new InfoUpdateService();
 				service.execute(request, response);
-				viewPage = "userinfo_updateOk.jsp";
-
+				viewPage = "infoUpdateOk.jsp";
 				break;
 			}
 			break;

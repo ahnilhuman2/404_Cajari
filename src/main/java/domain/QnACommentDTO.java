@@ -1,8 +1,8 @@
 package domain;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -19,30 +19,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDTO {
+public class QnACommentDTO {
 	private int id;
-	private String username;
 	@JsonIgnore
-	private String password;
-	private String name;
-	@JsonIgnore
-	private String authorities;
+	private QnAWriteDTO qna; // qna_id; ..getQna
+	private String content;
 
-	@JsonIgnore
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+	@JsonProperty("regDate")
 	private LocalDateTime regDate;
-	@JsonIgnore
-	private String car_name;
-	@JsonIgnore
-	private String car_number;
-	@JsonIgnore
-	private String phone_number;
 
-	@JsonIgnore
-	// String 으로 리턴하는 getter
-	public String getRegDateTime() {
-		if (this.regDate == null)
-			return "";
-		return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
-	}
-
-} // end DTO
+	private UserDTO user; // user_id ..getUser
+}

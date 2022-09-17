@@ -5,14 +5,14 @@
 <c:choose>
 	<c:when test="${result == 0 }">
 		<script>
-			alert("수정 실패");
+			alert("회원수정 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("수정 성공");
-			location.href = "qna_detail?id=${dto.id}";
+			alert("회원수정 성공");
+			location.href = "mypage"; 
 		</script>
 	</c:otherwise>
 </c:choose>

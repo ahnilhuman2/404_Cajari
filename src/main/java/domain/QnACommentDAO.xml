@@ -1,3 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="domain.QnACommentDAO"></mapper>
+<mapper namespace="domain.QnACommentDAO">
+
+	<resultMap type="domain.UserDTO" id="mapUser">
+		<result column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="name" property="name" />
+		<result column="authorities" property="authorities" />
+		<result column="regDate" property="regDate" />
+	</resultMap>
+
+	<resultMap type="domain.QnACommentDTO" id="mapQnAComment">
+		<result column="c_id" property="id" />
+		<result column="content" property="content" />
+		<result column="regdate" property="regDate" />
+		<collection property="user" resultMap="mapUser" />
+	</resultMap>
+
+	<select id="selectByWrite" resultMap="mapQnAComment">
+		SELECT
+		c.id "c_id",
+		c.content "content",
+		c.regdate "regdate",
+		u.id "id",
+		u.username "username",
+		u.password "password",
+		u.name "name",
+		u.authorities "authorities",
+		u.regDate "regDate"
+		FROM t404_qna_comment c, t404_user u
+		WHERE
+		c.user_id = u.id
+		AND c.qna_id = #{param1}
+		ORDER BY c.id DESC
+	</select>
+
+	<insert id="insert" flushCache="true"
+		parameterType="domain.QnACommentDTO" keyProperty="id"
+		useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO t404_qna_comment(user_id, qna_id, content)
+		VALUES(#{user.id}, #{qna.id}, #{content})
+	</insert>
+
+	<delete id="deleteById" flushCache="true">
+		DELETE FROM t404_qna_comment WHERE id = #{id}
+	</delete>
+
+
+</mapper>

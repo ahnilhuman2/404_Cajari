@@ -164,7 +164,7 @@
 								<label for="name">작성자:</label> <span class="form-control">${user.username }</span>
 							</div>
 							<div class="mb-3 mt-3">
-								<label for="subject">주차장:</label> <span class="form-control">${dto.parking.parking_name }</span>
+								<label for="subject">주차장:</label> <span class="form-control">${pdto.parking_name }</span>
 							</div>
 							<div class="mb-3 mt-3">
 								<label for="subject">입차시간:</label> <span class="form-control">${dto.checkin_time }</span>

@@ -16,11 +16,25 @@
 	WHERE id = #{id}
 </select>
 
+<select id="userView" parameterType="domain.UserDTO"
+	resultType="domain.UserDTO">
+	SELECT id, username, password, name, authorities, regdate, car_name, car_number, phone_number
+	FROM t404_user
+	WHERE id = #{id}
+</select>
+
 <insert id="regUser" flushCache="true" parameterType="domain.UserDTO"
 	keyProperty="id" useGeneratedKeys="true" keyColumn="id">
 	INSERT INTO t404_user(username, password, name, phone_number)
 	VALUES(#{username}, #{password}, #{name}, #{phone_number})
 </insert>
+
+<update id="update" flushCache="true"
+	parameterType="domain.UserDTO">
+	UPDATE t404_user
+	SET phone_number = #{phone_number}, car_name = #{car_name}, car_number = #{car_number}
+	WHERE id = #{id}
+</update>
 
 </mapper>
 

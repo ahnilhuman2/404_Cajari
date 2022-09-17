@@ -18,39 +18,39 @@ import service.Service;
 
 public class QnADeleteService implements Service {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		SqlSession sqlSession = null;
-		QnAWriteDAO dao = null;		
-		
-		int cnt = 0;
-		
-		try {
-			sqlSession = SqlSessionManager.getInstance().openSession();
-			dao = sqlSession.getMapper(QnAWriteDAO.class);
-			
-			// 로그인한 사용자가 아니면 여기서 redirect 해야 한다
-//			UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
-//			List<QnAWriteDTO> list = dao.selectById(id);
-//			UserDTO writeUser = list.get(0).getUser();
-//			if(loggedUser.getId() != writeUser.getId()) {
-//				response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
-//				return;
-//			}	
-			
-			cnt = dao.deleteById(id);
-			
-			sqlSession.commit();
-		} catch (SQLException e) {  
-			e.printStackTrace();
-		} finally {
-			if(sqlSession!= null) sqlSession.close();
-		}
-		
-		request.setAttribute("result", cnt);
+   @Override
+   public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      int id = Integer.parseInt(request.getParameter("id"));
+      
+      SqlSession sqlSession = null;
+      QnAWriteDAO dao = null;      
+      
+      int cnt = 0;
+      
+      try {
+         sqlSession = SqlSessionManager.getInstance().openSession();
+         dao = sqlSession.getMapper(QnAWriteDAO.class);
+         
+         // 로그인한 사용자가 아니면 여기서 redirect 해야 한다
+//         UserDTO loggedUser = (UserDTO)request.getSession().getAttribute(C.PRINCIPAL);
+//         List<QnAWriteDTO> list = dao.selectById(id);
+//         UserDTO writeUser = list.get(0).getUser();
+//         if(loggedUser.getId() != writeUser.getId()) {
+//            response.sendRedirect(request.getContextPath() + "/user/rejectAuth");
+//            return;
+//         }   
+         
+         cnt = dao.deleteById(id);
+         
+         sqlSession.commit();
+      } catch (SQLException e) {  
+         e.printStackTrace();
+      } finally {
+         if(sqlSession!= null) sqlSession.close();
+      }
+      
+      request.setAttribute("result", cnt);
 
-	}
+   }
 
 }

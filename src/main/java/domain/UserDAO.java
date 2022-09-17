@@ -15,6 +15,12 @@ public interface UserDAO {
 	// 회원(user) 등록 INSERT <-- DTO
 	int regUser(UserDTO dto) throws SQLException;
 	
+	// 회원정보 불러오기
+	List<UserDTO> userView(int id) throws SQLException;
+	
+	// 회원수정
+	int update(UserDTO dto) throws SQLException;
+	
 } // end DAO
 
 

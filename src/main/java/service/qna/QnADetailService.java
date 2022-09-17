@@ -20,33 +20,35 @@ public class QnADetailService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		
+
 		// 페이징 관련
-//	    HttpSession session = request.getSession();
-//	    Integer page = (Integer)session.getAttribute("page");
-//	    if(page == null) page = 1;
-//	    request.setAttribute("page", page);
-	    
-	    SqlSession sqlSession = null;
-		QnAWriteDAO dao = null;		
-		
+		HttpSession session = request.getSession();
+		Integer page = (Integer) session.getAttribute("page");
+		if (page == null)
+			page = 1;
+		request.setAttribute("page", page);
+
+		SqlSession sqlSession = null;
+		QnAWriteDAO dao = null;
+
 		List<QnAWriteDTO> list = null;
-		
+
 		try {
 			sqlSession = SqlSessionManager.getInstance().openSession();
 			dao = sqlSession.getMapper(QnAWriteDAO.class);
-			
+
 			// 조회수 증가 + 글 읽기
 			dao.incViewCnt(id);
 			list = dao.selectById(id);
-			
+
 			request.setAttribute("list", list);
-			
+
 			sqlSession.commit();
-		} catch (SQLException e) {  
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(sqlSession!= null) sqlSession.close();
+			if (sqlSession != null)
+				sqlSession.close();
 		}
 
 	}

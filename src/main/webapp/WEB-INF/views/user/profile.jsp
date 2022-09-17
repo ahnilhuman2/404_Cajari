@@ -140,62 +140,55 @@
 				<div class="frame" style="text-align: center;">
 					<main class="form-signin w-100 m-auto">
 						<form method="POST"
-							action="${pageContext.request.contextPath }/mypage">
+							action="${pageContext.request.contextPath }/user/infoUpdate">
 
 							<div class="row mt-1">
 								<div class="col-12 text-info">${REDIRECT_ATTR.error }</div>
 							</div>
 
-							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingId"
-									name="username" placeholder="id"
-									aria-label="readonly input example" readonly><label
-									for="floatingId">EL아이디</label>
+							<div class="form-floating" style="background-color: light">
+								<span class="form-control" id="id"
+									aria-label="readonly input example" readonly>${sessionScope.PRINCIPAL.username }</span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingName"
-									name="name" placeholder="name" value="${REDIRECT_ATTR.name }"
-									required> <label for="floatingPassword">* 이름</label>
+								<span type="text" class="form-control" id="name" readonly>${sessionScope.PRINCIPAL.name }</span>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="password" class="form-control"
-									id="floatingPassword" name="password" placeholder="password"
-									required> <label for="floatingPassword">* 새
-									비밀번호</label>
+								<input type="password" class="form-control" id="password"
+									name="password" placeholder="password" required> <label
+									for="password">* 새 비밀번호</label>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="password" class="form-control"
-									id="floatingPassword" name="re_password"
-									placeholder="re_password" required> <label
-									for="floatingPassword">* 새 비밀번호 확인</label>
+								<input type="password" class="form-control" id="re_password"
+									name="re_password" placeholder="re_password" required>
+								<label for="re_password">* 새 비밀번호 확인</label>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingPassword"
-									name="phone_number" placeholder="phoneNum"
-									value="${REDIRECT_ATTR.phone_number }" required> <label
-									for="floatingPassword">* 핸드폰</label>
+								<input type="text" class="form-control" id="phone_number"
+									name="phone_number" placeholder="phoneNum" required> <label
+									for="floatingPassword">${dto.phone_number }</label>${dto.phone_number }
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingPassword"
+								<input type="text" class="form-control" id="car_name"
 									name="car_name" placeholder="carName"> <label
-									for="floatingPassword">차종</label>
+									for="floatingPassword">${dto.car_name }</label>
 							</div>
 							<br>
 
 							<div class="form-floating">
-								<input type="text" class="form-control" id="floatingPassword"
+								<input type="text" class="form-control" id="car_number"
 									name="car_number" placeholder="carNum"> <label
-									for="floatingPassword">차량번호</label>
+									for="floatingPassword">${dto.car_number }</label>
 							</div>
 							<br>
 

@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 public class QnAWriteDTO {
-	private int id; // id
-	private UserDTO user; // user_id
-	private String subject; // subject
-	private String content; // content
-	private int viewcnt; // viewcnt
-	private LocalDateTime regdate; // regdate
-	
-	public String getRegDateTime() {
-		if(this.regdate == null) return "";		
-		return this.regdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-	}
+   private int id; // id
+   private UserDTO user; // user_id
+   private String subject; // subject
+   private String content; // content
+   private int viewcnt; // viewcnt
+   private LocalDateTime regDate; // regdate
+   
+   public String getRegDateTime() {
+      if(this.regDate == null) return "";      
+      return this.regDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+   }
 }
