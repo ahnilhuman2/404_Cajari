@@ -73,8 +73,8 @@
 
 						<div class="col-lg-8">
 							<ul class="nav nav-tabs align-itmes-center">
-								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/404_Cajari/home">Home</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/404_Cajari/home">Home</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 									href="/404_Cajari/search/search_main" role="button"
@@ -138,8 +138,8 @@
 					<br>
 					<p>${sessionScope.PRINCIPAL.username }(${sessionScope.PRINCIPAL.name })<br>${sessionScope.PRINCIPAL.authorities }</p>
 					<a class="btn btn-outline-dark" style="margin-bottom: 10px;"
-						href="${pageContext.request.contextPath }/user/infoUpdate">내 정보</a>
-					<br> <a class="btn btn-outline-dark"
+						href="${pageContext.request.contextPath }/user/infoUpdate">내
+						정보</a> <br> <a class="btn btn-outline-dark"
 						href="${pageContext.request.contextPath }/reserve/reserve_list">예약내역</a>
 				</div>
 			</div>

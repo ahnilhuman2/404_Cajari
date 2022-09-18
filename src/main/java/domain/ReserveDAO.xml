@@ -3,7 +3,7 @@
 <mapper namespace="domain.ReserveDAO">
 
 	<resultMap type="domain.ParkingDTO" id="mapParking">
-		<result column="parkid" property="id"/>
+		<result column="parking" property="id"/>
 		<result column="addr" property="addr"/>
 		<result column="weekend_begin_time" property="weekend_begin_time"/>
 		<result column="weekend_end_time" property="weekend_end_time"/>
@@ -21,7 +21,7 @@
 
 	
 	<resultMap type="domain.UserDTO" id="mapUser">
-		<result column="userid" property="id"/>
+		<result column="user" property="id"/>
 		<result column="username" property="username"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>
@@ -49,12 +49,12 @@
 	 	
 	
 	<!-- 글 조회 -->
-	<select id="selectById" resultType="domain.ReserveDTO">
+	<select id="selectById" resultMap="mapReserve">
 		SELECT 
-			r.id "id", 
+			r.id "id",
 			r.regdate "regdate",
-			r.checkin_time "checkin_time", 
-			u.id "userid", 
+			r.checkin_time "checkin_time",
+			u.id "user",
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
@@ -63,7 +63,7 @@
 			u.car_name "car_name", 
 			u.car_number "car_number",
 			u.phone_number "phone_number",
-			p.id "parkid", 
+			p.id "parking", 
 			p.addr "addr", 
 			p.weekend_begin_time "weekend_begin_time", 
 			p.weekend_end_time "weekend_end_time", 
@@ -85,12 +85,12 @@
 			r.id = #{id}
 	</select>
 	
-	<select id="selectByUserId" resultType="domain.ReserveDTO">
+	<select id="selectByUserId" resultMap="mapReserve">
 		SELECT 
 			r.id "id", 
 			r.regdate "regdate",
 			r.checkin_time "checkin_time", 
-			u.id "userid", 
+			u.id "user", 
 			u.username "username", 
 			u.password "password", 
 			u.name "name", 
@@ -99,7 +99,7 @@
 			u.car_name "car_name", 
 			u.car_number "car_number",
 			u.phone_number "phone_number",
-			p.id "parkid", 
+			p.id "parking", 
 			p.addr "addr", 
 			p.weekend_begin_time "weekend_begin_time", 
 			p.weekend_end_time "weekend_end_time", 

@@ -92,8 +92,7 @@ $(document).ready(function(){
 
 						<div class="col-lg-8">
 							<ul class="nav nav-tabs align-itmes-center">
-								<li class="nav-item"><a class="nav-link active"
-									aria-current="page"
+								<li class="nav-item"><a class="nav-link"
 									href="${pageContext.request.contextPath }/home">Home</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
@@ -107,7 +106,8 @@ $(document).ready(function(){
 											href="${pageContext.request.contextPath }/search/search_map">Map
 												Search</a></li>
 									</ul></li>
-								<li class="nav-item"><a class="nav-link"
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page"
 									href="${pageContext.request.contextPath }/review/review_list">Review</a>
 								</li>
 								<li class="nav-item"><a class="nav-link"

@@ -171,7 +171,7 @@
 							<tr>
 								<td>${dto.id }</td>
 								<td><a href="review_detail?id=${user.username }">${sessionScope.PRINCIPAL.username }</a></td>
-								<td>${pdto.parking_name }</td>
+								<td>${dto.parking.parking_name }</td>  <!-- dto.getParking_name();  -->
 								<td>${dto.checkin_time }</td>
 								<td>${dto.regDateTime }</td>
 							</tr>

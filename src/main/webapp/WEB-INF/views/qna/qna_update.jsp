@@ -180,7 +180,7 @@ header {
 					<button type="button" class="btn btn-outline-dark"
 						onclick="history.back()">이전으로</button>
 					<a class="btn btn-outline-dark"
-						href="list?page=${empty page ? '' : page }">목록</a>
+						href="qna_list?page=${empty page ? '' : page }">목록</a>
 					<!-- 하단 링크 -->
 
 				</form>
