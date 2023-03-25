@@ -6,7 +6,7 @@
 
 ### 📌 Overview
 
-- 주제 : 주변에 있는 공용주차장을 편리하게 찾을 수 있는 페이
+- 주제 : 주변에 있는 공용주차장을 편리하게 찾을 수 있는 페이지
 - 진행기간 : 2022/09/01 ~ 2022/09/22
 - 사용기술 : JAVA, HTML, CSS, Javascript, Ajax, MySQl, MyBatis, Apache Tomcat
 
@@ -59,36 +59,23 @@
 <p align="">
 <img width="500" alt="erd8" src="https://user-images.githubusercontent.com/112387307/227707224-11bd6d04-5bbd-49b1-beff-e58fe6afaad4.png">
 
-## 📖 Story Board
+### 📖 Story Board
 
 ▶ 메인 페이지
-
 ▶ 로그인, 회원가입 페이지
-
 ▶ 검색으로 찾기 페이지
-
 ▶ 검색을 통해 맵으로 찾기 페이지
-
 ▶ 주차장 리뷰 게시판
-
 ▶ Qna 게시판
-
 ▶ 마이페이지
-
 ▶ 예약내역 페이지
 
-## 📘 Flow Chart
-
+### 📘 Flow Chart
 ▶ 회원가입, 로그인
-
 ▶ 마이페이지
-
 ▶ 검색과 지도로 찾기
-
 ▶ 내 예약내역 확인하기
-
 ▶ 게시판 작성하기
-
 ▶ 내 정보 보기
 
 
